@@ -54,12 +54,15 @@
                             <button class="swap-num-button" onclick="setSwapNumber(6)">6</button>
                         </div>
                         <div class="swap-preset-buttons">
-                            <button class="swap-preset-button" onclick="setPresetSwap('fox')">fox</button>
+                            <button class="swap-preset-button" onclick="setPresetSwap('foxc')">foxc</button>
+                            <button class="swap-preset-button" onclick="setPresetSwap('foxin')">foxin</button>
+                            <button class="swap-preset-button" onclick="setPresetSwap('fc-i')">fc-i</button>
                             <button class="swap-preset-button" onclick="setPresetSwap('crow')">crow</button>
                             <button class="swap-preset-button" onclick="setPresetSwap('marm')">marm</button>
                             <button class="swap-preset-button" onclick="setPresetSwap('wolf')">wolf</button>
                             <button class="swap-preset-button" onclick="setPresetSwap('wolfin')">wolfin</button>
                             <button class="swap-preset-button" onclick="setPresetSwap('wden')">wden</button>
+                            <button class="swap-preset-button" onclick="setPresetSwap('wden2')">wden2</button>
                             <button class="swap-preset-button" onclick="setPresetSwap('ws-w')">ws-w</button>
                             <button class="swap-preset-button" onclick="setPresetSwap('wswin')">wswin</button>
                             <button class="swap-preset-button" onclick="setPresetSwap('chkn')">chkn</button>
@@ -67,13 +70,20 @@
                             <button class="swap-preset-button" onclick="setPresetSwap('push')">push</button>
                             <button class="swap-preset-button" onclick="setPresetSwap('crnch')">crnch</button>
                             <button class="swap-preset-button" onclick="setPresetSwap('past')">past</button>
+                            <button class="swap-preset-button" onclick="setPresetSwap('feed')">feed</button>
                             <button class="swap-preset-button" onclick="setPresetSwap('gard')">gard</button>
-                            <button class="swap-preset-button" onclick="setPresetSwap('tar')">tar</button>
                             <button class="swap-preset-button" onclick="setPresetSwap('chin')">chin</button>
                             <button class="swap-preset-button" onclick="setPresetSwap('chin2')">chin2</button>
                             <button class="swap-preset-button" onclick="setPresetSwap('chin3')">chin3</button>
+                            <button class="swap-preset-button" onclick="setPresetSwap('1-2')">1-2</button>
+                            <button class="swap-preset-button" onclick="setPresetSwap('2-3')">2-3</button>
+                            <button class="swap-preset-button" onclick="setPresetSwap('1-3')">1-3</button>
+                            <button class="swap-preset-button" onclick="setPresetSwap('tar')">tar</button>
                             <button class="swap-preset-button" onclick="setPresetSwap('toast')">toast</button>
                             <button class="swap-preset-button" onclick="setPresetSwap('par')">par</button>
+                            <button class="swap-preset-button" onclick="setPresetSwap('emu')">emu</button>
+                            <button class="swap-preset-button" onclick="setPresetSwap('serv')">serv</button>
+                            <button class="swap-preset-button" onclick="setPresetSwap('sc-i')">sc-i</button>
                         </div>
                         <div class="dropdown-container">
                             <div class="swap-dropdown1">
@@ -177,6 +187,28 @@
                     <h2 class="direction-heading" style="cursor: pointer;"
                         onclick="toggleDirectionPad('.zoom-menu-outer')">- Zoom -</h2>
                     <div class="zoom-menu-outer">
+                        <div class="zoom-button-container">
+                            <div class="zoom-buttons">
+                                <button id="nfcToggle" class="zoom-button" onclick="toggleNFC()">NFC</button>
+                                <button class="zoom-button" onclick="sendZoomButton('0')">0</button>
+                                <button class="zoom-button" onclick="sendZoomButton('10')">10</button>
+                                <button class="zoom-button" onclick="sendZoomButton('25')">25</button>
+                                <button class="zoom-button" onclick="sendZoomButton('30')">30</button>
+                                <button class="zoom-button" onclick="sendZoomButton('40')">40</button>
+                                <button class="zoom-button" onclick="sendZoomButton('50')">50</button>
+                                <button class="zoom-button" onclick="sendZoomButton('60')">60</button>
+                                <button class="zoom-button" onclick="sendZoomButton('75')">75</button>
+                                <button class="zoom-button" onclick="sendZoomButton('80')">80</button>
+                                <button class="zoom-button" onclick="sendZoomButton('90')">90</button>
+                                <button class="zoom-button" onclick="sendZoomButton('125')">125</button>
+                                <button class="zoom-button" onclick="sendZoomButton('130')">130</button>
+                                <button class="zoom-button" onclick="sendZoomButton('140')">140</button>
+                                <button class="zoom-button" onclick="sendZoomButton('150')">150</button>
+                                <button class="zoom-button" onclick="sendZoomButton('200')">200</button>
+                                <button class="zoom-button" onclick="sendZoomButton('300')">300</button>
+                                <button class="zoom-button" onclick="sendZoomButton('400')">400</button>
+                            </div>
+                        </div>
                         <div class="zoom-menu-inner">
                             <div class="zoomr-menu">
                                 <div class="zoom-dropdown-wrapper">

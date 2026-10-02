@@ -89,7 +89,7 @@ const updateThumbnailVisibility = (isChecked) => {
 function updateCameraThumbnailVisibility(isChecked) {
     const cameraThumbnails = document.querySelectorAll('.camera-thumbnail');
     const cameraButtons = document.querySelectorAll('.camera-button');
-    
+
     // Update visibility of thumbnails
     cameraThumbnails.forEach(thumbnail => {
         console.log(`Setting display for ${thumbnail.src} to ${isChecked ? 'block' : 'none'}`);
@@ -396,7 +396,7 @@ document.addEventListener('DOMContentLoaded', function () {
         } else {
             closeButton = document.getElementById('closeDialogButton');
         }
-        
+
 
         const cameraSwapContainer = document.createElement('div');
         cameraSwapContainer.className = 'camera-swap-container';
@@ -447,10 +447,10 @@ document.addEventListener('DOMContentLoaded', function () {
         const cameraThumbnails = cameraSwapContainer.querySelectorAll('.camera-swap-image');
         cameraThumbnails.forEach(thumbnail => {
             thumbnail.addEventListener('click', (event) => {
-            const button = event.target.closest('.camera-swap-button-container')?.querySelector('.camera-swap-button');
-            if (button) {
-                button.click();
-            }
+                const button = event.target.closest('.camera-swap-button-container')?.querySelector('.camera-swap-button');
+                if (button) {
+                    button.click();
+                }
             });
         });
 
@@ -476,7 +476,7 @@ document.addEventListener('DOMContentLoaded', function () {
             dialog.style.display = 'none';
             document.body.classList.remove('no-scroll'); // Enable scrolling
         }
-    }    
+    }
 
     function openPresetDialog() {
         // Create the dialog element if it doesn't exist
@@ -955,7 +955,7 @@ document.addEventListener('DOMContentLoaded', function () {
     vidIcon.addEventListener('click', switchToVidView);
 
 });
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
     var video = document.querySelector('video');
     if (video) {
         video.muted = false; // Try unmuting first
@@ -1038,7 +1038,7 @@ const toggleFeed = () => {
 
 const toggleClickAF = () => {
     const button7 = document.querySelector('.vidbutton7'); // Adjust selector as needed
-    
+
     if (!(button7.classList.contains('highlighted'))) {
         button7.classList.add('highlighted');
         clickAFOff = true;
@@ -1406,19 +1406,19 @@ function loadcanvas() {
         }
     });
 
- // Add a keydown event listener to the document
-document.addEventListener('keydown', function (event) {
-    if (event.key === 'Enter') {
-        // Check if the button is present on the canvas
-        if (button && canvas.getObjects().includes(button)) {
-            // Trigger the button's click
-            const options = {
-                target: button
-            };
-            canvas.fire('mouse:down', options);
+    // Add a keydown event listener to the document
+    document.addEventListener('keydown', function (event) {
+        if (event.key === 'Enter') {
+            // Check if the button is present on the canvas
+            if (button && canvas.getObjects().includes(button)) {
+                // Trigger the button's click
+                const options = {
+                    target: button
+                };
+                canvas.fire('mouse:down', options);
+            }
         }
-    }
-});   
+    });
 
     // Handle the Escape key press to remove the rectangle
     document.addEventListener('keydown', function (event) {
@@ -1695,222 +1695,222 @@ function loadclickoverlay() {
     });
 
     let holdTimer;
-const holdThreshold = 300; // Time in milliseconds to detect a "hold"
-const zoomOptions = [0, 10, 20, 40, 50, 60, 70, 80, 90, 150, 200, 300, 400]; // Define your zoom levels here
-let globalScaledX, globalScaledY; // Global variables to store scaled coordinates
+    const holdThreshold = 300; // Time in milliseconds to detect a "hold"
+    const zoomOptions = [0, 10, 20, 40, 50, 60, 70, 80, 90, 150, 200, 300, 400]; // Define your zoom levels here
+    let globalScaledX, globalScaledY; // Global variables to store scaled coordinates
 
-// Create zoom dialog element
-const zoomDialog = document.createElement('div');
-zoomDialog.style.position = 'absolute';
-zoomDialog.style.display = 'none';
-zoomDialog.style.backgroundColor = 'rgba(0, 0, 0, 0.8)'; // Semi-transparent black background
-zoomDialog.style.border = '1px solid white';
-zoomDialog.style.padding = '10px';
-zoomDialog.style.zIndex = '1000';
-zoomDialog.style.color = 'white'; // White text color
-zoomDialog.style.borderRadius = '5px'; // Rounded corners
-zoomDialog.style.boxShadow = '0 0 10px rgba(0, 0, 0, 0.5)'; // Shadow for a popup effect
+    // Create zoom dialog element
+    const zoomDialog = document.createElement('div');
+    zoomDialog.style.position = 'absolute';
+    zoomDialog.style.display = 'none';
+    zoomDialog.style.backgroundColor = 'rgba(0, 0, 0, 0.8)'; // Semi-transparent black background
+    zoomDialog.style.border = '1px solid white';
+    zoomDialog.style.padding = '10px';
+    zoomDialog.style.zIndex = '1000';
+    zoomDialog.style.color = 'white'; // White text color
+    zoomDialog.style.borderRadius = '5px'; // Rounded corners
+    zoomDialog.style.boxShadow = '0 0 10px rgba(0, 0, 0, 0.5)'; // Shadow for a popup effect
 
-// Add zoom options to the dialog
-zoomOptions.forEach((zoom) => {
-    const zoomOption = document.createElement('div');
-    zoomOption.textContent = `${zoom}`;
-    zoomOption.style.cursor = 'pointer';
-    zoomOption.style.margin = '5px 0';
-    zoomOption.style.padding = '5px';
-    zoomOption.style.backgroundColor = 'rgba(255, 255, 255, 0.1)'; // Slightly lighter background on hover
-    zoomOption.style.borderRadius = '3px';
+    // Add zoom options to the dialog
+    zoomOptions.forEach((zoom) => {
+        const zoomOption = document.createElement('div');
+        zoomOption.textContent = `${zoom}`;
+        zoomOption.style.cursor = 'pointer';
+        zoomOption.style.margin = '5px 0';
+        zoomOption.style.padding = '5px';
+        zoomOption.style.backgroundColor = 'rgba(255, 255, 255, 0.1)'; // Slightly lighter background on hover
+        zoomOption.style.borderRadius = '3px';
 
-    zoomOption.addEventListener('mouseover', () => {
-        zoomOption.style.backgroundColor = 'rgba(255, 255, 255, 0.3)'; // Highlight on hover
+        zoomOption.addEventListener('mouseover', () => {
+            zoomOption.style.backgroundColor = 'rgba(255, 255, 255, 0.3)'; // Highlight on hover
+        });
+        zoomOption.addEventListener('mouseout', () => {
+            zoomOption.style.backgroundColor = 'rgba(255, 255, 255, 0.1)'; // Revert background color
+        });
+        zoomOption.addEventListener('click', () => {
+            // Hide and remove the dialog
+            closeZoomDialog();
+
+            // Send click command with selected zoom using the stored coordinates
+            sendclickCommand(globalScaledX, globalScaledY, zoom);
+        });
+        zoomDialog.appendChild(zoomOption);
     });
-    zoomOption.addEventListener('mouseout', () => {
-        zoomOption.style.backgroundColor = 'rgba(255, 255, 255, 0.1)'; // Revert background color
-    });
-    zoomOption.addEventListener('click', () => {
-        // Hide and remove the dialog
-        closeZoomDialog();
-        
-        // Send click command with selected zoom using the stored coordinates
-        sendclickCommand(globalScaledX, globalScaledY, zoom);
-    });
-    zoomDialog.appendChild(zoomOption);
-});
 
-// Function to close the dialog
-function closeZoomDialog() {
-    if (zoomDialog.parentNode) {
-        zoomDialog.style.display = 'none';
-        zoomDialog.parentNode.removeChild(zoomDialog);
-    }
-}
-
-clickOverlay.addEventListener('mousedown', (e) => {
-    // Ignore right-clicks
-    if (e.button === 2) {
-        return;
+    // Function to close the dialog
+    function closeZoomDialog() {
+        if (zoomDialog.parentNode) {
+            zoomDialog.style.display = 'none';
+            zoomDialog.parentNode.removeChild(zoomDialog);
+        }
     }
 
-    holdTimer = setTimeout(() => {
-        const iframeRect = iframe.getBoundingClientRect();
-        const iframeWidth = iframeRect.width;
-        const iframeHeight = iframeRect.height;
-
-        const relativeX = e.clientX - iframeRect.left;
-        const relativeY = e.clientY - iframeRect.top;
-
-        const contentWidth = 1920;
-        const contentHeight = 1080;
-        const contentAspectRatio = contentWidth / contentHeight;
-
-        let effectiveWidth, effectiveHeight;
-
-        if (iframeWidth / iframeHeight > contentAspectRatio) {
-            effectiveHeight = iframeHeight;
-            effectiveWidth = effectiveHeight * contentAspectRatio;
-        } else {
-            effectiveWidth = iframeWidth;
-            effectiveHeight = effectiveWidth / contentAspectRatio;
+    clickOverlay.addEventListener('mousedown', (e) => {
+        // Ignore right-clicks
+        if (e.button === 2) {
+            return;
         }
 
-        const horizontalOffset = (iframeWidth - effectiveWidth) / 2;
-        const verticalOffset = (iframeHeight - effectiveHeight) / 2;
+        holdTimer = setTimeout(() => {
+            const iframeRect = iframe.getBoundingClientRect();
+            const iframeWidth = iframeRect.width;
+            const iframeHeight = iframeRect.height;
 
-        globalScaledX = (relativeX - horizontalOffset) / effectiveWidth * contentWidth;
-        globalScaledY = (relativeY - verticalOffset) / effectiveHeight * contentHeight;
+            const relativeX = e.clientX - iframeRect.left;
+            const relativeY = e.clientY - iframeRect.top;
 
-        // Ensure the dialog is appended to clickOverlay
-        if (zoomDialog.parentNode !== clickOverlay) {
-            // Remove from document body if necessary
-            if (zoomDialog.parentNode === document.body) {
-                try {
-                    document.body.removeChild(zoomDialog);
-                } catch (error) {
-                    console.error("Error removing dialog from body:", error);
+            const contentWidth = 1920;
+            const contentHeight = 1080;
+            const contentAspectRatio = contentWidth / contentHeight;
+
+            let effectiveWidth, effectiveHeight;
+
+            if (iframeWidth / iframeHeight > contentAspectRatio) {
+                effectiveHeight = iframeHeight;
+                effectiveWidth = effectiveHeight * contentAspectRatio;
+            } else {
+                effectiveWidth = iframeWidth;
+                effectiveHeight = effectiveWidth / contentAspectRatio;
+            }
+
+            const horizontalOffset = (iframeWidth - effectiveWidth) / 2;
+            const verticalOffset = (iframeHeight - effectiveHeight) / 2;
+
+            globalScaledX = (relativeX - horizontalOffset) / effectiveWidth * contentWidth;
+            globalScaledY = (relativeY - verticalOffset) / effectiveHeight * contentHeight;
+
+            // Ensure the dialog is appended to clickOverlay
+            if (zoomDialog.parentNode !== clickOverlay) {
+                // Remove from document body if necessary
+                if (zoomDialog.parentNode === document.body) {
+                    try {
+                        document.body.removeChild(zoomDialog);
+                    } catch (error) {
+                        console.error("Error removing dialog from body:", error);
+                    }
+                }
+                // Append to clickOverlay
+                clickOverlay.appendChild(zoomDialog);
+            }
+
+            // Ensure dialog is displayed and positioned
+            zoomDialog.style.display = 'block'; // Ensure visibility
+
+            // Measure dialog size after it is displayed
+            const dialogWidth = zoomDialog.offsetWidth;
+            const dialogHeight = zoomDialog.offsetHeight;
+
+            // Get bounding rectangle of clickOverlay
+            const clickOverlayRect = clickOverlay.getBoundingClientRect();
+
+            // Calculate initial position for zoomDialog
+            let left = e.clientX - clickOverlayRect.left;
+            let top = e.clientY - clickOverlayRect.top;
+
+            // Adjust position to ensure the dialog fits within the boundaries of clickOverlay
+            if (left < 0) {
+                left = 0;
+            }
+            if (top < 0) {
+                top = 0;
+            }
+            if (left + dialogWidth > clickOverlayRect.width) {
+                left = clickOverlayRect.width - dialogWidth;
+            }
+            if (top + dialogHeight > clickOverlayRect.height) {
+                top = clickOverlayRect.height - dialogHeight;
+            }
+
+            // Apply a 10% margin to the top position
+            top -= 0.1 * dialogHeight;
+
+            // Ensure the dialog does not exceed the top edge
+            if (top < 0) {
+                top = 0;
+            }
+
+            // Set the final position
+            zoomDialog.style.left = `${left}px`;
+            zoomDialog.style.top = `${top}px`;
+
+            console.log('Final Position:', { left, top });
+        }, holdThreshold);
+    });
+
+    clickOverlay.addEventListener('mouseup', (e) => {
+        // Ignore right-clicks
+        if (e.button === 2) {
+            return;
+        }
+
+        clearTimeout(holdTimer);
+        if (zoomDialog.style.display !== 'block') {
+            // Handle normal click
+            const clickX = e.clientX;
+            const clickY = e.clientY;
+            console.log(`Raw click coordinates: X=${clickX}, Y=${clickY}`);
+
+            const iframeRect = iframe.getBoundingClientRect();
+            const iframeWidth = iframeRect.width;
+            const iframeHeight = iframeRect.height;
+
+            const rawClickX = e.clientX;
+            const rawClickY = e.clientY;
+
+            const relativeX = rawClickX - iframeRect.left;
+            const relativeY = rawClickY - iframeRect.top;
+
+            const contentWidth = 1920;
+            const contentHeight = 1080;
+            const contentAspectRatio = contentWidth / contentHeight;
+
+            let effectiveWidth, effectiveHeight;
+
+            if (iframeWidth / iframeHeight > contentAspectRatio) {
+                effectiveHeight = iframeHeight;
+                effectiveWidth = effectiveHeight * contentAspectRatio;
+            } else {
+                effectiveWidth = iframeWidth;
+                effectiveHeight = effectiveWidth / contentAspectRatio;
+            }
+
+            const horizontalOffset = (iframeWidth - effectiveWidth) / 2;
+            const verticalOffset = (iframeHeight - effectiveHeight) / 2;
+
+            const scaledX = (relativeX - horizontalOffset) / effectiveWidth * contentWidth;
+            const scaledY = (relativeY - verticalOffset) / effectiveHeight * contentHeight;
+
+            let isWithinBox = false;
+            for (const box of boxBoundaries) {
+                if (
+                    relativeX >= box.x &&
+                    relativeX <= box.x + box.width &&
+                    relativeY >= box.y &&
+                    relativeY <= box.y + box.height
+                ) {
+                    isWithinBox = true;
+                    break;
                 }
             }
-            // Append to clickOverlay
-            clickOverlay.appendChild(zoomDialog);
-        }
 
-        // Ensure dialog is displayed and positioned
-        zoomDialog.style.display = 'block'; // Ensure visibility
-
-        // Measure dialog size after it is displayed
-        const dialogWidth = zoomDialog.offsetWidth;
-        const dialogHeight = zoomDialog.offsetHeight;
-
-        // Get bounding rectangle of clickOverlay
-        const clickOverlayRect = clickOverlay.getBoundingClientRect();
-
-        // Calculate initial position for zoomDialog
-        let left = e.clientX - clickOverlayRect.left;
-        let top = e.clientY - clickOverlayRect.top;
-
-        // Adjust position to ensure the dialog fits within the boundaries of clickOverlay
-        if (left < 0) {
-            left = 0;
-        }
-        if (top < 0) {
-            top = 0;
-        }
-        if (left + dialogWidth > clickOverlayRect.width) {
-            left = clickOverlayRect.width - dialogWidth;
-        }
-        if (top + dialogHeight > clickOverlayRect.height) {
-            top = clickOverlayRect.height - dialogHeight;
-        }
-
-        // Apply a 10% margin to the top position
-        top -= 0.1 * dialogHeight;
-
-        // Ensure the dialog does not exceed the top edge
-        if (top < 0) {
-            top = 0;
-        }
-
-        // Set the final position
-        zoomDialog.style.left = `${left}px`;
-        zoomDialog.style.top = `${top}px`;
-
-        console.log('Final Position:', { left, top });
-    }, holdThreshold);
-});
-
-clickOverlay.addEventListener('mouseup', (e) => {
-    // Ignore right-clicks
-    if (e.button === 2) {
-        return;
-    }
-
-    clearTimeout(holdTimer);
-    if (zoomDialog.style.display !== 'block') {
-        // Handle normal click
-        const clickX = e.clientX;
-        const clickY = e.clientY;
-        console.log(`Raw click coordinates: X=${clickX}, Y=${clickY}`);
-
-        const iframeRect = iframe.getBoundingClientRect();
-        const iframeWidth = iframeRect.width;
-        const iframeHeight = iframeRect.height;
-
-        const rawClickX = e.clientX;
-        const rawClickY = e.clientY;
-
-        const relativeX = rawClickX - iframeRect.left;
-        const relativeY = rawClickY - iframeRect.top;
-
-        const contentWidth = 1920;
-        const contentHeight = 1080;
-        const contentAspectRatio = contentWidth / contentHeight;
-
-        let effectiveWidth, effectiveHeight;
-
-        if (iframeWidth / iframeHeight > contentAspectRatio) {
-            effectiveHeight = iframeHeight;
-            effectiveWidth = effectiveHeight * contentAspectRatio;
-        } else {
-            effectiveWidth = iframeWidth;
-            effectiveHeight = effectiveWidth / contentAspectRatio;
-        }
-
-        const horizontalOffset = (iframeWidth - effectiveWidth) / 2;
-        const verticalOffset = (iframeHeight - effectiveHeight) / 2;
-
-        const scaledX = (relativeX - horizontalOffset) / effectiveWidth * contentWidth;
-        const scaledY = (relativeY - verticalOffset) / effectiveHeight * contentHeight;
-
-        let isWithinBox = false;
-        for (const box of boxBoundaries) {
-            if (
-                relativeX >= box.x &&
-                relativeX <= box.x + box.width &&
-                relativeY >= box.y &&
-                relativeY <= box.y + box.height
-            ) {
-                isWithinBox = true;
-                break;
+            if (isWithinBox) {
+                sendclickCommand(scaledX, scaledY);
+            } else {
+                console.log("Click is outside the box boundaries.");
             }
         }
+    });
 
-        if (isWithinBox) {
-            sendclickCommand(scaledX, scaledY);
-        } else {
-            console.log("Click is outside the box boundaries.");
+    clickOverlay.addEventListener('mouseleave', () => {
+        clearTimeout(holdTimer);
+    });
+
+    // Add keydown event listener for the Esc key
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && zoomDialog.style.display === 'block') {
+            closeZoomDialog();
         }
-    }
-});
-
-clickOverlay.addEventListener('mouseleave', () => {
-    clearTimeout(holdTimer);
-});
-
-// Add keydown event listener for the Esc key
-document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape' && zoomDialog.style.display === 'block') {
-        closeZoomDialog();
-    }
-});
+    });
 }
 
 
@@ -2187,7 +2187,7 @@ function populateCameraButtons(cameras) {
     const fragment = document.createDocumentFragment();
     const thumbnailCameraCheckboxState = localStorage.getItem('CamerathumbnailVisibility');
     const thumbnailCameraCheckboxChecked = thumbnailCameraCheckboxState === 'true';
- console.log("camerathumb state:", thumbnailCameraCheckboxChecked);
+    console.log("camerathumb state:", thumbnailCameraCheckboxChecked);
 
     cameras.forEach(camera => {
         const buttonContainer = document.createElement('div');
@@ -2558,7 +2558,7 @@ function sendptzpadCommand(direction) {
 
 function sendCustomCommand(cameraName, presetName, customPresets) {
     // Find the custom preset data based on the preset name
-    const customPreset = customPresets.find(preset => 
+    const customPreset = customPresets.find(preset =>
         preset.cameraName === cameraName && preset.presetName === presetName
     );    // Check if the custom preset is found
     if (!customPreset) {
@@ -2665,14 +2665,33 @@ function sendPanTiltZoom() {
     document.getElementById('zoomPTZInput').value = '';
 }
 
+function toggleNFC() {
+    const nfcButton = document.getElementById('nfcToggle');
+    nfcButton.classList.toggle('active');
+}
+
+function checkNFC() {
+    const nfcButton = document.getElementById('nfcToggle');
+    let nfc = '';
+    if (nfcButton.classList.contains("active")) {
+        nfc = ' off';
+    }
+    return nfc;
+}
+
 function sendZoom() {
     const zoom = document.getElementById('zoomInput').value || '0';
-    const command = `!ptzzoom ${selectedCamera.toLowerCase()} ${zoom}`;
+    const command = `!ptzzoom ${selectedCamera.toLowerCase()} ${zoom}${checkNFC()}`;
     sendCommand(command);
 
     // Clear the input values
     document.getElementById('zoomInput').value = '';
     document.getElementById('zoomSlider').value = 0;
+}
+
+function sendZoomButton(value) {
+    const command = `!ptzzoom ${selectedCamera.toLowerCase()} ${value}${checkNFC()}`
+    sendCommand(command);
 }
 
 function sendZoomR() {
@@ -2689,7 +2708,7 @@ function sendZoomR() {
         zoom = zoomTextBoxValue;
     }
 
-    const command = `!ptzzoom ${selectedCamera.toLowerCase()} ${zoom}`;
+    const command = `!ptzzoom ${selectedCamera.toLowerCase()} ${zoom}${checkNFC()}`;
     sendCommand(command);
 
     // Clear the input values
@@ -2825,12 +2844,18 @@ function setPresetSwap(selected) {
         sendCommand('!swap wolf wolfindoor');
     } else if (selected === 'wden') {
         sendCommand('!swap wolf wolfden');
+    } else if (selected === 'wden2') {
+        sendCommand('!swap wolfcorner wolfden2');
     } else if (selected === 'ws-w') {
         sendCommand('!swap wolf wolfswitch');
     } else if (selected === 'wswin') {
         sendCommand('!swap wolfindoor wolfswitch');
-    } else if (selected === 'fox') {
-        sendCommand('!swap fox foxcorner');
+    } else if (selected === 'foxc') {
+        sendCommand('!swap fox foxcovered');
+    } else if (selected === 'foxin') {
+        sendCommand('!swap fox foxindoor');
+    } else if (selected === 'fc-i') {
+        sendCommand('!swap foxcovered foxindoor');
     } else if (selected === 'chkn') {
         sendCommand('!swap chicken chickenindoor');
     } else if (selected === 'gorg') {
@@ -2840,21 +2865,35 @@ function setPresetSwap(selected) {
     } else if (selected == 'crnch') {
         sendCommand('!swap pushpop pushpopcrunch');
     } else if (selected == 'past') {
+        sendCommand('!swap pasture pasturelower');
+    } else if (selected == 'feed') {
         sendCommand('!swap pasture pasturefeeder');
     } else if (selected == 'gard') {
         sendCommand('!swap pasture garden');
-    } else if (selected == 'tar') {
-        sendCommand('!swap tarantula tarantulaptz');
     } else if (selected == 'chin') {
         sendCommand('!swap chinmulti chin')
     } else if (selected == 'chin2') {
         sendCommand('!swap chinmulti chin2')
     } else if (selected == 'chin3') {
         sendCommand('!swap chinmulti chin3')
+    } else if (selected == '1-2') {
+        sendCommand('!swap chin chin2')
+    } else if (selected == '2-3') {
+        sendCommand('!swap chin2 chin3')
+    } else if (selected == '1-3') {
+        sendCommand('!swap chin chin3')
+    } else if (selected == 'tar') {
+        sendCommand('!swap tarantula tarantulaptz');
     } else if (selected == 'toast') {
         sendCommand('!swap toast toastcrunch');
     } else if (selected == 'par') {
         sendCommand('!swap littles macaws');
+    } else if (selected == 'emu') {
+        sendCommand('!swap emu emucover');
+    } else if (selected == 'serv') {
+        sendCommand('!swap serval servalcorner');
+    } else if (selected == 'sc-i') {
+        sendCommand('!swap servalcorner servalindoor');
     }
 }
 
@@ -2911,23 +2950,23 @@ document.getElementById('swap2').addEventListener('input', function () {
 let controllerIndex = null;
 
 window.addEventListener("gamepadconnected", (event) => {
-  handleConnectDisconnect(event, true);
+    handleConnectDisconnect(event, true);
 });
 
 window.addEventListener("gamepaddisconnected", (event) => {
-  handleConnectDisconnect(event, false);
+    handleConnectDisconnect(event, false);
 });
 
 function handleConnectDisconnect(event, connected) {
-  const gamepad = event.gamepad;
-  console.log(gamepad);
+    const gamepad = event.gamepad;
+    console.log(gamepad);
 
-  if (connected) {
-    controllerIndex = gamepad.index;
-    requestAnimationFrame(updateGamepadStatus);
-  } else {
-    controllerIndex = null;
-  }
+    if (connected) {
+        controllerIndex = gamepad.index;
+        requestAnimationFrame(updateGamepadStatus);
+    } else {
+        controllerIndex = null;
+    }
 }
 
 let a_xPressed = false;
@@ -3161,7 +3200,7 @@ function updateGamepadStatus() {
             if (leftStick && !leftStickPressed) {
                 ptzSpin(0, 0, 0);
                 timeout = 0; // Reset spam timer to prevent movement for the specified timeout
-                lastSpinCommand = { pan: 0, tilt: 0, zoom: 0};
+                lastSpinCommand = { pan: 0, tilt: 0, zoom: 0 };
                 leftStickPressed = true;
             } else if (!leftStick && leftStickPressed) {
                 leftStickPressed = false;
@@ -3230,7 +3269,7 @@ function updateGamepadStatus() {
                 if (x > 0) return 'Right';
                 return '';
             }
-            
+
             // Update pan/tilt/focus values based on stick direction and speed value
             function logDirectionAndSpeed(xSpeed, ySpeed, xDir, yDir, stick) {
                 if (xSpeed && ySpeed && xDir && yDir) {
@@ -3261,7 +3300,7 @@ function updateGamepadStatus() {
                             focus = -FOCUS_SPEEDS[ySpeed];
                         }
                     }
-                    } else if (xSpeed && xDir) {
+                } else if (xSpeed && xDir) {
                     // Left/Right
                     if (stick == 'Left') {
                         if (xDir == 'Left') {
@@ -3276,7 +3315,7 @@ function updateGamepadStatus() {
                             // Unused for now
                         }
                     }
-                    } else if (ySpeed && yDir) {
+                } else if (ySpeed && yDir) {
                     // Up/Down
                     if (stick == 'Left') {
                         if (yDir == 'Up') {
@@ -3316,7 +3355,7 @@ function updateGamepadStatus() {
                     }
                 }
             }
-            
+
             function updateLastMovement(xSpeed, ySpeed, xDir, yDir, stick) {
                 if (stick == 'Left') {
                     lastLeftXSpeed = xSpeed;
@@ -3333,7 +3372,7 @@ function updateGamepadStatus() {
 
             const leftStickX = axes[0];
             const leftStickY = axes[1];
-            
+
             leftXSpeed = getSpeedLevel(leftStickX, STICK_THRESHOLD_FAST, STICK_THRESHOLD_MEDIUM, STICK_THRESHOLD_SLOW);
             leftYSpeed = getSpeedLevel(leftStickY, STICK_THRESHOLD_FAST, STICK_THRESHOLD_MEDIUM, STICK_THRESHOLD_SLOW);
             const leftXDir = getDirection(leftStickX, 0);
@@ -3345,7 +3384,7 @@ function updateGamepadStatus() {
 
             // Update the last known movement and speed for the next call
             updateLastMovement(leftXSpeed, leftYSpeed, leftXDir, leftYDir, 'Left');
-            
+
             const rightStickX = axes[2];
             const rightStickY = axes[3];
 
@@ -3649,10 +3688,10 @@ function handleKeyDown(event) {
         lastKeyPressed = event.key;
         handlePtzSpin(event);
         return;
-    } else if (['ArrowUp', 'ArrowDown', 'ArrowLeft', 'ArrowRight'].includes(event.key)) {
-        handleArrowKeys(event);
-        return;
-        }
+        // } else if (['ArrowUp', 'ArrowDown', 'ArrowLeft', 'ArrowRight'].includes(event.key)) {
+        //     handleArrowKeys(event);
+        //     return;
+    }
 
     if (numberKeys.includes(event.key) && (arrowIsPan == 2 || arrowIsTilt == 2 || arrowIsZoom == 2)) {
         handlePtzSpin(event);
@@ -3677,7 +3716,7 @@ function handleKeyDown(event) {
     const swapKeys = ['@', '#', '$', '%', '^']
     if ((savedSwapHotkeyCheckboxState == 'true') && (swapKeys.includes(event.key) || (event.ctrlKey && event.key >= '2' && event.key <= '6'))) {
         // Ctrl key is held and a number key (2-6) is pressed
-        handleHotkeyswap(event);        
+        handleHotkeyswap(event);
     }
 
     // Reset lastKeyPressed if it's not one of the arrow keys or number keys
@@ -3694,7 +3733,7 @@ function handleKeyDown(event) {
     // Check if the pressed key is a number (0-9) and no other keys are pressed
     if (event.key >= '0' && event.key <= '9' && keysPressed === '' && document.activeElement.tagName !== 'INPUT' && document.activeElement.tagName !== 'TEXTAREA' && !event.ctrlKey && !isSpinEnabled) {
         // Convert the key to a number
-        const index = parseInt(event.key, 10) - 1; // Convert '1' to 0, '2' to 1, etc.
+        const index = event.key === '0' ? 9 : parseInt(event.key, 10) - 1; // Convert '1' to 0, '2' to 1, etc.
         // Get the list of camera buttons
         const cameraButtons = document.querySelectorAll('.camera-button');
         // Check if the index is within the range of available buttons
@@ -3968,8 +4007,8 @@ const zoomValues = ['10', '20', '30', '40', '50', '60', '70', '80', '90', '100',
 let currentZoomIndex = 0;
 
 function updateZoomLabel() {
-        document.getElementById('sliderZoomLabel').textContent = zoomValues[currentZoomIndex] + '%';
-    }
+    document.getElementById('sliderZoomLabel').textContent = zoomValues[currentZoomIndex] + '%';
+}
 
 function incrementZoom() {
     if (currentZoomIndex < zoomValues.length - 1) {
@@ -4280,7 +4319,7 @@ function handleMusicUnmute(currentVolume) {
 
 
 
-window.addEventListener('load', function() {
+window.addEventListener('load', function () {
     localStorage.setItem('isSpinEnabled', 'false');
     localStorage.setItem('isCFocusEnabled', 'false');
 });
@@ -4346,12 +4385,12 @@ function sendAreazoomCommand(scaledX, scaledY, zoom, cameraName) {
         sendCommand(ptzareazoomCommand);
         console.log("Command sent:", ptzareazoomCommand);
 
-      //  const commandDisplay = document.getElementById('commandDisplay');
-       // commandDisplay.textContent = `Click sent for: ${effectiveCameraName}`;
+        //  const commandDisplay = document.getElementById('commandDisplay');
+        // commandDisplay.textContent = `Click sent for: ${effectiveCameraName}`;
 
-       // setTimeout(() => {
-       //     commandDisplay.textContent = '';
-       // }, 3000);
+        // setTimeout(() => {
+        //     commandDisplay.textContent = '';
+        // }, 3000);
 
         document.getElementById('zoomInput').value = '';
         document.getElementById('zoomInput').blur();
@@ -4397,13 +4436,13 @@ function ssendAreazoomCommand(scaledX, scaledY, zoom) {
         console.log("Command sent:", ptzareazoomCommand);
 
         // Display message in header bar
-     //   const commandDisplay = document.getElementById('commandDisplay');
-      //  commandDisplay.textContent = `Click sent for: ${selectedCameraName}`;
+        //   const commandDisplay = document.getElementById('commandDisplay');
+        //  commandDisplay.textContent = `Click sent for: ${selectedCameraName}`;
 
         // Clear the message after 3 seconds
-     //   setTimeout(() => {
-     //       commandDisplay.textContent = '';
-     //   }, 3000); // Clears message after 3 seconds
+        //   setTimeout(() => {
+        //       commandDisplay.textContent = '';
+        //   }, 3000); // Clears message after 3 seconds
 
         // Clear zoom input boxes
         document.getElementById('zoomInput').value = '';
@@ -4438,13 +4477,13 @@ function sendcenterCommand(scaledX, scaledY) {
         console.log("Command sent:", ptzcenterCommand);
 
         // Display message in header bar
-    //    const commandDisplay = document.getElementById('commandDisplay');
-     //   commandDisplay.textContent = `Click sent for: ${selectedCameraName}`;
+        //    const commandDisplay = document.getElementById('commandDisplay');
+        //   commandDisplay.textContent = `Click sent for: ${selectedCameraName}`;
 
         // Clear the message after 3 seconds
-      //  setTimeout(() => {
-     //       commandDisplay.textContent = '';
-    //    }, 3000); // Clears message after 3 seconds
+        //  setTimeout(() => {
+        //       commandDisplay.textContent = '';
+        //    }, 3000); // Clears message after 3 seconds
 
         // Clear zoom input boxes
         document.getElementById('zoomInput').value = '';
@@ -4468,8 +4507,8 @@ function sendclickCommand(scaledX, scaledY, zoom) {
     const inputValue = zoomRInput
         ? zoomRInput.value.trim()
         : zoomInput
-        ? zoomInput.value.trim()
-        : '';
+            ? zoomInput.value.trim()
+            : '';
     const zoomLevel = zoom !== undefined ? zoom : (inputValue === '' ? 100 : parseInt(inputValue, 10));
 
     let intX = parseInt(scaledX, 10);
@@ -4485,7 +4524,7 @@ function sendclickCommand(scaledX, scaledY, zoom) {
     // Only proceed if all required values are defined
     if (scaledX !== undefined && scaledY !== undefined && scaledX > 0 && scaledY > 0) {
         // Send the command immediately
-        sendCommand(ptzclickCommand);
+        // sendCommand(ptzclickCommand);
         console.log("Command sent:", ptzclickCommand);
 
         // Display message in header bar
@@ -4493,7 +4532,7 @@ function sendclickCommand(scaledX, scaledY, zoom) {
         //commandDisplay.textContent = `Click sent x: ${intX} y: ${intY} z: ${zoomLevel}`;
 
         // Clear the message after 3 seconds
-       // setTimeout(() => {
+        // setTimeout(() => {
         //    commandDisplay.textContent = '';
         //}, 3000); // Clears message after 3 seconds
 
@@ -4719,4 +4758,3 @@ presetSearchInput.addEventListener('blur', function (event) {
         presetPad.style.display = 'flex';
     }
 });
-

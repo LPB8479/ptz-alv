@@ -1281,17 +1281,17 @@ body {
     background-color: #1565c0; /* Highlight color on hover */
 } 
 
-.swap-preset-buttons {
+.swap-preset-buttons, .zoom-buttons {
     display: grid;
     grid-template-columns: repeat(3, auto);
     grid-gap: 1px; /* Adjust space between buttons as needed */
 }
 
-.swap-preset-button:nth-child(4) {
+.swap-preset-button:nth-child(4), .zoom-button:nth-child(4) {
     grid-column: 1 / 2; /* Start at the first column on a new row */
 }
 
-.swap-preset-button { 
+.swap-preset-button, .zoom-button { 
     width: 53px;
     height: 30px;
     background-color: #3C3C3C;
@@ -1306,7 +1306,7 @@ body {
     box-shadow: rgba(0, 0, 0, 0.17) 0px -23px 25px 0px inset, rgba(0, 0, 0, 0.15) 0px -36px 30px 0px inset, rgba(0, 0, 0, 0.1) 0px -79px 40px 0px inset, rgba(0, 0, 0, 0.06) 0px 2px 1px, rgba(0, 0, 0, 0.09) 0px 4px 2px, rgba(0, 0, 0, 0.09) 0px 8px 4px, rgba(0, 0, 0, 0.09) 0px 16px 8px, rgba(0, 0, 0, 0.09) 0px 32px 16px;
     letter-spacing: 0.5px;
 }   
-.swap-preset-button:hover {
+.swap-preset-button:hover, .zoom-button:hover, #nfcToggle.active {
     background-color: #1565c0; /* Highlight color on hover */
 } 
 
@@ -1316,6 +1316,13 @@ body {
     align-items: flex-start; /* Align items to the start */
     margin-top: 7px;
     margin-left: 20px;
+}
+
+.zoom-button-container {
+    margin: 12px 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
 }
 
 .swap-input {
