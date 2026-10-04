@@ -1380,7 +1380,9 @@ body {
 
 
 .other-wrapper, .ir-wrapper {
-    display: flex;
+    display: grid;
+    grid-template-columns: repeat(3, 50px);
+    grid-gap: 10px;
 }   
     
 .other-container {
@@ -1439,7 +1441,7 @@ body {
     background-color: #1e88e5; /* Highlight color on hover */
 }
 
-.cfocus-button {
+.icon-button {
     width: 50px;
     height: 50px;
     background-color: #3C3C3C;
@@ -1449,14 +1451,20 @@ body {
     cursor: pointer;
     font-size: 20px;
     margin-right: 10px; /* Adjust spacing between input boxes */
-    background-image: url('/img/cfocus.webp');
     background-size: 100% 100%; /* Stretch the image to fill the button */
     background-repeat: no-repeat; /* Ensure the background image does not repeat */
     box-shadow: rgba(0, 0, 0, 0.17) 0px -23px 25px 0px inset, rgba(0, 0, 0, 0.15) 0px -36px 30px 0px inset, rgba(0, 0, 0, 0.1) 0px -79px 40px 0px inset, rgba(0, 0, 0, 0.06) 0px 2px 1px, rgba(0, 0, 0, 0.09) 0px 4px 2px, rgba(0, 0, 0, 0.09) 0px 8px 4px, rgba(0, 0, 0, 0.09) 0px 16px 8px, rgba(0, 0, 0, 0.09) 0px 32px 16px;
 }
 
-.cfocus-button:hover {
+.icon-button:hover,
+.ir-auto-button:hover, 
+.ir-on-button:hover, 
+.ir-off-button:hover {
     background-color: #1e88e5; /* Highlight color on hover */
+}
+
+.icon-button {
+    background-image: url('/img/cfocus.webp');
 }
 
 .cfocus-button.highlighted {
@@ -1465,20 +1473,7 @@ body {
 }
 
 .autofocus-button {
-    width: 50px; /* 76px */
-    height: 50px;
-    background-color: #3C3C3C;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 20px;
-    margin-right: 10px; /* Adjust spacing between input boxes */
     background-image: url('/img/focus_auto.svg');
-    background-size: 100% 100%; /* Stretch the image to fill the button */
-    background-repeat: no-repeat; /* Ensure the background image does not repeat */
-    box-shadow: rgba(0, 0, 0, 0.17) 0px -23px 25px 0px inset, rgba(0, 0, 0, 0.15) 0px -36px 30px 0px inset, rgba(0, 0, 0, 0.1) 0px -79px 40px 0px inset, rgba(0, 0, 0, 0.06) 0px 2px 1px, rgba(0, 0, 0, 0.09) 0px 4px 2px, rgba(0, 0, 0, 0.09) 0px 8px 4px, rgba(0, 0, 0, 0.09) 0px 16px 8px, rgba(0, 0, 0, 0.09) 0px 32px 16px;
-
 }
 
 .vid-button {
@@ -1497,72 +1492,17 @@ body {
 
 }
 
-.autofocus-button:hover {
-    background-color: #1565c0; /* Highlight color on hover */
-}
-
 .volume-button {
-    width: 50px;
-    height: 50px;
-    background-color: #3C3C3C;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 20px;
     background-image: url('/img/volume.svg');
-    background-size: 100% 100%; /* Stretch the image to fill the button */
-    background-repeat: no-repeat; /* Ensure the background image does not repeat */
-    box-shadow: rgba(0, 0, 0, 0.17) 0px -23px 25px 0px inset, rgba(0, 0, 0, 0.15) 0px -36px 30px 0px inset, rgba(0, 0, 0, 0.1) 0px -79px 40px 0px inset, rgba(0, 0, 0, 0.06) 0px 2px 1px, rgba(0, 0, 0, 0.09) 0px 4px 2px, rgba(0, 0, 0, 0.09) 0px 8px 4px, rgba(0, 0, 0, 0.09) 0px 16px 8px, rgba(0, 0, 0, 0.09) 0px 32px 16px;
-}
-
-.volume-button:hover {
-    background-color: #1565c0; /* Highlight color on hover */
 }
 
 .mpv-button {
     margin-left: 10px; /* Adjust the margin to increase or decrease the space between buttons */
-    width: 50px;
-    height: 50px;
-    background-color: #3C3C3C;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 20px;
     background-image: url('/img/click_icon.png');
-    background-size: 100% 100%; /* Stretch the image to fill the button */
-    background-repeat: no-repeat; /* Ensure the background image does not repeat */
-    box-shadow: rgba(0, 0, 0, 0.17) 0px -23px 25px 0px inset, rgba(0, 0, 0, 0.15) 0px -36px 30px 0px inset, rgba(0, 0, 0, 0.1) 0px -79px 40px 0px inset, rgba(0, 0, 0, 0.06) 0px 2px 1px, rgba(0, 0, 0, 0.09) 0px 4px 2px, rgba(0, 0, 0, 0.09) 0px 8px 4px, rgba(0, 0, 0, 0.09) 0px 16px 8px, rgba(0, 0, 0, 0.09) 0px 32px 16px;
-}
-
-.mpv-button:hover {
-    background-color: #1565c0; /* Highlight color on hover */
-}
-.mpv-button.highlighted {
-    /* Add your highlighted styles here */
-    background-color: #40c015; /* Highlight color on hover */
 }
 
 .reset-button {
-    margin-left: 10px; /* Adjust the margin to increase or decrease the space between buttons */
-    width: 50px;
-    height: 50px;
-    background-color: #3C3C3C;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 18px;
     background-image: url('/img/reset.png');
-    background-size: 75% 75%; /* Stretch the image to fill the button */
-    background-repeat: no-repeat; /* Ensure the background image does not repeat */
-    background-position: center;
-    box-shadow: rgba(0, 0, 0, 0.17) 0px -23px 25px 0px inset, rgba(0, 0, 0, 0.15) 0px -36px 30px 0px inset, rgba(0, 0, 0, 0.1) 0px -79px 40px 0px inset, rgba(0, 0, 0, 0.06) 0px 2px 1px, rgba(0, 0, 0, 0.09) 0px 4px 2px, rgba(0, 0, 0, 0.09) 0px 8px 4px, rgba(0, 0, 0, 0.09) 0px 16px 8px, rgba(0, 0, 0, 0.09) 0px 32px 16px;
-}
-
-.reset-button:hover {
-    background-color: #1565c0; /* Highlight color on hover */
 }
 
 .ir-auto-button, 
@@ -1593,6 +1533,18 @@ body {
 .ir-on-button:hover, 
 .ir-off-button:hover  {
     background-color: #1565c0; /* Highlight color on hover */
+}
+
+.info-button {
+    background-image: url('/img/getinfo.svg');
+}
+
+.resetstream-button {
+    background-image: url('/img/resetlivecams.png');
+}
+
+.scenecams-button {
+    background-image: url('/img/scenecams.svg');
 }
 
 .mode-labels {

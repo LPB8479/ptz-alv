@@ -2762,6 +2762,23 @@ function sendReset() {
     sendCommand(command);
 }
 
+function sendInfo() {
+    const command = `!ptzgetinfo ${selectedCamera.toLowerCase()}`;
+    sendCommand(command);
+}
+
+function sendResetStream() {
+    const command = `!resetlivecams`;
+    if (confirm("This will reset the stream for all viewers, briefly disrupting the stream. Are you sure you want to proceed?")) {
+        sendCommand(command);
+    }
+}
+
+function sendScenecams() {
+    const command = `!scenecams`;
+    sendCommand(command);
+}
+
 function sendSwapCommand() {
     const swap1DropdownValue = document.getElementById('swap-dropdown1').value.trim();
     const swap2DropdownValue = document.getElementById('swap-dropdown2').value.trim();

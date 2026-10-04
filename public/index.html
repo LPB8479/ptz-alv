@@ -14,14 +14,14 @@
     <!-- Main container for direction-pad and preset-pad -->
     <div class="container">
         <div class="left-menu">
-      
+
             <div class="heading-container">
                 <div class="logo">
                     <img src="/img/logo.webp" alt="Logo">
                 </div>
-        
+
                 <h1 class="ptz-heading">
-                    
+
                     <a href="admin.html">
                         <img src="/img/settings.png" alt="Admin Settings" class="admin-icon">
                     </a>
@@ -32,8 +32,8 @@
                     <span id="vidIcon" class="vid-icon"></span>
                 </span>
             </div>
-      
-      
+
+
             <div class="direction-and-ptz-container">
                 <!-- Container for cameras list -->
                 <div class="direction-container">
@@ -103,7 +103,7 @@
                             <input type="text" id="swap2" class="swap-input" placeholder="Swap 2">
                         </div>
                         <button class="swap-button" onclick="sendSwapCommand()"
-                            onmousedown="animateButton(this)">Swap</button>
+                                onmousedown="animateButton(this)">Swap</button>
                     </div>
                 </div>
 
@@ -127,54 +127,54 @@
 
                             <div class="direction-pad">
                                 <button class="arrow-button" onclick="sendDirectionCommand('upleft')"
-                                    onmousedown="animateButton(this)">↖</button>
+                                        onmousedown="animateButton(this)">↖</button>
                                 <button class="arrow-button" onclick="sendDirectionCommand('up')"
-                                    onmousedown="animateButton(this)">▲</button>
+                                        onmousedown="animateButton(this)">▲</button>
                                 <button class="arrow-button" onclick="sendDirectionCommand('upright')"
-                                    onmousedown="animateButton(this)">↗</button>
+                                        onmousedown="animateButton(this)">↗</button>
                                 <button class="arrow-button" onclick="sendDirectionCommand('left')"
-                                    onmousedown="animateButton(this)">◀</button>
+                                        onmousedown="animateButton(this)">◀</button>
                                 <button class="arrow-button" onclick="sendDirectionCommand('')"
-                                    onmousedown="animateButton(this)"></button>
+                                        onmousedown="animateButton(this)"></button>
                                 <button class="arrow-button" onclick="sendDirectionCommand('right')"
-                                    onmousedown="animateButton(this)">▶</button>
+                                        onmousedown="animateButton(this)">▶</button>
                                 <button class="arrow-button" onclick="sendDirectionCommand('downleft')"
-                                    onmousedown="animateButton(this)">↙</button>
+                                        onmousedown="animateButton(this)">↙</button>
                                 <button class="arrow-button" onclick="sendDirectionCommand('down')"
-                                    onmousedown="animateButton(this)">▼</button>
+                                        onmousedown="animateButton(this)">▼</button>
                                 <button class="arrow-button" onclick="sendDirectionCommand('downright')"
-                                    onmousedown="animateButton(this)">↘</button>
+                                        onmousedown="animateButton(this)">↘</button>
                             </div>
 
                             <div class="pantilt-pad hidden">
                                 <button class="arrow-button"></button>
                                 <button class="ptz-arrow-button" onclick="sendptzpadCommand('up')"
-                                    onmousedown="animateButton(this)">▲</button>
+                                        onmousedown="animateButton(this)">▲</button>
                                 <button class="arrow-button"></button>
                                 <button class="ptz-arrow-button" onclick="sendptzpadCommand('left')"
-                                    onmousedown="animateButton(this)">◀</button>
+                                        onmousedown="animateButton(this)">◀</button>
                                 <button class="ptz-arrow-button" id="sliderValueLabel"
-                                    onclick="toggleValues()">1</button>
+                                        onclick="toggleValues()">1</button>
                                 <button class="ptz-arrow-button" onclick="sendptzpadCommand('right')"
-                                    onmousedown="animateButton(this)">▶</button>
+                                        onmousedown="animateButton(this)">▶</button>
                                 <button class="arrow-button"></button>
                                 <button class="ptz-arrow-button" onclick="sendptzpadCommand('down')"
-                                    onmousedown="animateButton(this)">▼</button>
+                                        onmousedown="animateButton(this)">▼</button>
                                 <button class="arrow-button"></button>
                             </div>
                             <div class="zoom-pad hidden">
                                 <button class="arrow-button"></button>
                                 <button class="ptz-arrow-button" onclick="sendpadZoom('plus')"
-                                    onmousedown="animateButton(this)">+</button>
+                                        onmousedown="animateButton(this)">+</button>
                                 <button class="arrow-button"></button>
                                 <button class="ptz-arrow-button" onclick="decrementZoom()"
-                                    onmousedown="animateButton(this)">◀</button>
+                                        onmousedown="animateButton(this)">◀</button>
                                 <button class="ptz-arrow-button" id="sliderZoomLabel" style="font-size: 17px;">10%</button>
                                 <button class="ptz-arrow-button" onclick="incrementZoom()"
-                                    onmousedown="animateButton(this)">▶</button>
+                                        onmousedown="animateButton(this)">▶</button>
                                 <button class="arrow-button"></button>
                                 <button class="ptz-arrow-button" onclick="sendpadZoom('minus')"
-                                    onmousedown="animateButton(this)">-</button>
+                                        onmousedown="animateButton(this)">-</button>
                                 <button class="arrow-button"></button>
                             </div>
                         </div>
@@ -244,7 +244,7 @@
                             <input type="text" id="zoomPTZInput" class="ptz-input" placeholder="Zoom">
                         </div>
                         <button class="send-button" onclick="sendPanTiltZoom()"
-                            onmousedown="animateButton(this)">Send</button>
+                                onmousedown="animateButton(this)">Send</button>
                     </div>
                 </div>
 
@@ -254,12 +254,12 @@
                         onclick="toggleDirectionPad('.focus-container')">- Focus -</h2>
                     <div class="focus-container">
                         <div class="focus-wrapper">
-                            <button class="cfocus-button" onclick="enableCFocus(this)" style="display: none;"></button>
-                            <button class="autofocus-button" onclick="sendAutoFocusCommand('on')"></button>
+                            <button class="cfocus-button icon-button" onclick="enableCFocus(this)" style="display: none;"></button>
+                            <button class="autofocus-button icon-button" onclick="sendAutoFocusCommand('on')"></button>
                             <input type="text" id="focus" class="focus-input" placeholder="Focus">
                         </div>
                         <button class="focus-button" onclick="sendFocusCommand()"
-                            onmousedown="animateButton(this)">Focus</button>
+                                onmousedown="animateButton(this)">Focus</button>
                     </div>
 
                 </div>
@@ -283,9 +283,12 @@
                         onclick="toggleDirectionPad('.other-container')">- Other -</h2>
                     <div class="other-container">
                         <div class="other-wrapper">
-                            <button class="volume-button" onclick="sendVolumeControl()"></button>
-                            <button class="reset-button" onclick="sendReset()"></button>
-                            <button class="mpv-button" onclick="enableSpin(this)" style="display: none;"></button>
+                            <button class="scenecams-button icon-button" onclick="sendScenecams()" title="!scenecams" ></button>
+                            <button class="info-button icon-button" onclick="sendInfo()" title="!ptzgetinfo"></button>
+                            <button class="reset-button icon-button" onclick="sendReset()" title="!resetcam"></button>
+                            <button class="resetstream-button icon-button" onclick="sendResetStream()" title="!resetlivecams"></button>
+                            <button class="volume-button icon-button" onclick="sendVolumeControl()"></button>
+                            <button class="mpv-button icon-button" onclick="enableSpin(this)" style="display: none;"></button>
                         </div>
                     </div>
                 </div>
@@ -295,33 +298,33 @@
 
         <div class="right-side">
 
-        <!-- Preset Container -->
-        <div class="preset-container grid-layout">
-            <div class="preset-container-card">
+            <!-- Preset Container -->
+            <div class="preset-container grid-layout">
+                <div class="preset-container-card">
 
-                <div class="preset-header">
-                    <div class="vidbuttondiv" style="display: none;">
-                        <button class="vidbuttons" onclick="toggleVideo('video')">Video</button>
-                        <button class="vidbuttons" id="openDialogButton">Presets</button>
+                    <div class="preset-header">
+                        <div class="vidbuttondiv" style="display: none;">
+                            <button class="vidbuttons" onclick="toggleVideo('video')">Video</button>
+                            <button class="vidbuttons" id="openDialogButton">Presets</button>
+                        </div>
+                        <h2 class="label-preset-heading" style="cursor: pointer;"
+                            onclick="toggleDirectionPad('.preset-pad')">- Presets -</h2>
+                        <input type="text" id="presetSearch" placeholder="Search..">
                     </div>
-                    <h2 class="label-preset-heading" style="cursor: pointer;"
-                        onclick="toggleDirectionPad('.preset-pad')">- Presets -</h2>
-                    <input type="text" id="presetSearch" placeholder="Search..">
-                </div>
 
-                <div class="preset-pad" id="presetPad">
-                    <!-- These will be dynamically populated based on the selected camera -->
-                </div>
-
-
-                <div class="custom-preset-container">
-                    <h2 class="custom-label-preset">- Custom Presets -</h2>
-                    <div class="custom-preset-pad" id="customPresetPad" style="display: none;">
+                    <div class="preset-pad" id="presetPad">
                         <!-- These will be dynamically populated based on the selected camera -->
+                    </div>
+
+
+                    <div class="custom-preset-container">
+                        <h2 class="custom-label-preset">- Custom Presets -</h2>
+                        <div class="custom-preset-pad" id="customPresetPad" style="display: none;">
+                            <!-- These will be dynamically populated based on the selected camera -->
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
         </div>
     </div>
 
@@ -338,7 +341,7 @@
     <script src="script.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/fabric.js/4.5.0/fabric.min.js"></script>
-    
+
 </body>
 
 </html>
