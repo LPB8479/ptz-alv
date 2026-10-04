@@ -2836,8 +2836,6 @@ function setSwapNumber(number) {
 function setPresetSwap(selected) {
     if (selected === 'wolf') {
         sendCommand('!swap wolf wolfcorner');
-    } else if (selected === 'crow') {
-        sendCommand('!swap crowin crowout');
     } else if (selected === 'marm') {
         sendCommand('!swap marmin marmout');
     } else if (selected === 'wolfin') {
@@ -2850,6 +2848,8 @@ function setPresetSwap(selected) {
         sendCommand('!swap wolf wolfswitch');
     } else if (selected === 'wswin') {
         sendCommand('!swap wolfindoor wolfswitch');
+    } else if (selected === 'crow') {
+        sendCommand('!swap crowin crowout');
     } else if (selected === 'foxc') {
         sendCommand('!swap fox foxcovered');
     } else if (selected === 'foxin') {
@@ -2876,11 +2876,11 @@ function setPresetSwap(selected) {
         sendCommand('!swap chinmulti chin2')
     } else if (selected == 'chin3') {
         sendCommand('!swap chinmulti chin3')
-    } else if (selected == '1-2') {
+    } else if (selected == 'c1-2') {
         sendCommand('!swap chin chin2')
-    } else if (selected == '2-3') {
+    } else if (selected == 'c2-3') {
         sendCommand('!swap chin2 chin3')
-    } else if (selected == '1-3') {
+    } else if (selected == 'c1-3') {
         sendCommand('!swap chin chin3')
     } else if (selected == 'tar') {
         sendCommand('!swap tarantula tarantulaptz');
