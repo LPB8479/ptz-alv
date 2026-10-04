@@ -15,7 +15,6 @@ body {
     color: #ffffff; /* White text color */
     margin: 0;
     padding: 0;
-    
 }
  
 .logo {
@@ -41,12 +40,11 @@ body {
     margin-right: 5px; /* Adjust the gap between icons */
 }
 
-.layout-icons:hover  {
+.layout-icons:hover {
     cursor: pointer;
 }
 
-.active-icon {
-}
+/* .active-icon {} */
 
 .heading-container {
     position: relative; /* Ensure relative positioning for absolute child */
@@ -57,7 +55,7 @@ body {
     margin-left: 10px;
     padding-bottom: 20px;
     border-radius: 10px;
-    box-shadow: 0 0 10px 0 rgba(0,0,0,0.45) inset;
+    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.45) inset;
     zoom: 90%;
     width: 90%;
     padding-top: 10px;
@@ -131,6 +129,7 @@ body {
     cursor: copy; /* Indicate that the area is clickable */
     pointer-events: auto;
 }
+
 #canvasOverlay {
     position: absolute; /* Positioned on top of the video stream */
     top: 0;
@@ -141,6 +140,7 @@ body {
     cursor: copy; /* Indicate that the area is clickable */
     pointer-events: auto;
 }
+
 .video-container {
     position: fixed;
     width: 1180px; /* Full width of the viewport */
@@ -172,24 +172,22 @@ body {
 
 
 @media (max-width: 600px) {
+    .preset-container {
+        min-width: 275px;
+        margin-top: -50px;
+        overflow: hidden; /* Ensure no overflow behavior on the parent container */
+        zoom: 80%;
+    }
+}
 
-.preset-container {
-    min-width: 275px;
-    margin-top: -50px;
-    overflow: hidden; /* Ensure no overflow behavior on the parent container */
-    zoom: 80%;
-}
-}
 @media (min-width: 600px) {
-
     .preset-container {
         min-width: 314px;
         margin-top: -50px;
         overflow: hidden; /* Ensure no overflow behavior on the parent container */
         zoom: 80%;
-
     }
-    }
+}
 
 .preset-container.collapsed {
     display: none;
@@ -197,13 +195,13 @@ body {
 
 
 .custom-preset-container {
-   margin-top: 40px;
+    margin-top: 40px;
 }
 
 .chat-container {
     margin-top: 40px;
- }
- 
+}
+
 .direction-container {
     background-color: #1c1c1c;
     margin-top: 10px;
@@ -211,7 +209,7 @@ body {
     margin-left: 10px;
     padding-bottom: 20px;
     border-radius: 10px;
-    box-shadow: 0 0 10px 0 rgba(0,0,0,0.45) inset;
+    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.45) inset;
 }
 
 .preset-container-card {
@@ -222,17 +220,13 @@ body {
     border-radius: 10px;
     padding-left: 30px;
     padding-right: 20px;
-    box-shadow: 0 0 10px 0 rgba(0,0,0,0.45) inset;
+    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.45) inset;
     overflow: hidden; /* Ensure no overflow behavior on the parent container */
-
 }
 
+/* .others-container {} */
 
-.others-container {
-}
-
-.direction-pantilt-container {
-}
+/* .direction-pantilt-container {} */
 
 .direction-heading {
     margin-top: 10px;
@@ -257,6 +251,7 @@ body {
     text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8), -1px -1px 2px rgba(255, 255, 255, 0.1);
     letter-spacing: 0.5px;
 }
+
 .direction-move-heading {
     margin-top: 10px;
     font-size: 14px;
@@ -311,57 +306,23 @@ body {
     float: right;
 }
 
-.zoomr-menu.collapsed {
-    display: none;
-}
-
-.zoom-menu.collapsed {
-    display: none;
-}
-
-.zoom-menu-inner.collapsed {
-    display: none;
-}
-
-.zoom-menu-outer.collapsed {
-    display: none;
-}
-
-.zoom-dropdown.collapsed {
-    display: none;
-}
-
-.direction-pad.collapsed {
-    display: none;
-}
-
-.pantilt-pad.collapsed {
-    display: none;
-}
-.ptz-container.collapsed {
-    display: none;
-}
-.zoom-container.collapsed {
-    display: none;
-}
-.swap-container.collapsed {
-    display: none;
-}
-
-.focus-container.collapsed {
-    display: none;
-}
-
-.ir-container.collapsed {
-    display: none;
-}
-.other-container.collapsed {
-    display: none;
-}
-
+.zoomr-menu.collapsed,
+.zoom-menu.collapsed,
+.zoom-menu-inner.collapsed,
+.zoom-menu-outer.collapsed,
+.zoom-dropdown.collapsed,
+.direction-pad.collapsed,
+.pantilt-pad.collapsed,
+.ptz-container.collapsed,
+.zoom-container.collapsed,
+.swap-container.collapsed,
+.focus-container.collapsed,
+.ir-container.collapsed,
+.other-container.collapsed,
 .direction-pad-outer.collapsed {
     display: none;
 }
+
 .camera-container {
     margin-left: 10px !important;
     display: flex;
@@ -371,12 +332,12 @@ body {
     padding: 0px;
     border-radius: 0; /* Make corners square */
     margin-right: 30px;
-    border: none; /* Remove border */ 
+    border: none; /* Remove border */
     width: 185px; /* Set width of the container */
     height: 382px; /* Set the height to 290px */
     margin-left: 20px;
     overflow-y: auto; /* Make the container scrollable vertically */
-    
+
 }
 
 .camera-button {
@@ -398,6 +359,7 @@ body {
 .camera-button:hover {
     background-color: #606060; /* Darker background color on hover */
 }
+
 .camera-button.selected {
     background-color: #6082B6; /* Example background color for selected button */
     color: white; /* Example text color for selected button */
@@ -410,31 +372,32 @@ body {
 }
 
 
-.container > .direction-pad {
+.container>.direction-pad {
     margin-right: 20px;
 }
 
 .chat-box {
-  display: grid;
-  grid-template-columns: repeat(1, 300px);
-  grid-gap: 0;
-  background-color: #222222;
-  padding: 0;
-  border-radius: 0;
-  border: none;
-  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
-  margin-left: -70px;
-  margin-top: 10px; 
-  width: 250px;
-  height: 100px;
-  overflow-y: auto;
+    display: grid;
+    grid-template-columns: repeat(1, 300px);
+    grid-gap: 0;
+    background-color: #222222;
+    padding: 0;
+    border-radius: 0;
+    border: none;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+    margin-left: -70px;
+    margin-top: 10px;
+    width: 250px;
+    height: 100px;
+    overflow-y: auto;
 }
 
 .chat-message {
-  list-style-type: none;
-  padding: 10px;
-  color: #ffffff;
+    list-style-type: none;
+    padding: 10px;
+    color: #ffffff;
 }
+
 .chat-box ul {
     list-style-type: none; /* Remove bullet points */
     padding: 0; /* Remove default padding */
@@ -446,7 +409,7 @@ body {
 
 
 .chat-message:nth-child(even) {
-  background-color: #333333;
+    background-color: #333333;
 }
 
 .custom-preset-container.collapsed {
@@ -494,525 +457,555 @@ body {
 
 /* Styles for screens less than 600px */
 @media (max-width: 600px) {
-.list-layout {
- 
-    .preset-pad, .custom-preset-pad {
-        display: grid;
-        grid-template-columns: repeat(1, 230px);
-        grid-gap: 0;
-        padding: 0;
-        border-radius: 0;
-        border: none;
-        margin-left: -5px;
-        margin-top: 30px;
-        width: 230px;
-        max-height: 699px; /* Adjust the value as needed */
-        min-height: 150px; /* Adjust the value as needed */
-        overflow-y: auto;
-        grid-auto-rows: 50px;
+    .list-layout {
+
+        .preset-pad,
+        .custom-preset-pad {
+            display: grid;
+            grid-template-columns: repeat(1, 230px);
+            grid-gap: 0;
+            padding: 0;
+            border-radius: 0;
+            border: none;
+            margin-left: -5px;
+            margin-top: 30px;
+            width: 230px;
+            max-height: 699px; /* Adjust the value as needed */
+            min-height: 150px; /* Adjust the value as needed */
+            overflow-y: auto;
+            grid-auto-rows: 50px;
+        }
+
+        .preset-button,
+        .custom-preset-button {
+            font-family: "Roboto Mono", monospace;
+            font-size: 16px;
+            margin: 0;
+            padding-left: 15px; /* Adjust the value as needed */
+            color: white;
+            background-color: #222222;
+            border: none;
+            cursor: pointer;
+            text-align: left;
+            box-sizing: border-box;
+            width: 100%;
+            height: 45px;
+
+        }
+
+        .preset-image,
+        .custom-preset-image,
+        .layout-icons {
+            display: none; /* Hide the image by default */
+        }
+
+
+        /* Hover effect for buttons on small screens */
+        .preset-button:hover,
+        .custom-preset-button:hover {
+            background-color: #606060;
+        }
+
+        .label-preset {
+            color: #b2b2b2;
+            font-size: 15px; /* Adjust font size */
+            display: block; /* Set the label as a block-level element */
+            position: absolute;
+            font-weight: normal; /* Set font weight to normal */
+            margin-top: 10px;
+            margin-left: 0px; /* Adjust the margin-left value */
+            font-weight: lighter; /* Set font weight to normal */
+        }
+
+        .custom-label-preset {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            color: #b2b2b2;
+            font-size: 15px; /* Adjust font size */
+            display: block; /* Set the label as a block-level element */
+            position: absolute;
+            margin-top: -25px;
+            margin-left: 0px; /* Adjust the margin-left value */
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8), -1px -1px 2px rgba(255, 255, 255, 0.1);
+            letter-spacing: 0.5px;
+        }
+
+        .preset-pad.collapsed {
+            display: none;
+        }
+
+        .label-preset-heading {
+            width: 100px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            color: #b2b2b2;
+            font-size: 15px; /* Adjust font size */
+            display: block; /* Set the label as a block-level element */
+            position: relative;
+            margin-bottom: -10px;
+            margin-top: 18px;
+            margin-left: 0px; /* Adjust the margin-left value */
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8), -1px -1px 2px rgba(255, 255, 255, 0.1);
+            letter-spacing: 0.5px;
+        }
+
+        #presetSearch {
+            height: 5px;
+            width: 100px;
+            padding: 5px;
+            font-size: 16px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            margin-top: 15px;
+            margin-bottom: -10px;
+        }
     }
 
-    .preset-button, .custom-preset-button {
-        font-family: "Roboto Mono", monospace;
-        font-size: 16px;
-        margin: 0;
-        padding-left: 15px; /* Adjust the value as needed */
-        color: white;
-        background-color: #222222;
-        border: none;
-        cursor: pointer;
-        text-align: left;
-        box-sizing: border-box;
-        width: 100%;
-        height: 45px;
-        
+    .grid-layout {
+
+        .preset-pad,
+        .custom-preset-pad {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            border: none;
+            margin-top: 20px;
+            margin-left: 0px;
+            max-width: 400px; /* Adjust the value as needed */
+            max-height: 850px; /* Adjust the value as needed */
+            min-height: 200px; /* Adjust the value as needed */
+            overflow-y: auto;
+        }
+
+        .preset-button-container,
+        .custom-preset-button-container {
+            display: inline-block;
+            text-align: center;
+            margin-bottom: 20px; /* Adjust as needed */
+            margin-right: 25px; /* Add margin between containers */
+        }
+
+        .preset-button,
+        .custom-preset-button {
+            height: 30px; /* Adjust height of the button */
+            background-color: #1F1B24; /* Button background color */
+            color: white; /* Button text color */
+            border: none; /* Remove border */
+            cursor: pointer; /* Add cursor pointer */
+            font-size: 18px; /* Adjust font size */
+            width: 220px; /* Adjust width as needed */
+            display: block; /* Ensure proper alignment */
+            margin: 0 auto 0px; /* Center image and button and add space below */
+            box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.3); /* Add 3D shadow effect */
+            cursor: pointer; /* Add cursor pointer */
+            border-top-left-radius: 0px; /* Adjust the radius for the top-left corner */
+            border-top-right-radius: 0px; /* Adjust the radius for the top-right corner */
+            border-bottom-left-radius: 5px; /* Keep the bottom-left corner square */
+            border-bottom-right-radius: 5px; /* Keep the bottom-right corner square */
+        }
+
+
+        .preset-image,
+        .custom-preset-image {
+            width: 220px; /* Adjust width as needed */
+            height: 124px; /* Maintain aspect ratio */
+            display: block; /* Ensure proper alignment */
+            margin: 0 auto 0px; /* Center image and button and add space below */
+            box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.3); /* Add 3D shadow effect */
+            cursor: pointer; /* Add cursor pointer */
+            border-top-left-radius: 5px; /* Adjust the radius for the top-left corner */
+            border-top-right-radius: 5px; /* Adjust the radius for the top-right corner */
+            border-bottom-left-radius: 0; /* Keep the bottom-left corner square */
+            border-bottom-right-radius: 0; /* Keep the bottom-right corner square */
+
+        }
+
+        .preset-button,
+        .custom-preset-button {
+            height: 30px; /* Adjust height of the button */
+            background-color: #1F1B24; /* Button background color */
+            color: white; /* Button text color */
+            border: none; /* Remove border */
+            cursor: pointer; /* Add cursor pointer */
+            font-size: 18px; /* Adjust font size */
+        }
+
+        .label-preset {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            color: #b2b2b2;
+            font-size: 15px; /* Adjust font size */
+            display: block; /* Set the label as a block-level element */
+            position: relative;
+            margin-bottom: -10px;
+            margin-top: 10px;
+            margin-left: 0px; /* Adjust the margin-left value */
+            font-weight: lighter; /* Set font weight to normal */
+        }
+
+
+        .custom-label-preset {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            color: #b2b2b2;
+            font-size: 15px; /* Adjust font size */
+            display: block; /* Set the label as a block-level element */
+            position: relative;
+            margin-bottom: -10px;
+            margin-top: 35px;
+            margin-left: 0px; /* Adjust the margin-left value */
+            font-weight: lighter; /* Set font weight to normal */
+        }
+
+        /* Hover effect for buttons on larger screens */
+        .preset-button:hover,
+        .preset-image:hover+.preset-button {
+            background-color: #1e88e5;
+            color: #ffffff;
+        }
+
+        /* Hover effect for buttons on larger screens */
+        .custom-preset-button:hover,
+        .custom-preset-image:hover+.custom-preset-button {
+            background-color: #1e88e5;
+            color: #ffffff;
+        }
+
+        .preset-pad.collapsed {
+            display: none;
+        }
+
+        .label-preset-heading {
+            width: 100px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            color: #b2b2b2;
+            font-size: 17px; /* Adjust font size */
+            display: block; /* Set the label as a block-level element */
+            position: relative;
+            margin-bottom: -10px;
+            margin-top: 18px;
+            margin-left: 0px; /* Adjust the margin-left value */
+            font-weight: lighter; /* Set font weight to normal */
+        }
+
+        #presetSearch {
+            margin-right: 45px;
+            height: 5px;
+            width: 100px;
+            padding: 5px;
+            font-size: 16px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            margin-top: 15px;
+            margin-bottom: -10px;
+        }
     }
-      .preset-image, .custom-preset-image, .layout-icons {
-        display: none; /* Hide the image by default */
-    }
-
-
-    /* Hover effect for buttons on small screens */
-    .preset-button:hover, .custom-preset-button:hover {
-        background-color: #606060;
-    }
-    .label-preset {
-        color: #b2b2b2;
-        font-size: 15px; /* Adjust font size */
-        display: block; /* Set the label as a block-level element */
-        position: absolute;
-        font-weight: normal; /* Set font weight to normal */
-        margin-top: 10px;
-        margin-left: 0px; /* Adjust the margin-left value */
-        font-weight: lighter; /* Set font weight to normal */
-    }
-
-   .custom-label-preset {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        color: #b2b2b2;
-        font-size: 15px; /* Adjust font size */
-        display: block; /* Set the label as a block-level element */
-        position: absolute;
-        margin-top: -25px;
-        margin-left: 0px; /* Adjust the margin-left value */
-        text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8), -1px -1px 2px rgba(255, 255, 255, 0.1);
-        letter-spacing: 0.5px;
-    }
-
-    .preset-pad.collapsed {
-        display: none;
-    }
-    .label-preset-heading {
-        width: 100px;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        color: #b2b2b2;
-        font-size: 15px; /* Adjust font size */
-        display: block; /* Set the label as a block-level element */
-        position: relative;
-        margin-bottom: -10px;
-        margin-top: 18px;
-        margin-left: 0px; /* Adjust the margin-left value */
-        text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8), -1px -1px 2px rgba(255, 255, 255, 0.1);
-        letter-spacing: 0.5px;
-    } 
-    #presetSearch {
-        height: 5px;
-        width: 100px;
-        padding: 5px;
-        font-size: 16px;
-        border: 1px solid #ccc;
-        border-radius: 4px;
-        margin-top: 15px;
-        margin-bottom: -10px;
-    }
-  }
-
-.grid-layout {
-.preset-pad, .custom-preset-pad {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    border: none;
-    margin-top: 20px;
-    margin-left: 0px;
-    max-width: 400px; /* Adjust the value as needed */
-    max-height: 850px; /* Adjust the value as needed */
-    min-height: 200px; /* Adjust the value as needed */
-    overflow-y: auto;
-}
-
-.preset-button-container, .custom-preset-button-container {
-    display: inline-block;
-    text-align: center;
-    margin-bottom: 20px; /* Adjust as needed */
-    margin-right: 25px; /* Add margin between containers */
-}
-
-.preset-button, .custom-preset-button {
-    height: 30px; /* Adjust height of the button */
-    background-color: #1F1B24; /* Button background color */
-    color: white; /* Button text color */
-    border: none; /* Remove border */
-    cursor: pointer; /* Add cursor pointer */
-    font-size: 18px; /* Adjust font size */
-    width: 220px; /* Adjust width as needed */
-    display: block; /* Ensure proper alignment */
-    margin: 0 auto 0px; /* Center image and button and add space below */
-    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.3); /* Add 3D shadow effect */
-    cursor: pointer; /* Add cursor pointer */
-    border-top-left-radius: 0px; /* Adjust the radius for the top-left corner */
-    border-top-right-radius: 0px; /* Adjust the radius for the top-right corner */
-    border-bottom-left-radius: 5px; /* Keep the bottom-left corner square */
-    border-bottom-right-radius: 5px; /* Keep the bottom-right corner square */
-}
-
-
-.preset-image, .custom-preset-image {
-    width: 220px; /* Adjust width as needed */
-    height: 124px; /* Maintain aspect ratio */
-    display: block; /* Ensure proper alignment */
-    margin: 0 auto 0px; /* Center image and button and add space below */
-    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.3); /* Add 3D shadow effect */
-    cursor: pointer; /* Add cursor pointer */
-    border-top-left-radius: 5px; /* Adjust the radius for the top-left corner */
-    border-top-right-radius: 5px; /* Adjust the radius for the top-right corner */
-    border-bottom-left-radius: 0; /* Keep the bottom-left corner square */
-    border-bottom-right-radius: 0; /* Keep the bottom-right corner square */
-    
-}
-
-.preset-button, .custom-preset-button {
-    height: 30px; /* Adjust height of the button */
-    background-color: #1F1B24; /* Button background color */
-    color: white; /* Button text color */
-    border: none; /* Remove border */
-    cursor: pointer; /* Add cursor pointer */
-    font-size: 18px; /* Adjust font size */
-}
-
-.label-preset {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    color: #b2b2b2;
-    font-size: 15px; /* Adjust font size */
-    display: block; /* Set the label as a block-level element */
-    position: relative;
-    margin-bottom: -10px;
-    margin-top: 10px;
-    margin-left: 0px; /* Adjust the margin-left value */
-    font-weight: lighter; /* Set font weight to normal */
-} 
-
-
-.custom-label-preset {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    color: #b2b2b2;
-    font-size: 15px; /* Adjust font size */
-    display: block; /* Set the label as a block-level element */
-    position: relative;
-    margin-bottom: -10px;
-    margin-top: 35px;
-    margin-left: 0px; /* Adjust the margin-left value */
-    font-weight: lighter; /* Set font weight to normal */
-} 
-
-/* Hover effect for buttons on larger screens */
-.preset-button:hover,
-.preset-image:hover + .preset-button {
-    background-color: #1e88e5;
-    color: #ffffff;
-}
-/* Hover effect for buttons on larger screens */
-.custom-preset-button:hover,
-.custom-preset-image:hover + .custom-preset-button {
-    background-color: #1e88e5;
-    color: #ffffff;
-}
-
-.preset-pad.collapsed {
-    display: none;
-}
-.label-preset-heading {
-    width: 100px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    color: #b2b2b2;
-    font-size: 17px; /* Adjust font size */
-    display: block; /* Set the label as a block-level element */
-    position: relative;
-    margin-bottom: -10px;
-    margin-top: 18px;
-    margin-left: 0px; /* Adjust the margin-left value */
-    font-weight: lighter; /* Set font weight to normal */
-} 
-#presetSearch {
-    margin-right: 45px;
-    height: 5px;
-    width: 100px;
-    padding: 5px;
-    font-size: 16px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    margin-top: 15px;
-    margin-bottom: -10px;
-}
-}
 
 }
+
 /* Styles for screens greater than 600px */
 @media (min-width: 601px) {
 
-.list-layout {
-    .preset-pad, .custom-preset-pad {
-        display: grid;
-        grid-gap: 0;
-        border-radius: 0;
-        border: none;
-        margin-left: -5px;
-        margin-top: 30px;
-        max-width: 600px; /* Adjust the value as needed */
-        max-height: 699px; /* Adjust the value as needed */
-        min-height: 150px; /* Adjust the value as needed */
-        min-width: 250px; /* Adjust the value as needed */
-        overflow-y: auto;
-        grid-auto-rows: 50px;
+    .list-layout {
+
+        .preset-pad,
+        .custom-preset-pad {
+            display: grid;
+            grid-gap: 0;
+            border-radius: 0;
+            border: none;
+            margin-left: -5px;
+            margin-top: 30px;
+            max-width: 600px; /* Adjust the value as needed */
+            max-height: 699px; /* Adjust the value as needed */
+            min-height: 150px; /* Adjust the value as needed */
+            min-width: 250px; /* Adjust the value as needed */
+            overflow-y: auto;
+            grid-auto-rows: 50px;
+        }
+
+        .preset-button,
+        .custom-preset-button {
+            font-family: "Roboto Mono", monospace;
+            font-size: 14px;
+            margin: 0;
+            padding-left: 15px; /* Adjust the value as needed */
+            color: white;
+            background-color: #222222;
+            border: none;
+            cursor: pointer;
+            text-align: left;
+            box-sizing: border-box;
+            width: 98%;
+            height: 45px
+        }
+
+        .preset-image,
+        .custom-preset-image {
+            display: none; /* Hide the image by default */
+        }
+
+        /* Hover effect for buttons on small screens */
+        .preset-button:hover,
+        .custom-preset-button:hover {
+            background-color: #606060;
+        }
+
+        .label-preset {
+            color: #b2b2b2;
+            font-size: 15px; /* Adjust font size */
+            display: block; /* Set the label as a block-level element */
+            position: absolute;
+            font-weight: normal; /* Set font weight to normal */
+            margin-top: 10px;
+            margin-left: 0px; /* Adjust the margin-left value */
+            font-weight: lighter; /* Set font weight to normal */
+        }
+
+        .custom-label-preset {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            color: #b2b2b2;
+            font-size: 15px; /* Adjust font size */
+            display: block; /* Set the label as a block-level element */
+            position: absolute;
+            margin-top: -25px;
+            margin-left: 0px; /* Adjust the margin-left value */
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8), -1px -1px 2px rgba(255, 255, 255, 0.1);
+            letter-spacing: 0.5px;
+        }
+
+
+        .preset-pad.single-column,
+        .custom-preset-pad.single-column {
+            grid-template-columns: repeat(1, 1fr);
+            width: 200px;
+        }
+
+        .preset-pad:not(.single-column),
+        .custom-preset-pad:not(.single-column) {
+            grid-template-columns: repeat(2, 1fr);
+            width: 400px;
+        }
+
+        .preset-pad.collapsed {
+            display: none;
+        }
+
+        .custom-preset-pad.collapsed {
+            display: none;
+        }
+
+        .label-preset-heading {
+            width: 100px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            color: #b2b2b2;
+            font-size: 15px; /* Adjust font size */
+            display: block; /* Set the label as a block-level element */
+            position: relative;
+            margin-bottom: -10px;
+            margin-top: 18px;
+            margin-left: 0px; /* Adjust the margin-left value */
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8), -1px -1px 2px rgba(255, 255, 255, 0.1);
+            letter-spacing: 0.5px;
+        }
+
+        #presetSearch {
+            height: 5px;
+            width: 100px;
+            padding: 5px;
+            font-size: 16px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            margin-top: 15px;
+            margin-bottom: -10px;
+        }
     }
 
-    .preset-button, .custom-preset-button {
-        font-family: "Roboto Mono", monospace;
-        font-size: 14px;
-        margin: 0;
-        padding-left: 15px; /* Adjust the value as needed */
-        color: white;
-        background-color: #222222;
-        border: none;
-        cursor: pointer;
-        text-align: left;
-        box-sizing: border-box;
-        width: 98%;
-        height: 45px
+    .grid-layout {
+
+        .preset-pad,
+        .custom-preset-pad {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            border: none;
+            margin-top: 25px;
+            margin-left: 20px;
+            max-width: 1000px; /* Adjust the value as needed */
+            max-height: 850px; /* Adjust the value as needed */
+            min-height: 200px; /* Adjust the value as needed */
+            overflow-y: auto;
+        }
+
+        .preset-button-container,
+        .custom-preset-button-container {
+            display: inline-block;
+            text-align: center;
+            margin-bottom: 20px; /* Adjust as needed */
+            margin-right: 25px; /* Add margin between containers */
+        }
+
+        .preset-button,
+        .custom-preset-button {
+            width: 220px; /* Adjust width as needed */
+            display: block; /* Ensure proper alignment */
+            margin: 0 auto 0px; /* Center image and button and add space below */
+            box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.3); /* Add 3D shadow effect */
+            cursor: pointer; /* Add cursor pointer */
+            border-top-left-radius: 0px; /* Adjust the radius for the top-left corner */
+            border-top-right-radius: 0px; /* Adjust the radius for the top-right corner */
+            border-bottom-left-radius: 5px; /* Keep the bottom-left corner square */
+            border-bottom-right-radius: 5px; /* Keep the bottom-right corner square */
+            height: 30px; /* Adjust height of the button */
+            background-color: #222222; /* Button background color */
+            color: white; /* Button text color */
+            border: none; /* Remove border */
+            cursor: pointer; /* Add cursor pointer */
+            font-size: 18px; /* Adjust font size */
+        }
+
+
+        .preset-image,
+        .custom-preset-image {
+            width: 220px; /* Adjust width as needed */
+            height: 124px; /* Maintain aspect ratio */
+            display: block; /* Ensure proper alignment */
+            margin: 0 auto 0px; /* Center image and button and add space below */
+            box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.3); /* Add 3D shadow effect */
+            cursor: pointer; /* Add cursor pointer */
+            border-top-left-radius: 5px; /* Adjust the radius for the top-left corner */
+            border-top-right-radius: 5px; /* Adjust the radius for the top-right corner */
+            border-bottom-left-radius: 0; /* Keep the bottom-left corner square */
+            border-bottom-right-radius: 0; /* Keep the bottom-right corner square */
+        }
+
+        .label-preset {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            color: #b2b2b2;
+            font-size: 15px; /* Adjust font size */
+            display: block; /* Set the label as a block-level element */
+            position: relative;
+            margin-bottom: -15px;
+            padding-top: 10px;
+            margin-top: 0px;
+            margin-left: 20px; /* Adjust the margin-left value */
+            font-weight: lighter; /* Set font weight to normal */
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8), -1px -1px 2px rgba(255, 255, 255, 0.1);
+
+        }
+
+        .custom-label-preset {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            color: #b2b2b2;
+            font-size: 15px; /* Adjust font size */
+            display: block; /* Set the label as a block-level element */
+            position: relative;
+            margin-bottom: -10px;
+            margin-top: 35px;
+            margin-left: 20px; /* Adjust the margin-left value */
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8), -1px -1px 2px rgba(255, 255, 255, 0.1);
+            letter-spacing: 0.5px;
+
+        }
+
+        /* Hover effect for buttons on larger screens */
+        .preset-button:hover,
+        .preset-image:hover+.preset-button {
+            background-color: #1e88e5;
+            color: #ffffff;
+        }
+
+        /* Hover effect for buttons on larger screens */
+        .custom-preset-button:hover,
+        .custom-preset-image:hover+.custom-preset-button {
+            background-color: #1e88e5;
+            color: #ffffff;
+        }
+
+        .preset-pad.collapsed {
+            display: none !important;
+        }
+
+        .custom-preset-pad.collapsed {
+            display: none;
+        }
+
+        .label-preset-heading {
+            width: 100px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            color: #b2b2b2;
+            font-size: 15px; /* Adjust font size */
+            display: block; /* Set the label as a block-level element */
+            position: relative;
+            margin-bottom: -10px;
+            margin-top: 18px;
+            margin-left: 20px; /* Adjust the margin-left value */
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8), -1px -1px 2px rgba(255, 255, 255, 0.1);
+            letter-spacing: 0.5px;
+        }
+
+        #presetSearch {
+            margin-right: 45px;
+            height: 5px;
+            width: 100px;
+            padding: 5px;
+            font-size: 16px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            margin-top: 15px;
+            margin-bottom: -10px;
+        }
     }
-      .preset-image, .custom-preset-image {
-        display: none; /* Hide the image by default */
-    }
-    /* Hover effect for buttons on small screens */
-    .preset-button:hover, .custom-preset-button:hover {
-        background-color: #606060;
-    }
-    
-    .label-preset {
-        color: #b2b2b2;
-        font-size: 15px; /* Adjust font size */
-        display: block; /* Set the label as a block-level element */
-        position: absolute;
-        font-weight: normal; /* Set font weight to normal */
-        margin-top: 10px;
-        margin-left: 0px; /* Adjust the margin-left value */
-        font-weight: lighter; /* Set font weight to normal */
-    }
-
-   .custom-label-preset {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        color: #b2b2b2;
-        font-size: 15px; /* Adjust font size */
-        display: block; /* Set the label as a block-level element */
-        position: absolute;
-        margin-top: -25px;
-        margin-left: 0px; /* Adjust the margin-left value */
-        text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8), -1px -1px 2px rgba(255, 255, 255, 0.1);
-        letter-spacing: 0.5px;
-    }
-
-
-.preset-pad.single-column, .custom-preset-pad.single-column {
-    grid-template-columns: repeat(1, 1fr);
-    width: 200px;
-}
-
-.preset-pad:not(.single-column), .custom-preset-pad:not(.single-column) {
-    grid-template-columns: repeat(2, 1fr);
-    width: 400px;
-}
-
-.preset-pad.collapsed {
-    display: none;
-}
-
-.custom-preset-pad.collapsed {
-    display: none;
-}
-.label-preset-heading {
-    width: 100px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    color: #b2b2b2;
-    font-size: 15px; /* Adjust font size */
-    display: block; /* Set the label as a block-level element */
-    position: relative;
-    margin-bottom: -10px;
-    margin-top: 18px;
-    margin-left: 0px; /* Adjust the margin-left value */
-    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8), -1px -1px 2px rgba(255, 255, 255, 0.1);
-    letter-spacing: 0.5px;
-} 
-
-#presetSearch {
-    height: 5px;
-    width: 100px;
-    padding: 5px;
-    font-size: 16px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    margin-top: 15px;
-    margin-bottom: -10px;
-}
-}
-
-.grid-layout {
-.preset-pad, .custom-preset-pad {  
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    border: none;
-    margin-top: 25px;
-    margin-left: 20px;
-    max-width: 1000px; /* Adjust the value as needed */
-    max-height: 850px; /* Adjust the value as needed */
-    min-height: 200px; /* Adjust the value as needed */
-    overflow-y: auto;
-}
-
-.preset-button-container, .custom-preset-button-container {
-    display: inline-block;
-    text-align: center;
-    margin-bottom: 20px; /* Adjust as needed */
-    margin-right: 25px; /* Add margin between containers */
-}
-
-.preset-button, .custom-preset-button {
-    width: 220px; /* Adjust width as needed */
-    display: block; /* Ensure proper alignment */
-    margin: 0 auto 0px; /* Center image and button and add space below */
-    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.3); /* Add 3D shadow effect */
-    cursor: pointer; /* Add cursor pointer */
-    border-top-left-radius: 0px; /* Adjust the radius for the top-left corner */
-    border-top-right-radius: 0px; /* Adjust the radius for the top-right corner */
-    border-bottom-left-radius: 5px; /* Keep the bottom-left corner square */
-    border-bottom-right-radius: 5px; /* Keep the bottom-right corner square */
-    height: 30px; /* Adjust height of the button */
-    background-color: #222222; /* Button background color */
-    color: white; /* Button text color */
-    border: none; /* Remove border */
-    cursor: pointer; /* Add cursor pointer */
-    font-size: 18px; /* Adjust font size */
-}
-
-
-.preset-image, .custom-preset-image {
-    width: 220px; /* Adjust width as needed */
-    height: 124px; /* Maintain aspect ratio */
-    display: block; /* Ensure proper alignment */
-    margin: 0 auto 0px; /* Center image and button and add space below */
-    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.3); /* Add 3D shadow effect */
-    cursor: pointer; /* Add cursor pointer */
-    border-top-left-radius: 5px; /* Adjust the radius for the top-left corner */
-    border-top-right-radius: 5px; /* Adjust the radius for the top-right corner */
-    border-bottom-left-radius: 0; /* Keep the bottom-left corner square */
-    border-bottom-right-radius: 0; /* Keep the bottom-right corner square */
-}
-
-.label-preset {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    color: #b2b2b2;
-    font-size: 15px; /* Adjust font size */
-    display: block; /* Set the label as a block-level element */
-    position: relative;
-    margin-bottom: -15px;
-    padding-top: 10px;
-    margin-top: 0px;
-    margin-left: 20px; /* Adjust the margin-left value */
-    font-weight: lighter; /* Set font weight to normal */
-    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8), -1px -1px 2px rgba(255, 255, 255, 0.1);
-
-} 
-
-.custom-label-preset {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    color: #b2b2b2;
-    font-size: 15px; /* Adjust font size */
-    display: block; /* Set the label as a block-level element */
-    position: relative;
-    margin-bottom: -10px;
-    margin-top: 35px;
-    margin-left: 20px; /* Adjust the margin-left value */
-    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8), -1px -1px 2px rgba(255, 255, 255, 0.1);
-    letter-spacing: 0.5px;
-
-} 
-
-/* Hover effect for buttons on larger screens */
-.preset-button:hover,
-.preset-image:hover + .preset-button {
-    background-color: #1e88e5;
-    color: #ffffff;
-}
-
-/* Hover effect for buttons on larger screens */
-.custom-preset-button:hover,
-.custom-preset-image:hover + .custom-preset-button {
-    background-color: #1e88e5;
-    color: #ffffff;
-}
-.preset-pad.collapsed {
-    display: none !important;
-}
-
-.custom-preset-pad.collapsed {
-    display: none;
-}
-
-.label-preset-heading {
-    width: 100px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    color: #b2b2b2;
-    font-size: 15px; /* Adjust font size */
-    display: block; /* Set the label as a block-level element */
-    position: relative;
-    margin-bottom: -10px;
-    margin-top: 18px;
-    margin-left: 20px; /* Adjust the margin-left value */
-    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8), -1px -1px 2px rgba(255, 255, 255, 0.1);
-    letter-spacing: 0.5px;
-} 
-#presetSearch {
-    margin-right: 45px;
-    height: 5px;
-    width: 100px;
-    padding: 5px;
-    font-size: 16px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    margin-top: 15px;
-    margin-bottom: -10px;
-}
-}
 
 }
 
 .list-icon {
-    /* Set the background image to list.png */
-    background-image: url('/img/list.png');
+    background-image: url('/img/list.png'); /* Set the background image to list.png */
+    display: inline-block; /* Display the background image */
     /* Set the width and height of the icon */
     width: 16px; /* Adjust as needed */
     height: 16px; /* Adjust as needed */
-    /* Display the background image */
-    display: inline-block;
 }
 
 .grid-icon {
-    /* Set the background image to grid.png */
-    background-image: url('/img/grid.png');
+    background-image: url('/img/grid.png'); /* Set the background image to grid.png */
+    display: inline-block; /* Display the background image */
     /* Set the width and height of the icon */
     width: 16px; /* Adjust as needed */
     height: 16px; /* Adjust as needed */
-    /* Display the background image */
-    display: inline-block;
 }
 
 @media (max-width: 900px) {
-
     .vid-icon {
         display: none;
     }
-    }
+}
 
 @media (min-width: 901px) {
-
-.vid-icon {
-    background-image: url('/img/click_icon.png');
-    width: 18px; /* Adjust as needed */
-    height: 18px; /* Adjust as needed */
-    background-size: cover;
-    background-position: center;
-    display: inline-block;   
-}
+    .vid-icon {
+        background-image: url('/img/click_icon.png');
+        width: 18px; /* Adjust as needed */
+        height: 18px; /* Adjust as needed */
+        background-size: cover;
+        background-position: center;
+        display: inline-block;
+    }
 }
 
 
@@ -1021,15 +1014,7 @@ body {
     flex-direction: column;
 }
 
-.zoomr-menu {
-    display: grid;
-    grid-template-columns: repeat(2, 50px);
-    grid-gap: 10px;
-    width: 200px;
-    margin-left: 20px;
-    margin-top: 7px;
-}
-
+.zoomr-menu,
 .zoom-menu {
     display: grid;
     grid-template-columns: repeat(2, 50px);
@@ -1044,25 +1029,8 @@ body {
     margin-right: -20px;
 }
 
-.direction-pad {
-    display: grid;
-    grid-template-columns: repeat(3, 50px);
-    grid-template-rows: repeat(3, 50px);
-    grid-gap: 10px;
-    width: 200px;
-    margin-left: 20px;
-    margin-top: 7px;
-}
-
-.pantilt-pad {
-    display: grid;
-    grid-template-columns: repeat(3, 50px);
-    grid-template-rows: repeat(3, 50px);
-    grid-gap: 10px;
-    width: 200px;
-    margin-left: 20px;
-    margin-top: 7px;
-}
+.direction-pad,
+.pantilt-pad,
 .zoom-pad {
     display: grid;
     grid-template-columns: repeat(3, 50px);
@@ -1072,24 +1040,8 @@ body {
     margin-left: 20px;
     margin-top: 7px;
 }
-.arrow-button {
-    width: 50px;
-    height: 50px;
-    background-color: #3C3C3C;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 20px;
-    transition: transform 0.1s ease; /* Smooth transition for scaling */
-    box-shadow: rgba(0, 0, 0, 0.17) 0px -23px 25px 0px inset, rgba(0, 0, 0, 0.15) 0px -36px 30px 0px inset, rgba(0, 0, 0, 0.1) 0px -79px 40px 0px inset, rgba(0, 0, 0, 0.06) 0px 2px 1px, rgba(0, 0, 0, 0.09) 0px 4px 2px, rgba(0, 0, 0, 0.09) 0px 8px 4px, rgba(0, 0, 0, 0.09) 0px 16px 8px, rgba(0, 0, 0, 0.09) 0px 32px 16px;
 
-}
-
-.arrow-button:hover {
-    background-color: #1565c0; /* Highlight color on hover */
-}
-
+.arrow-button,
 .ptz-arrow-button {
     width: 50px;
     height: 50px;
@@ -1103,14 +1055,25 @@ body {
     box-shadow: rgba(0, 0, 0, 0.17) 0px -23px 25px 0px inset, rgba(0, 0, 0, 0.15) 0px -36px 30px 0px inset, rgba(0, 0, 0, 0.1) 0px -79px 40px 0px inset, rgba(0, 0, 0, 0.06) 0px 2px 1px, rgba(0, 0, 0, 0.09) 0px 4px 2px, rgba(0, 0, 0, 0.09) 0px 8px 4px, rgba(0, 0, 0, 0.09) 0px 16px 8px, rgba(0, 0, 0, 0.09) 0px 32px 16px;
 
 }
+
+.arrow-button:hover,
 .ptz-arrow-button:hover {
     background-color: #1565c0; /* Highlight color on hover */
 }
 
 @keyframes button-press {
-    0% { transform: scale(1); }
-    50% { transform: scale(0.9); } /* Scale down to 90% */
-    100% { transform: scale(1); }
+    0% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(0.9);
+    }
+
+    /* Scale down to 90% */
+    100% {
+        transform: scale(1);
+    }
 }
 
 .ptz-input-wrapper {
@@ -1140,7 +1103,7 @@ body {
     text-align: center; /* Center the text horizontally */
     caret-color: white; /* Change the cursor color */
     border-radius: 5px;
-    box-shadow: 0 0 10px 0 rgba(0,0,0,0.45) inset;
+    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.45) inset;
 
 }
 
@@ -1202,7 +1165,7 @@ body {
     color: white;
     font-size: 14px;
     border: none;
-    border-radius: 5px; 
+    border-radius: 5px;
     background-color: #3C3C3C;
     cursor: pointer;
     margin-right: 10px;
@@ -1219,7 +1182,7 @@ body {
     color: white;
     font-size: 12px;
     border: none;
-    border-radius: 5px; 
+    border-radius: 5px;
     background-color: #3C3C3C;
     cursor: pointer;
     margin-right: 10px;
@@ -1235,7 +1198,7 @@ body {
     color: white;
     font-size: 12px;
     border: none;
-    border-radius: 5px; 
+    border-radius: 5px;
     background-color: #3C3C3C;
     cursor: pointer;
     margin-top: 10px;
@@ -1258,11 +1221,11 @@ body {
     display: flex;
 }
 
-.swap-buttons { 
+.swap-buttons {
     display: flex;
-} 
+}
 
-.swap-num-button { 
+.swap-num-button {
     width: 30px;
     height: 30px;
     background-color: #3C3C3C;
@@ -1273,25 +1236,29 @@ body {
     margin-right: 5px;
     margin-bottom: 8px;
     margin-top: 5px;
-    border-radius: 5px; 
+    border-radius: 5px;
     box-shadow: rgba(0, 0, 0, 0.17) 0px -23px 25px 0px inset, rgba(0, 0, 0, 0.15) 0px -36px 30px 0px inset, rgba(0, 0, 0, 0.1) 0px -79px 40px 0px inset, rgba(0, 0, 0, 0.06) 0px 2px 1px, rgba(0, 0, 0, 0.09) 0px 4px 2px, rgba(0, 0, 0, 0.09) 0px 8px 4px, rgba(0, 0, 0, 0.09) 0px 16px 8px, rgba(0, 0, 0, 0.09) 0px 32px 16px;
 
-}   
+}
+
 .swap-num-button:hover {
     background-color: #1565c0; /* Highlight color on hover */
-} 
+}
 
-.swap-preset-buttons, .zoom-buttons {
+.swap-preset-buttons,
+.zoom-buttons {
     display: grid;
     grid-template-columns: repeat(3, auto);
     grid-gap: 1px; /* Adjust space between buttons as needed */
 }
 
-.swap-preset-button:nth-child(4), .zoom-button:nth-child(4) {
+.swap-preset-button:nth-child(4),
+.zoom-button:nth-child(4) {
     grid-column: 1 / 2; /* Start at the first column on a new row */
 }
 
-.swap-preset-button, .zoom-button { 
+.swap-preset-button,
+.zoom-button {
     width: 53px;
     height: 30px;
     background-color: #3C3C3C;
@@ -1302,13 +1269,16 @@ body {
     margin-right: 5px;
     margin-bottom: 12px;
     margin-top: 2px;
-    border-radius: 5px; 
+    border-radius: 5px;
     box-shadow: rgba(0, 0, 0, 0.17) 0px -23px 25px 0px inset, rgba(0, 0, 0, 0.15) 0px -36px 30px 0px inset, rgba(0, 0, 0, 0.1) 0px -79px 40px 0px inset, rgba(0, 0, 0, 0.06) 0px 2px 1px, rgba(0, 0, 0, 0.09) 0px 4px 2px, rgba(0, 0, 0, 0.09) 0px 8px 4px, rgba(0, 0, 0, 0.09) 0px 16px 8px, rgba(0, 0, 0, 0.09) 0px 32px 16px;
     letter-spacing: 0.5px;
-}   
-.swap-preset-button:hover, .zoom-button:hover, #nfcToggle.active {
+}
+
+.swap-preset-button:hover,
+.zoom-button:hover,
+#nfcToggle.active {
     background-color: #1565c0; /* Highlight color on hover */
-} 
+}
 
 .swap-container {
     display: flex;
@@ -1336,9 +1306,10 @@ body {
     text-align: center; /* Center the text horizontally */
     caret-color: white; /* Change the cursor color */
     border-radius: 5px;
-    box-shadow: 0 0 10px 0 rgba(0,0,0,0.45) inset;
+    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.45) inset;
 
 }
+
 .swap-input:focus {
     outline: 2px solid white; /* Change the outline color for focus */
     outline-offset: 2px; /* Adjust the outline offset if needed */
@@ -1362,14 +1333,15 @@ body {
     box-shadow: rgba(0, 0, 0, 0.17) 0px -23px 25px 0px inset, rgba(0, 0, 0, 0.15) 0px -36px 30px 0px inset, rgba(0, 0, 0, 0.1) 0px -79px 40px 0px inset, rgba(0, 0, 0, 0.06) 0px 2px 1px, rgba(0, 0, 0, 0.09) 0px 4px 2px, rgba(0, 0, 0, 0.09) 0px 8px 4px, rgba(0, 0, 0, 0.09) 0px 16px 8px, rgba(0, 0, 0, 0.09) 0px 32px 16px;
 
 }
+
 .swap-button:hover {
     background-color: #1e88e5; /* Highlight color on hover */
 }
 
 .focus-wrapper {
     display: flex;
-}   
-    
+}
+
 .focus-container {
     display: flex;
     flex-direction: column; /* Arrange elements in a column */
@@ -1379,12 +1351,13 @@ body {
 }
 
 
-.other-wrapper, .ir-wrapper {
+.other-wrapper,
+.ir-wrapper {
     display: grid;
     grid-template-columns: repeat(3, 50px);
     grid-gap: 10px;
-}   
-    
+}
+
 .other-container {
     display: flex;
     flex-direction: column; /* Arrange elements in a column */
@@ -1401,7 +1374,7 @@ body {
     margin-left: 20px;
 }
 
-    
+
 .focus-input {
     width: 50px; /* Set the width to match the direction-pad buttons */
     height: 50px; /* Set the height to match the direction-pad buttons */
@@ -1412,8 +1385,9 @@ body {
     font-size: 12px; /* Set font size */
     text-align: center; /* Center the text horizontally */
     caret-color: white; /* Change the cursor color */
-    
+
 }
+
 .focus-input:focus {
     outline: 2px solid white; /* Change the outline color for focus */
     outline-offset: 2px; /* Adjust the outline offset if needed */
@@ -1437,6 +1411,7 @@ body {
     box-shadow: rgba(0, 0, 0, 0.17) 0px -23px 25px 0px inset, rgba(0, 0, 0, 0.15) 0px -36px 30px 0px inset, rgba(0, 0, 0, 0.1) 0px -79px 40px 0px inset, rgba(0, 0, 0, 0.06) 0px 2px 1px, rgba(0, 0, 0, 0.09) 0px 4px 2px, rgba(0, 0, 0, 0.09) 0px 8px 4px, rgba(0, 0, 0, 0.09) 0px 16px 8px, rgba(0, 0, 0, 0.09) 0px 32px 16px;
 
 }
+
 .focus-button:hover {
     background-color: #1e88e5; /* Highlight color on hover */
 }
@@ -1457,8 +1432,8 @@ body {
 }
 
 .icon-button:hover,
-.ir-auto-button:hover, 
-.ir-on-button:hover, 
+.ir-auto-button:hover,
+.ir-on-button:hover,
 .ir-off-button:hover {
     background-color: #1e88e5; /* Highlight color on hover */
 }
@@ -1467,8 +1442,7 @@ body {
     background-image: url('/img/cfocus.webp');
 }
 
-.cfocus-button.highlighted {
-    /* Add your highlighted styles here */
+.cfocus-button.highlighted { /* Add your highlighted styles here */
     background-color: #40c015; /* Highlight color on hover */
 }
 
@@ -1505,8 +1479,8 @@ body {
     background-image: url('/img/reset.png');
 }
 
-.ir-auto-button, 
-.ir-on-button, 
+.ir-auto-button,
+.ir-on-button,
 .ir-off-button {
     width: 50px;
     height: 50px;
@@ -1524,14 +1498,14 @@ body {
 
 }
 
-.ir-on-button, 
-.ir-off-button  {
+.ir-on-button,
+.ir-off-button {
     margin-left: 10px; /* Adjust the margin to increase or decrease the space between buttons */
 }
 
-.ir-auto-button:hover, 
-.ir-on-button:hover, 
-.ir-off-button:hover  {
+.ir-auto-button:hover,
+.ir-on-button:hover,
+.ir-off-button:hover {
     background-color: #1565c0; /* Highlight color on hover */
 }
 
@@ -1554,6 +1528,7 @@ body {
 .direction-heading {
     margin-right: 10px; /* Adjust as needed */
 }
+
 /* Adjust slider size and position */
 .slider {
     width: 150px; /* Adjust width as needed */
@@ -1618,6 +1593,7 @@ body {
     margin-left: 20px;
     width: 20px; /* Fixed width for the labels */
 }
+
 .volume-container button {
     flex-shrink: 0; /* Prevent button from shrinking */
     position: absolute;
@@ -1632,24 +1608,9 @@ body {
     font-size: small;
 
 }
-/* Style for the mute button */
-.volume-container .mute-button {
-    flex-shrink: 0; /* Prevent button from shrinking */
-    margin-right: 60px;
-    background-color: green;
-    color: #fff;
-    border: none;
-    padding: 4px 10px;
-    cursor: pointer;
-    border-radius: 4px;
-    font-size: small;
-    width: 20px;
-    height: 20px;
-    background-size: cover;
-    /* Add other styles as needed */
-}
 
-/* Style for the unmute button */
+/* Styles for the mute and unmute buttons */
+.volume-container .mute-button,
 .volume-container .unmute-button {
     flex-shrink: 0; /* Prevent button from shrinking */
     margin-right: 60px;
@@ -1670,6 +1631,7 @@ body {
     margin-top: 21px;
     margin-left: 8px;
 }
+
 .slider-container {
     display: flex;
     align-items: center; /* Align items vertically */
@@ -1722,12 +1684,14 @@ body {
     caret-color: white; /* Change the cursor color */
     border-radius: 5px;
     margin-top: 0px;
-    box-shadow: 0 0 10px 0 rgba(0,0,0,0.45) inset;
+    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.45) inset;
 }
+
 .zoominput:focus {
     outline: 1px solid white; /* Customize the focus outline */
     outline-offset: 0px; /* Optional: add space between the outline and element */
 }
+
 .zoom-slider-wrapper {
     display: flex;
     margin-left: -45px;
@@ -1748,7 +1712,6 @@ body {
     width: 100%; /* Ensure the container takes the full width */
 }
 
-
 .vidbuttondiv {
     display: flex;
     justify-content: space-between;
@@ -1756,6 +1719,7 @@ body {
     margin-left: 20px;
     margin-bottom: -15px;
 }
+
 .vidbuttons:hover {
     background-color: #1e88e5;
 }
@@ -1779,12 +1743,12 @@ body {
 
 /* Style for the button container */
 .button-container {
-    display: flex;                    /* Use Flexbox for layout */
-    justify-content: space-between;  /* Space between left group and right button */
-    align-items: center;              /* Vertically center the buttons */
-    width: 100%;                       /* Full width to avoid overflow */
-    box-sizing: border-box;           /* Include padding in the container’s width */
-    padding: 0 0px;                  /* Optional padding for spacing */
+    display: flex; /* Use Flexbox for layout */
+    justify-content: space-between; /* Space between left group and right button */
+    align-items: center; /* Vertically center the buttons */
+    width: 100%; /* Full width to avoid overflow */
+    box-sizing: border-box; /* Include padding in the container’s width */
+    padding: 0 0px; /* Optional padding for spacing */
     margin-bottom: -35px;
     margin-top: 10px;
     zoom: 90%;
@@ -1792,32 +1756,32 @@ body {
 
 /* General button styles */
 .button-container button {
-    background-color: #3C3C3C;       /* Button background color */
-    color: white;                    /* Button text color */
-    border: none;                    /* Remove default border */
-    padding: 5px 10px;              /* Padding inside buttons */
-    border-radius: 5px;              /* Rounded corners */
-    cursor: pointer;                 /* Pointer cursor on hover */
-    font-size: 15px;                 /* Font size for button text */
-    font-weight: lighter;            /* Font weight */
-    text-align: center;              /* Center text horizontally */
+    background-color: #3C3C3C; /* Button background color */
+    color: white; /* Button text color */
+    border: none; /* Remove default border */
+    padding: 5px 10px; /* Padding inside buttons */
+    border-radius: 5px; /* Rounded corners */
+    cursor: pointer; /* Pointer cursor on hover */
+    font-size: 15px; /* Font size for button text */
+    font-weight: lighter; /* Font weight */
+    text-align: center; /* Center text horizontally */
     text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8), -1px -1px 2px rgba(255, 255, 255, 0.1);
-    letter-spacing: 0.5px;           /* Letter spacing */
+    letter-spacing: 0.5px; /* Letter spacing */
     box-shadow: rgba(0, 0, 0, 0.17) 0px -23px 25px 0px inset, rgba(0, 0, 0, 0.15) 0px -36px 30px 0px inset, rgba(0, 0, 0, 0.1) 0px -79px 40px 0px inset, rgba(0, 0, 0, 0.06) 0px 2px 1px, rgba(0, 0, 0, 0.09) 0px 4px 2px, rgba(0, 0, 0, 0.09) 0px 8px 4px, rgba(0, 0, 0, 0.09) 0px 16px 8px, rgba(0, 0, 0, 0.09) 0px 32px 16px;
 }
 
 .vidbuttons {
-    background-color: #3C3C3C;       /* Button background color */
-    color: white;                    /* Button text color */
-    border: none;                    /* Remove default border */
-    padding: 5px 10px;              /* Padding inside buttons */
-    border-radius: 5px;              /* Rounded corners */
-    cursor: pointer;                 /* Pointer cursor on hover */
-    font-size: 15px;                 /* Font size for button text */
-    font-weight: lighter;            /* Font weight */
-    text-align: center;              /* Center text horizontally */
+    background-color: #3C3C3C; /* Button background color */
+    color: white; /* Button text color */
+    border: none; /* Remove default border */
+    padding: 5px 10px; /* Padding inside buttons */
+    border-radius: 5px; /* Rounded corners */
+    cursor: pointer; /* Pointer cursor on hover */
+    font-size: 15px; /* Font size for button text */
+    font-weight: lighter; /* Font weight */
+    text-align: center; /* Center text horizontally */
     text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8), -1px -1px 2px rgba(255, 255, 255, 0.1);
-    letter-spacing: 0.5px;           /* Letter spacing */
+    letter-spacing: 0.5px; /* Letter spacing */
     box-shadow: rgba(0, 0, 0, 0.17) 0px -23px 25px 0px inset, rgba(0, 0, 0, 0.15) 0px -36px 30px 0px inset, rgba(0, 0, 0, 0.1) 0px -79px 40px 0px inset, rgba(0, 0, 0, 0.06) 0px 2px 1px, rgba(0, 0, 0, 0.09) 0px 4px 2px, rgba(0, 0, 0, 0.09) 0px 8px 4px, rgba(0, 0, 0, 0.09) 0px 16px 8px, rgba(0, 0, 0, 0.09) 0px 32px 16px;
 }
 
@@ -1831,11 +1795,13 @@ body {
 }
 
 #commandDisplay {
-    margin-right: 100px;  /* Push this button to the far right */
+    margin-right: 100px; /* Push this button to the far right */
 }
+
 .vidbutton3 {
     margin-right: 10px; /* Adjust this value to move button3 closer to the center */
 }
+
 .vidbutton4 {
     margin-right: 10px; /* Adjust this value to move button3 closer to the center */
 }
@@ -1844,33 +1810,35 @@ body {
     margin-right: 20px; /* Adjust this value to move button3 closer to the center */
 }
 
-.vidbutton6, .vidbutton8 {
+.vidbutton6,
+.vidbutton8 {
     margin-left: 10px; /* Adjust this value to move button3 closer to the center */
 }
 
 .vidbutton7 {
-    margin-left: auto;  /* Push this button to the far right */
+    margin-left: auto; /* Push this button to the far right */
     margin-right: 10px; /* Adjust this value to move button3 closer to the center */
 }
 
-.vidbutton3.highlighted, 
-.vidbutton4.highlighted, 
-.vidbutton5.highlighted, 
-.vidbutton7.highlighted  {
+.vidbutton3.highlighted,
+.vidbutton4.highlighted,
+.vidbutton5.highlighted,
+.vidbutton7.highlighted {
     background-color: #1565c0; /* Highlight color for buttons */
 }
 
-.vidbutton:hover, 
-.vidbutton2:hover, 
-.vidbutton3:hover, 
-.vidbutton4:hover, 
-.vidbutton5:hover, 
-.vidbutton6:hover, 
+.vidbutton:hover,
+.vidbutton2:hover,
+.vidbutton3:hover,
+.vidbutton4:hover,
+.vidbutton5:hover,
+.vidbutton6:hover,
 .vidbutton7:hover,
 .vidbutton8:hover {
     background-color: #1e88e5;
 }
-  .camera-button {
+
+.camera-button {
     margin-top: 12px;
     margin-left: -5px; /* Adjust spacing as desired */
     /* Other styles for the button as needed */
@@ -1889,14 +1857,14 @@ body {
     height: 50px;
     border-radius: 50%; /* Creates a circle */
     z-index: 2;
-  }
-  
+}
+
 
 .selected-thumbnail {
     /* Styles for the selected thumbnail */
     border: 2px solid #6082B6; /* Example */
 }
- 
+
 #video-container {
     position: relative;
     width: 100%;
@@ -1906,6 +1874,7 @@ body {
     margin-top: 40px;
     margin-left: -5px;
 }
+
 /* Basic styling for the dialog */
 .dialog {
     display: none; /* Hidden by default */
@@ -1916,7 +1885,7 @@ body {
     width: 100%; /* Full width */
     height: 100%; /* Full height */
     overflow: hidden; /* Enable scroll if needed */
-    background-color: rgba(0,0,0,0.5); /* Black w/ opacity */
+    background-color: rgba(0, 0, 0, 0.5); /* Black w/ opacity */
 }
 
 /* Dialog Content */
@@ -1983,19 +1952,22 @@ body {
 .preset-button-hover {
     background-color: #ddd; /* Highlight color */
 }
+
 .no-scroll {
     overflow: hidden;
 }
 
 
 /* Hide scrollbars for Webkit browsers (Chrome, Safari, newer Edge) */
-html, body {
+html,
+body {
     overflow: -moz-scrollbars-none; /* Firefox */
     -ms-overflow-style: none; /* Internet Explorer and older Edge */
     scrollbar-width: none; /* Firefox */
 }
 
-html::-webkit-scrollbar, body::-webkit-scrollbar {
+html::-webkit-scrollbar,
+body::-webkit-scrollbar {
     width: 0 !important; /* Webkit browsers */
     height: 0 !important;
 }
