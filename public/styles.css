@@ -1521,6 +1521,10 @@ body {
     background-image: url('/img/scenecams.svg');
 }
 
+.wolftext-button {
+    background-image: url('/img/wolf-text.png');
+}
+
 .mode-labels {
     display: flex;
 }

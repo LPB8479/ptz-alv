@@ -2779,6 +2779,11 @@ function sendScenecams() {
     sendCommand(command);
 }
 
+function sendWolftext() {
+    const command = `!wolftext`;
+    sendCommand(command);
+}
+
 function sendSwapCommand() {
     const swap1DropdownValue = document.getElementById('swap-dropdown1').value.trim();
     const swap2DropdownValue = document.getElementById('swap-dropdown2').value.trim();
