@@ -1,3 +1,8 @@
+:root {
+    --button-bkgd-color: #3C3C3C;
+    --button-hover-color: #1565C0;
+}
+
 /* Global styles to hide scrollbars for Webkit browsers (Chrome, Safari, newer Edge) */
 ::-webkit-scrollbar {
     display: none !important; /* Chrome, Safari, and newer Edge */
@@ -1058,7 +1063,7 @@ body {
 
 .arrow-button:hover,
 .ptz-arrow-button:hover {
-    background-color: #1565c0; /* Highlight color on hover */
+    background-color: var(--button-hover-color); /* Highlight color on hover */
 }
 
 @keyframes button-press {
@@ -1095,7 +1100,7 @@ body {
 .ptz-input {
     width: 48px; /* Set the width to match the direction-pad buttons */
     height: 50px; /* Set the height to match the direction-pad buttons */
-    background-color: #3C3C3C; /* Set the background color */
+    background-color: var(--button-bkgd-color); /* Set the background color */
     color: white; /* Set the text color */
     border: none; /* Remove the border */
     font-size: 12px; /* Set font size */
@@ -1125,7 +1130,7 @@ body {
     padding: 6px 18px; /* Adjust padding */
     border: none;
     border-radius: 5px;
-    background-color: #1565c0;
+    background-color: var(--button-hover-color);
     color: #ffffff;
     cursor: pointer;
     font-size: 16px;
@@ -1144,7 +1149,7 @@ body {
     padding: 6px 18px; /* Adjust padding */
     border: none;
     border-radius: 5px;
-    background-color: #1565c0;
+    background-color: var(--button-hover-color);
     color: #ffffff;
     cursor: pointer;
     font-size: 16px;
@@ -1166,7 +1171,7 @@ body {
     font-size: 14px;
     border: none;
     border-radius: 5px;
-    background-color: #3C3C3C;
+    background-color: var(--button-bkgd-color);
     cursor: pointer;
     margin-right: 10px;
     margin-bottom: 10px;
@@ -1183,7 +1188,7 @@ body {
     font-size: 12px;
     border: none;
     border-radius: 5px;
-    background-color: #3C3C3C;
+    background-color: var(--button-bkgd-color);
     cursor: pointer;
     margin-right: 10px;
     margin-bottom: 10px;
@@ -1199,7 +1204,7 @@ body {
     font-size: 12px;
     border: none;
     border-radius: 5px;
-    background-color: #3C3C3C;
+    background-color: var(--button-bkgd-color);
     cursor: pointer;
     margin-top: 10px;
     letter-spacing: 0.5px;
@@ -1228,7 +1233,7 @@ body {
 .swap-num-button {
     width: 30px;
     height: 30px;
-    background-color: #3C3C3C;
+    background-color: var(--button-bkgd-color);
     color: white;
     border: none;
     cursor: pointer;
@@ -1242,7 +1247,7 @@ body {
 }
 
 .swap-num-button:hover {
-    background-color: #1565c0; /* Highlight color on hover */
+    background-color: var(--button-hover-color); /* Highlight color on hover */
 }
 
 .swap-preset-buttons,
@@ -1261,7 +1266,7 @@ body {
 .zoom-button {
     width: 53px;
     height: 30px;
-    background-color: #3C3C3C;
+    background-color: var(--button-bkgd-color);
     color: white;
     border: none;
     cursor: pointer;
@@ -1277,7 +1282,7 @@ body {
 .swap-preset-button:hover,
 .zoom-button:hover,
 #nfcToggle.active {
-    background-color: #1565c0; /* Highlight color on hover */
+    background-color: var(--button-hover-color); /* Highlight color on hover */
 }
 
 .swap-container {
@@ -1298,7 +1303,7 @@ body {
 .swap-input {
     width: 76px; /* Set the width to match the direction-pad buttons */
     height: 40px; /* Set the height to match the direction-pad buttons */
-    background-color: #3C3C3C; /* Set the background color */
+    background-color: var(--button-bkgd-color); /* Set the background color */
     color: white; /* Set the text color */
     border: none; /* Remove the border */
     font-size: 12px; /* Set font size */
@@ -1326,7 +1331,7 @@ body {
     padding: 6px 18px; /* Adjust padding */
     border: none;
     border-radius: 5px;
-    background-color: #1565c0;
+    background-color: var(--button-hover-color);
     color: #ffffff;
     cursor: pointer;
     font-size: 16px;
@@ -1378,7 +1383,7 @@ body {
 .focus-input {
     width: 50px; /* Set the width to match the direction-pad buttons */
     height: 50px; /* Set the height to match the direction-pad buttons */
-    background-color: #3C3C3C; /* Set the background color */
+    background-color: var(--button-bkgd-color); /* Set the background color */
     color: white; /* Set the text color */
     border: none; /* Remove the border */
     border-radius: 5px; /* Apply border radius */
@@ -1404,7 +1409,7 @@ body {
     padding: 6px 18px; /* Adjust padding */
     border: none;
     border-radius: 5px;
-    background-color: #1565c0;
+    background-color: var(--button-hover-color);
     color: #ffffff;
     cursor: pointer;
     font-size: 16px;
@@ -1419,7 +1424,7 @@ body {
 .icon-button {
     width: 50px;
     height: 50px;
-    background-color: #3C3C3C;
+    background-color: var(--button-bkgd-color);
     color: white;
     border: none;
     border-radius: 5px;
@@ -1453,7 +1458,7 @@ body {
 .vid-button {
     width: 76px;
     height: 50px;
-    background-color: #3C3C3C;
+    background-color: var(--button-bkgd-color);
     color: white;
     border: none;
     border-radius: 5px;
@@ -1484,7 +1489,7 @@ body {
 .ir-off-button {
     width: 50px;
     height: 50px;
-    background-color: #3C3C3C;
+    background-color: var(--button-bkgd-color);
     color: white;
     border: none;
     border-radius: 5px;
@@ -1506,7 +1511,7 @@ body {
 .ir-auto-button:hover,
 .ir-on-button:hover,
 .ir-off-button:hover {
-    background-color: #1565c0; /* Highlight color on hover */
+    background-color: var(--button-hover-color); /* Highlight color on hover */
 }
 
 .info-button {
@@ -1651,7 +1656,7 @@ body {
     background: #ccc; /* Color of the slider track */
 
     /* Styles for Mozilla Firefox */
-    --thumb-color: #1565c0; /* Color of the slider thumb */
+    --thumb-color: var(--button-hover-color); /* Color of the slider thumb */
 }
 
 /* Slider thumb style */
@@ -1679,7 +1684,7 @@ body {
 .zoominput {
     width: 55px; /* Set the width to match the direction-pad buttons */
     height: 30px; /* Set the height to match the direction-pad buttons */
-    background-color: #3C3C3C; /* Set the background color */
+    background-color: var(--button-bkgd-color); /* Set the background color */
     color: white; /* Set the text color */
     border: none; /* Remove the border */
     font-size: 12px; /* Set font size */
@@ -1731,7 +1736,7 @@ body {
 .vidbuttons {
     position: relative;
     margin-top: 10px;
-    background-color: #3C3C3C;
+    background-color: var(--button-bkgd-color);
     color: white;
     border: none;
     padding: 5px;
@@ -1760,7 +1765,7 @@ body {
 
 /* General button styles */
 .button-container button {
-    background-color: #3C3C3C; /* Button background color */
+    background-color: var(--button-bkgd-color); /* Button background color */
     color: white; /* Button text color */
     border: none; /* Remove default border */
     padding: 5px 10px; /* Padding inside buttons */
@@ -1775,7 +1780,7 @@ body {
 }
 
 .vidbuttons {
-    background-color: #3C3C3C; /* Button background color */
+    background-color: var(--button-bkgd-color); /* Button background color */
     color: white; /* Button text color */
     border: none; /* Remove default border */
     padding: 5px 10px; /* Padding inside buttons */
@@ -1828,7 +1833,7 @@ body {
 .vidbutton4.highlighted,
 .vidbutton5.highlighted,
 .vidbutton7.highlighted {
-    background-color: #1565c0; /* Highlight color for buttons */
+    background-color: var(--button-hover-color); /* Highlight color for buttons */
 }
 
 .vidbutton:hover,
