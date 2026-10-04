@@ -385,6 +385,7 @@
         "ball",
         "below",
         "belowtrainingplatform",
+        "closecorner",
         "closegrass",
         "down",
         "downleft",
@@ -838,12 +839,16 @@
     {
       "name": "Nature",
       "presets": [
+        "farshore",
         "firelefttmp",
         "firerighttmp",
         "firetmp",
         "home",
         "owltmp",
         "pond",
+        "sunset",
+        "sunset2",
+        "sunsetz",
         "tmp"
       ]
     },

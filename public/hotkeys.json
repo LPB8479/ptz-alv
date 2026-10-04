@@ -721,7 +721,8 @@
     "scratchpost": "sp",
     "trainingplatform": "tp",
     "vestibule": "v",
-    "belowtrainingplatform": "btp"
+    "belowtrainingplatform": "btp",
+    "closecorner": "cc"
   },
   "PastureLower": {
     "backrightcorner": "brc",
