@@ -470,6 +470,11 @@ document.addEventListener('DOMContentLoaded', function () {
                 closeSwapDialog();
             }
         });
+        document.addEventListener('keydown', function (event) {
+            if (event.key === 'Escape' && document.getElementById('dialog').style.display != 'none') {
+                closeSwapDialog()
+            }
+        });
 
         // Function to close the dialog
         function closeSwapDialog() {
@@ -595,6 +600,11 @@ document.addEventListener('DOMContentLoaded', function () {
         window.addEventListener('click', (event) => {
             if (event.target === dialog) {
                 closePresetDialog();
+            }
+        });
+        document.addEventListener('keydown', function (event) {
+            if (event.key === 'Escape' && document.getElementById('dialog').style.display != 'none') {
+                closePresetDialog()
             }
         });
 
