@@ -2866,67 +2866,119 @@ function setSwapNumber(number) {
 }
 
 function setPresetSwap(selected) {
+    const cameraButtons = document.querySelectorAll('.camera-button');
+    function findCamera(name) {
+        return Array.from(cameraButtons).findIndex(
+            el => el.textContent.trim() === name.trim()
+        );
+    }
+
+    function swapSelect(cam1, cam2) {
+        if (selectedCamera === cam1) {
+            cameraButtons[findCamera(cam2)].click();
+        } else if (selectedCamera === cam2) {
+            cameraButtons[findCamera(cam1)].click();
+        }
+    }
+
     if (selected === 'wolf') {
+        swapSelect("Wolf", "WolfCorner");
         sendCommand('!swap wolf wolfcorner');
-    } else if (selected === 'marm') {
-        sendCommand('!swap marmin marmout');
     } else if (selected === 'wolfin') {
+        swapSelect("Wolf", "WolfIndoor");
         sendCommand('!swap wolf wolfindoor');
     } else if (selected === 'wden') {
+        swapSelect("Wolf", "WolfDen");
         sendCommand('!swap wolf wolfden');
     } else if (selected === 'wden2') {
+        swapSelect("Wolf", "WolfDen2");
         sendCommand('!swap wolfcorner wolfden2');
     } else if (selected === 'ws-w') {
+        swapSelect("Wolf", "WolfSwitch")
         sendCommand('!swap wolf wolfswitch');
     } else if (selected === 'wswin') {
+        swapSelect("WolfIndoor", "WolfSwitch")
         sendCommand('!swap wolfindoor wolfswitch');
+    } else if (selected === 'marm') {
+        swapSelect("MarmIn", "MarmOut")
+        sendCommand('!swap marmin marmout');
     } else if (selected === 'crow') {
+        swapSelect("CrowIn", "CrowOut")
         sendCommand('!swap crowin crowout');
     } else if (selected === 'foxc') {
+        swapSelect("Fox", "FoxCovered")
         sendCommand('!swap fox foxcovered');
     } else if (selected === 'foxin') {
+        swapSelect("Fox", "FoxIndoor")
         sendCommand('!swap fox foxindoor');
     } else if (selected === 'fc-i') {
+        swapSelect("FoxCovered", "FoxIndoor")
         sendCommand('!swap foxcovered foxindoor');
     } else if (selected === 'chkn') {
+        swapSelect("Chicken", "ChickenIndoor")
         sendCommand('!swap chicken chickenindoor');
     } else if (selected === 'gorg') {
+        swapSelect("Georgie", "GeorgieWater")
         sendCommand('!swap georgie georgiewater');
     } else if (selected == 'push') {
+        swapSelect("Pushpop", "PushpopIndoor")
         sendCommand('!swap pushpop pushpopindoor');
     } else if (selected == 'crnch') {
+        swapSelect("Pushpop", "PushpopCrunch")
         sendCommand('!swap pushpop pushpopcrunch');
     } else if (selected == 'past') {
+        swapSelect("Pasture", "PastureLower")
         sendCommand('!swap pasture pasturelower');
     } else if (selected == 'feed') {
+        swapSelect("Pasture", "PastureFeeder")
         sendCommand('!swap pasture pasturefeeder');
     } else if (selected == 'gard') {
+        swapSelect("Pasture", "Garden")
         sendCommand('!swap pasture garden');
     } else if (selected == 'chin') {
-        sendCommand('!swap chinmulti chin')
+        swapSelect("ChinMulti", "Chin")
+        sendCommand('!swap chinmulti chin');
     } else if (selected == 'chin2') {
-        sendCommand('!swap chinmulti chin2')
+        swapSelect("ChinMulti", "Chin2")
+        sendCommand('!swap chinmulti chin2');
     } else if (selected == 'chin3') {
-        sendCommand('!swap chinmulti chin3')
+        swapSelect("ChinMulti", "Chin3")
+        sendCommand('!swap chinmulti chin3');
     } else if (selected == 'c1-2') {
-        sendCommand('!swap chin chin2')
+        swapSelect("Chin", "Chin2")
+        sendCommand('!swap chin chin2');
     } else if (selected == 'c2-3') {
-        sendCommand('!swap chin2 chin3')
+        swapSelect("Chin2", "Chin3")
+        sendCommand('!swap chin2 chin3');
     } else if (selected == 'c1-3') {
-        sendCommand('!swap chin chin3')
+        swapSelect("Chin", "Chin3")
+        sendCommand('!swap chin chin3');
     } else if (selected == 'tar') {
+        swapSelect("Tarantula", "TarantulaPTZ")
         sendCommand('!swap tarantula tarantulaptz');
     } else if (selected == 'toast') {
+        swapSelect("Toast", "ToastCrunch")
         sendCommand('!swap toast toastcrunch');
     } else if (selected == 'par') {
+        swapSelect("Parrot", "Macaws")
         sendCommand('!swap littles macaws');
     } else if (selected == 'emu') {
+        swapSelect("Emu", "EmuCover")
         sendCommand('!swap emu emucover');
+    } else if (selected == 'splsh') {
+        swapSelect("Emu", "EmuPond")
+        sendCommand('!swap emu emupond');
     } else if (selected == 'serv') {
+        swapSelect("Serval", "ServalCorner")
         sendCommand('!swap serval servalcorner');
+    } else if (selected == 'servin') {
+        swapSelect("Serval", "ServalIndoor")
+        sendCommand('!swap serval servalindoor');
     } else if (selected == 'sc-i') {
+        swapSelect("ServalCorner", "ServalIndoor")
         sendCommand('!swap servalcorner servalindoor');
     }
+
 }
 
 // Function to release input after pressing enter on pan / tilt / zoom input boxes

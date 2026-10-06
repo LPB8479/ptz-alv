@@ -66,7 +66,7 @@
                             <button class="swap-preset-button" onclick="setPresetSwap('ws-w')">ws-w</button>
                             <button class="swap-preset-button" onclick="setPresetSwap('wswin')">wswin</button>
                             <button class="swap-preset-button" onclick="setPresetSwap('chkn')">chkn</button>
-                            <button class="swap-preset-button" onclick="setPresetSwap('gorg')">gorg</button>
+                            <button class="swap-preset-button" onclick="setPresetSwap('par')">par</button>
                             <button class="swap-preset-button" onclick="setPresetSwap('push')">push</button>
                             <button class="swap-preset-button" onclick="setPresetSwap('crnch')">crnch</button>
                             <button class="swap-preset-button" onclick="setPresetSwap('past')">past</button>
@@ -80,9 +80,12 @@
                             <button class="swap-preset-button" onclick="setPresetSwap('c1-3')">c1-3</button>
                             <button class="swap-preset-button" onclick="setPresetSwap('tar')">tar</button>
                             <button class="swap-preset-button" onclick="setPresetSwap('toast')">toast</button>
-                            <button class="swap-preset-button" onclick="setPresetSwap('par')">par</button>
+                            <button class="swap-preset-button" onclick="setPresetSwap('gorg')">gorg</button>
                             <button class="swap-preset-button" onclick="setPresetSwap('emu')">emu</button>
+                            <button class="swap-preset-button" onclick="setPresetSwap('splsh')">splsh</button>
+                            <button class="swap-preset-button" onclick="setPresetSwap('')"></button>
                             <button class="swap-preset-button" onclick="setPresetSwap('serv')">serv</button>
+                            <button class="swap-preset-button" onclick="setPresetSwap('servin')">servin</button>
                             <button class="swap-preset-button" onclick="setPresetSwap('sc-i')">sc-i</button>
                         </div>
                         <div class="dropdown-container">
@@ -287,7 +290,7 @@
                             <button class="info-button icon-button" onclick="sendInfo()" title="!ptzgetinfo"></button>
                             <button class="reset-button icon-button" onclick="sendReset()" title="!resetcam"></button>
                             <button class="resetstream-button icon-button" onclick="sendResetStream()" title="!resetlivecams"></button>
-                            <button class="volume-button icon-button" onclick="sendVolumeControl()"></button>
+                            <button class="volume-button icon-button" onclick="sendVolumeControl()" title="!getvolume all"></button>
                             <button class="mpv-button icon-button" onclick="enableSpin(this)" style="display: none;"></button>
                             <button class="wolftext-button icon-button" onclick="sendWolftext()" title="Toggle !wolftext"></button>
                         </div>
