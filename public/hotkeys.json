@@ -634,7 +634,13 @@
     "tmp4": "tmp4",
     "tmp5": "tmp5",
     "tmp6": "tmp6",
-    "water": "w"
+    "water": "w",
+    "stmp1": "s1",
+    "stmp2": "s2",
+    "stmp3": "s3",
+    "stmp4": "s4",
+    "stmp5": "s5",
+    "stmp6": "s6"
   },
   "Emu": {
     "fargate": "fg",
