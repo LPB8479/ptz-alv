@@ -1,7 +1,7 @@
 # Alveus PTZ Control
 
 This is a community-built, open source tool for controlling the Alveus Sanctuary cameras.
-The tool was originally created by Dansza.
+The tool was originally created by Dansza and Wazix11.
 
 # Installation and Setup
 
