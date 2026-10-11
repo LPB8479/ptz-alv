@@ -261,6 +261,7 @@
         "den2door",
         "den2entrance",
         "den2inside",
+        "den2insidet",
         "den2l",
         "den2m",
         "den2r",
@@ -384,6 +385,7 @@
       "presets": [
         "ball",
         "below",
+        "belowshortplatform",
         "belowtrainingplatform",
         "closecorner",
         "closegrass",
@@ -391,7 +393,9 @@
         "downleft",
         "downright",
         "home",
+        "left",
         "leftfar",
+        "leftplatformz",
         "middleplatforms",
         "nearplatform",
         "pond",
@@ -648,6 +652,7 @@
       "presets": [
         "buildingleft",
         "closecorner",
+        "doornap",
         "down",
         "downleft",
         "downright",

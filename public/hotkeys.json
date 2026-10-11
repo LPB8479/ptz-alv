@@ -114,7 +114,8 @@
     "fo": "fo",
     "foodtmp": "ftmp",
     "log": "log",
-    "tmp": "tmp"
+    "tmp": "tmp",
+    "den2insidet": "d2it"
   },
   "WolfIndoor": {
     "center": "c",
@@ -728,7 +729,10 @@
     "trainingplatform": "tp",
     "vestibule": "v",
     "belowtrainingplatform": "btp",
-    "closecorner": "cc"
+    "closecorner": "cc",
+    "leftplatformz": "lpz",
+    "left": "l",
+    "belowshortplatform": "bsp"
   },
   "PastureLower": {
     "backrightcorner": "brc",
@@ -771,7 +775,8 @@
     "pond": "p",
     "right": "r",
     "trainingplatform": "tp",
-    "temp": "temp"
+    "temp": "temp",
+    "doornap": "dn"
   },
   "ServalIndoor": {
     "crate": "cr",
