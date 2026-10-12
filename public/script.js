@@ -803,6 +803,7 @@ document.addEventListener('DOMContentLoaded', function () {
         videoContainerCard.style.top = '0';
         videoContainerCard.style.left = '-18px';
         videoContainerCard.style.margin = '10px';
+        videoContainerCard.style.overflow = 'hidden';
 
         const buttonDiv = document.createElement("div");
         buttonDiv.classList.add("button-container");
@@ -868,6 +869,31 @@ document.addEventListener('DOMContentLoaded', function () {
             openSwapDialog();
         });
 
+        const button9 = document.createElement("button");
+        button9.classList.add("vidbutton9");
+        button9.textContent = "Player Zoom";
+        button9.addEventListener('mouseenter', () => {
+            button9.classList.add('active');
+        });
+        button9.addEventListener('mouseleave', () => {
+            button9.classList.remove('active');
+        })
+
+        const pzCont = document.createElement("div");
+        pzCont.classList.add("player-zoom-container");
+
+        for (let i = 1; i <= 6; i++) {
+            const pzButton = document.createElement("div");
+            pzButton.classList.add("player-zoom-button", `player-zoom-${i}`);
+            pzButton.innerText = i;
+            pzButton.addEventListener('click', function () {
+                playerZoom(i);
+            })
+            pzCont.appendChild(pzButton);
+        }
+
+        button9.appendChild(pzCont);
+
         const videoContainer = document.createElement("div");
         videoContainer.id = "video-container";
         videoContainer.style.position = 'relative';
@@ -923,6 +949,7 @@ document.addEventListener('DOMContentLoaded', function () {
         buttonDiv.appendChild(button2);
         buttonDiv.appendChild(button8);
         buttonDiv.appendChild(button6);
+        buttonDiv.appendChild(button9);
         buttonDiv.appendChild(button7);
         buttonDiv.appendChild(button3);
         buttonDiv.appendChild(button4);
@@ -4842,3 +4869,24 @@ presetSearchInput.addEventListener('blur', function (event) {
         presetPad.style.display = 'flex';
     }
 });
+
+function playerZoom(slot) {
+    const vid = document.getElementById("video-container");
+    if (!vid) return;
+
+    const targetButton = document.querySelector(`.player-zoom-${slot}`);
+    if (!targetButton) return;
+
+    const willBeActive = !targetButton.classList.contains('active');
+    
+    document.querySelectorAll('.player-zoom-button').forEach(btn => btn.classList.remove('active'));
+
+    if (willBeActive) {
+        targetButton.classList.add('active');
+        vid.className = vid.className.replace(/cam\d+/g, '');
+        vid.classList.add(`cam${slot}`);
+    } else {
+        targetButton.classList.remove('active');
+        vid.classList.remove(`cam${slot}`);
+    }
+}

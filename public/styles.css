@@ -1285,7 +1285,10 @@ body {
     background-color: var(--button-hover-color); /* Highlight color on hover */
 }
 
-.swap-container {
+.swap-container,
+.focus-container,
+.other-container,
+.ir-container {
     display: flex;
     flex-direction: column; /* Arrange elements in a column */
     align-items: flex-start; /* Align items to the start */
@@ -1347,38 +1350,12 @@ body {
     display: flex;
 }
 
-.focus-container {
-    display: flex;
-    flex-direction: column; /* Arrange elements in a column */
-    align-items: flex-start; /* Align items to the start */
-    margin-top: 7px;
-    margin-left: 20px;
-}
-
-
 .other-wrapper,
 .ir-wrapper {
     display: grid;
     grid-template-columns: repeat(3, 50px);
     grid-gap: 10px;
 }
-
-.other-container {
-    display: flex;
-    flex-direction: column; /* Arrange elements in a column */
-    align-items: flex-start; /* Align items to the start */
-    margin-top: 7px;
-    margin-left: 20px;
-}
-
-.ir-container {
-    display: flex;
-    flex-direction: column; /* Arrange elements in a column */
-    align-items: flex-start; /* Align items to the start */
-    margin-top: 7px;
-    margin-left: 20px;
-}
-
 
 .focus-input {
     width: 50px; /* Set the width to match the direction-pad buttons */
@@ -1754,13 +1731,17 @@ body {
 .button-container {
     display: flex; /* Use Flexbox for layout */
     justify-content: space-between; /* Space between left group and right button */
-    align-items: center; /* Vertically center the buttons */
+    align-items: flex-start; /* Vertically align the buttons */
     width: 100%; /* Full width to avoid overflow */
     box-sizing: border-box; /* Include padding in the container’s width */
-    padding: 0 0px; /* Optional padding for spacing */
+    padding: 12px 0px 12px 20px; /* Optional padding for spacing */
     margin-bottom: -35px;
-    margin-top: 10px;
+    margin-left: -20px;
     zoom: 90%;
+    background-color: #1c1c1c;
+    z-index: 50;
+    position: absolute;
+    height: 44px;
 }
 
 /* General button styles */
@@ -1807,21 +1788,17 @@ body {
     margin-right: 100px; /* Push this button to the far right */
 }
 
-.vidbutton3 {
-    margin-right: 10px; /* Adjust this value to move button3 closer to the center */
-}
-
-.vidbutton4 {
+.vidbutton2,
+.vidbutton3,
+.vidbutton4,
+.vidbutton6,
+.vidbutton8,
+.vidbutton9 {
     margin-right: 10px; /* Adjust this value to move button3 closer to the center */
 }
 
 .vidbutton5 {
     margin-right: 20px; /* Adjust this value to move button3 closer to the center */
-}
-
-.vidbutton6,
-.vidbutton8 {
-    margin-left: 10px; /* Adjust this value to move button3 closer to the center */
 }
 
 .vidbutton7 {
@@ -1845,6 +1822,50 @@ body {
 .vidbutton7:hover,
 .vidbutton8:hover {
     background-color: #1e88e5;
+}
+
+.vidbutton9 {
+    min-width: 150px;
+}
+
+.player-zoom-container {
+    display: none;
+    padding: 12px 0 10px;
+    gap: 10px;
+    min-width: 10px;
+}
+
+.vidbutton9.active {
+    z-index: 99;
+}
+
+.vidbutton9.active .player-zoom-container {
+    display: grid;
+    grid-template-columns: repeat(3, auto);
+}
+
+.player-zoom-button {
+    background-color: #888888;
+    width: auto;
+    aspect-ratio: 16 / 9;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-width: 30px;
+}
+.player-zoom-button.active {
+    background-color: var(--button-hover-color);
+}
+
+.player-zoom-1 {
+    aspect-ratio: unset;
+    grid-row-end: span 2;
+    grid-column-end: span 2;
+}
+
+.player-zoom-2 {
+    order: -1;
 }
 
 .camera-button {
@@ -1984,4 +2005,38 @@ body::-webkit-scrollbar {
 .left-menu {
     margin-top: -5px;
     zoom: 80%;
+}
+
+#video-container {
+        transition: transform 0.5s ease-in-out;
+}
+
+#video-container.cam1 {
+    transform-origin: center center;
+    transform: scale(1.5) translate(-16.67%, 16.67%);
+}
+
+#video-container.cam2 {
+    transform-origin: center center;
+    transform: scale(2.9) translate(33.33%, 25%);
+}
+
+#video-container.cam3 {
+    transform-origin: center center;
+    transform: scale(2.9) translate(33.33%, 3%);
+}
+
+#video-container.cam4 {
+    transform-origin: center center;
+    transform: scale(2.9) translate(33.33%, -20%);
+}
+
+#video-container.cam5 {
+    transform-origin: center center;
+    transform: scale(2.9) translate(0, -20%);
+}
+
+#video-container.cam6 {
+    transform-origin: center center;
+    transform: scale(2.9) translate(-33.33%, -20%);
 }
