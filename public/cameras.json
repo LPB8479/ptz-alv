@@ -398,6 +398,7 @@
         "leftplatformz",
         "middleplatforms",
         "nearplatform",
+        "nearplatformr",
         "pond",
         "right",
         "scratchpost",
@@ -650,6 +651,7 @@
     {
       "name": "ServalCorner",
       "presets": [
+        "belowshortplatform",
         "buildingleft",
         "closecorner",
         "doornap",
@@ -786,6 +788,7 @@
         "platformfl",
         "platformfr",
         "rampb",
+        "rampbz",
         "right",
         "table"
       ]
@@ -901,6 +904,32 @@
       ]
     },
     {
+      "name": "Toast",
+      "presets": [
+        "closerock",
+        "down",
+        "downright",
+        "far",
+        "food",
+        "home",
+        "log",
+        "logz",
+        "rocksandwich",
+        "rocksandwicht",
+        "toastsleep",
+        "tunnel",
+        "water"
+      ]
+    },
+    {
+      "name": "ToastCrunch",
+      "presets": [
+        "home",
+        "log",
+        "lurkk"
+      ]
+    },
+    {
       "name": "Pushpop",
       "presets": [
         "brush",
@@ -988,30 +1017,8 @@
       ]
     },
     {
-      "name": "Toast",
-      "presets": [
-        "closerock",
-        "down",
-        "downright",
-        "far",
-        "food",
-        "home",
-        "log",
-        "logz",
-        "rocksandwich",
-        "rocksandwicht",
-        "toastsleep",
-        "tunnel",
-        "water"
-      ]
-    },
-    {
-      "name": "ToastCrunch",
-      "presets": [
-        "home",
-        "log",
-        "lurkk"
-      ]
+      "name": "Scorpion",
+      "presets": []
     },
     {
       "name": "Chin",
