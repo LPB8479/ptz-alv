@@ -2018,7 +2018,7 @@ body::-webkit-scrollbar {
 
 #video-container.cam2 {
     transform-origin: center center;
-    transform: scale(2.9) translate(33.33%, 25%);
+    transform: scale(2.9) translate(33.33%, 35%);
 }
 
 #video-container.cam3 {
@@ -2028,15 +2028,15 @@ body::-webkit-scrollbar {
 
 #video-container.cam4 {
     transform-origin: center center;
-    transform: scale(2.9) translate(33.33%, -20%);
+    transform: scale(2.9) translate(33.33%, -25%);
 }
 
 #video-container.cam5 {
     transform-origin: center center;
-    transform: scale(2.9) translate(0, -20%);
+    transform: scale(2.9) translate(0, -25%);
 }
 
 #video-container.cam6 {
     transform-origin: center center;
-    transform: scale(2.9) translate(-33.33%, -20%);
+    transform: scale(2.9) translate(-33.33%, -25%);
 }
