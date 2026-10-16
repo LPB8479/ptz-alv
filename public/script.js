@@ -3730,19 +3730,24 @@ function handleHotkeyswap(event) {
 
     let command = '';
     switch (event.key) {
-        case '2' || '@': // Shift + 2
+        case '2':
+        case '@': // Shift + 2
             command = '!swap 1 2';
             break;
-        case '3' || '#': // Shift + 3
+        case '3':
+        case '#': // Shift + 3
             command = '!swap 1 3';
             break;
-        case '4' || '$': // Shift + 4
+        case '4':
+        case '$': // Shift + 4
             command = '!swap 1 4';
             break;
-        case '5' || '%': // Shift + 5
+        case '5':
+        case '%': // Shift + 5
             command = '!swap 1 5';
             break;
-        case '6' || '^': // Shift + 6
+        case '6':
+        case '^': // Shift + 6
             command = '!swap 1 6';
             break;
     }
@@ -3784,6 +3789,7 @@ function handleKeyDown(event) {
     // Check if the arrow key checkbox state is stored in local storage
     const savedArrowKeyCheckboxState = localStorage.getItem('arrowKeyCheckboxState');
     const savedSwapHotkeyCheckboxState = localStorage.getItem('swapHotkeyCheckboxState');
+    console.log(event);
 
     if (savedArrowKeyCheckboxState !== 'true') {
         return; // Exit the function if checkbox is not checked (or if the state is not found in local storage)
