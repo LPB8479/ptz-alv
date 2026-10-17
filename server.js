@@ -550,7 +550,7 @@ app.post('/move-camera-to', (req, res) => {
 });
 
 app.post('/save-custom-preset', (req, res) => {
-    const { cameraName, presetName, pan, tilt, zoom, autoFocus, focus, isNewPreset, originalPresetName } = req.body;
+    const { cameraName, presetName, basePreset, zoom, autoFocus, focus, isNewPreset, originalPresetName } = req.body;
     console.log('Received request body:', req.body);
     console.log('isNewPreset:', isNewPreset);
 
@@ -577,8 +577,7 @@ app.post('/save-custom-preset', (req, res) => {
             presets.push({
                 cameraName,
                 presetName,
-                pan,
-                tilt,
+                basePreset,
                 zoom,
                 autoFocus,
                 focus
@@ -592,14 +591,14 @@ app.post('/save-custom-preset', (req, res) => {
             presets[index] = {
                 cameraName,
                 presetName,
-                pan,
-                tilt,
+                basePreset,
                 zoom,
                 autoFocus,
                 focus
             };
         }
 
+        console.log('Writing presets to file:', JSON.stringify(presets, null, 2));
         // Write updated presets to custom-presets.json
         fs.writeFile(path.join(__dirname, 'public', 'custom-presets.json'), JSON.stringify(presets, null, 2), 'utf8', err => {
             if (err) {

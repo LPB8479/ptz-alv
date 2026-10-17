@@ -1045,8 +1045,7 @@ function populateCustomPresetInputs(presetName) {
         .then(presetData => {
             // Now populate the inputs with the fetched presetData
             document.getElementById('presetName').value = presetData.presetName;
-            document.getElementById('pan').value = presetData.pan;
-            document.getElementById('tilt').value = presetData.tilt;
+            document.getElementById('basePreset').value = presetData.basePreset;
             document.getElementById('zoom').value = presetData.zoom;
             document.getElementById('focus').value = presetData.focus;
 
@@ -1163,8 +1162,8 @@ function fetchGetInfo(cameraName) {
                 const presets = data.presets;
                 console.log('Received presets:', presets);
                 // Update UI elements with preset values
-                document.getElementById('pan').value = presets[0];
-                document.getElementById('tilt').value = presets[1];
+                // document.getElementById('pan').value = presets[0];
+                // document.getElementById('tilt').value = presets[1];
                 document.getElementById('zoom').value = presets[2];
                 // Update autoFocus dropdown
                 const autoFocusDropdown = document.getElementById('autoFocus');
@@ -1384,55 +1383,49 @@ function showCustomPresetInputs(cameraName) {
     mainContent.innerHTML = `
     <div id="customPresetInputs">
     <div class="sync-container">
-    <label style="width: 100px;">Preset Name:</label>
-    <input type="text" id="presetName"><br>
+        <label style="width: 100px;">Preset Name:</label>
+        <input type="text" id="presetName"><br>
+    </div>
+    <div class="sync-container">
+        <label style="width: 100px;">Base Preset:</label>
+        <input type="text" id="basePreset"><br>
     </div>
     <div class="sync-button-container">
-        <label>Pan Tilt Zoom:</label>
+        <label>Zoom/AF/Focus:</label>
         <button onclick="syncGetInfo('${cameraName}')" id="syncButton">Sync</button><br>
     </div>
     <div class="sync-container">
-    <label style="width: 100px;">Pan:</label>
-    <input type="number" id="pan"><br>
+        <label style="width: 100px;">Zoom:</label>
+        <input type="number" id="zoom"><br>
     </div>
     <div class="sync-container">
-    <label style="width: 100px;">Tilt:</label>
-    <input type="number" id="tilt"><br>
+        <label style="width: 100px;">Auto Focus:</label>
+        <select id="autoFocus">
+            <option value="on">on</option>
+            <option value="off">off</option>
+        </select><br>
     </div>
     <div class="sync-container">
-    <label style="width: 100px;">Zoom:</label>
-    <input type="number" id="zoom"><br> 
-    </div>
-    <div class="sync-container">
-    <label style="width: 100px;">Auto Focus:</label>
-    <select id="autoFocus">
-        <option value="on">on</option>
-        <option value="off">off</option>
-    </select><br>   
-    </div>
-    <div class="sync-container">
-    <label style="width: 100px;">Focus:</label>
-    <input type="number" id="focus"><br>
+        <label style="width: 100px;">Focus:</label>
+        <input type="number" id="focus"><br>
     </div>
     <button class="btn-save" onclick="saveCustomPreset('${cameraName}')">Save</button>
-</div>
+    </div>
     `;
 }
 
 function saveCustomPreset(cameraName) {
     const presetName = document.getElementById('presetName').value;
-    const pan = document.getElementById('pan').value;
-    const tilt = document.getElementById('tilt').value;
+    const basePreset = document.getElementById('basePreset').value;
     const zoom = document.getElementById('zoom').value;
     const autoFocus = document.getElementById('autoFocus').value;
     const focus = document.getElementById('focus').value;
 
-    console.log('Saving Preset Data:', { cameraName, presetName, pan, tilt, zoom, autoFocus, focus }); // Log data to be saved
+    console.log('Saving Preset Data:', { cameraName, presetName, basePreset, zoom, autoFocus, focus }); // Log data to be saved
     const payload = {
         cameraName: cameraName,
         presetName: presetName,
-        pan: pan,
-        tilt: tilt,
+        basePreset: basePreset,
         zoom: zoom,
         autoFocus: autoFocus,
         focus: focus,
@@ -1456,8 +1449,7 @@ function saveCustomPreset(cameraName) {
             fetchAndPopulatePresets(cameraName); // Re-populate presets
             // Reset input fields
             document.getElementById('presetName').value = '';
-            document.getElementById('pan').value = '';
-            document.getElementById('tilt').value = '';
+            document.getElementById('basePreset').value = '';
             document.getElementById('zoom').value = '';
             document.getElementById('focus').value = '';
             showCameraDetails(cameraName); // Show camera details again, which includes preset pad

@@ -2593,64 +2593,68 @@ function sendptzpadCommand(direction) {
 }
 
 
-function sendCustomCommand(cameraName, presetName, customPresets) {
+// Shared helper to handle validation, command formatting, and sequential execution
+async function executeCustomPresetCommands(cameraName, presetData) {
+    // Check if presetData is valid
+    if (!presetData) {
+        console.error('Custom preset not found.');
+        return; // Exit the function if preset not found
+    }
+
+    // Extract the necessary data from the presetData
+    const { basePreset, zoom, autoFocus, focus } = presetData;
+
+    // Check if any of the variables is undefined
+    if (typeof basePreset === 'undefined' || typeof zoom === 'undefined' || typeof autoFocus === 'undefined' || typeof focus === 'undefined') {
+        console.error('One or more parameters are undefined.');
+        return; // Exit the function if any parameter is undefined
+    }
+
+    console.log({basePreset, zoom, autoFocus, focus});
+
+    // Construct the commands using the extracted data
+    const lowerCameraName = cameraName.toLowerCase();
+    const presetCommand = `!ptzload ${lowerCameraName} ${basePreset}`;
+    const zoomCommand = `!ptzzooma ${lowerCameraName} ${zoom}`;
+    const focusCommand = `!ptzfocusa ${lowerCameraName} ${focus}`;
+
+    // Configure delay
+    const delay = (ms) => new Promise(resolve => setTimeout(resolve, ms));
+
+    // Send the commands to the backend server
+    sendCommand(presetCommand);
+    await delay(500);
+    sendCommand(zoomCommand);
+    
+    if (autoFocus === 'off') {
+        await delay(500);
+        sendCommand(focusCommand);
+    }
+}
+
+async function sendCustomCommand(cameraName, presetName, customPresets) {
     // Find the custom preset data based on the preset name
     const customPreset = customPresets.find(preset =>
         preset.cameraName === cameraName && preset.presetName === presetName
-    );    // Check if the custom preset is found
+    );
+
+    // Check if the custom preset is found
     if (!customPreset) {
         console.error(`Custom preset '${presetName}' not found.`);
         return; // Exit the function if preset not found
     }
 
-    // Extract the necessary data from the custom preset
-    const { cameraName: presetCameraName, pan, tilt, zoom, autoFocus, focus } = customPreset;
-    console.log("sendCustomCommand cameraname", presetCameraName);
-
-    // Check if any of the variables is undefined
-    if (typeof pan === 'undefined' || typeof tilt === 'undefined' || typeof zoom === 'undefined' ||
-        typeof autoFocus === 'undefined' || typeof focus === 'undefined') {
-        console.error('One or more parameters are undefined.');
-        return; // Exit the function if any parameter is undefined
-    }
-
-    // Construct the set command using the extracted data
-    const setCommand = `!ptzseta ${presetCameraName.toLowerCase()} ${pan} ${tilt} ${zoom} ${autoFocus} ${focus}`;
-
-    // Send the set command to the backend server
-    sendCommand(setCommand);
+    console.log("sendCustomCommand cameraname", customPreset.cameraName);
+    await executeCustomPresetCommands(cameraName, customPreset);
 }
-
 
 async function sendCustomDialogCommand(cameraName, presetName) {
     try {
         // Fetch the custom preset data
         const presetData = await findDialogPresetData(cameraName, presetName);
-
-        // Check if presetData is valid
-        if (!presetData) {
-            console.error(`Custom preset '${presetName}' not found.`);
-            return; // Exit the function if presetData is not found
-        }
-
-        // Extract the necessary data from the presetData
-        const { pan, tilt, zoom, autoFocus, focus } = presetData;
-
-        // Check if any of the variables is undefined
-        if (typeof pan === 'undefined' || typeof tilt === 'undefined' || typeof zoom === 'undefined' ||
-            typeof autoFocus === 'undefined' || typeof focus === 'undefined') {
-            console.error('One or more parameters are undefined.');
-            return; // Exit the function if any parameter is undefined
-        }
-
-        // Construct the set command using the extracted data
-        const setCommand = `!ptzseta ${cameraName.toLowerCase()} ${pan} ${tilt} ${zoom} ${autoFocus} ${focus}`;
-
-        // Send the set command to the backend server
-        sendCommand(setCommand);
-
+        await executeCustomPresetCommands(cameraName, presetData);
     } catch (error) {
-        console.error('Error in sending custom dialog command:', error);
+        console.error('Error in sending custom preset command:', error);
     }
 }
 
@@ -4012,20 +4016,6 @@ function executeHotkeyAction(cameraName, preset, isCustom) {
     //}, 3000);
 }
 
-function executeHotkeyAction(cameraName, preset, isCustom) {
-    console.log(`Executing action for camera '${cameraName}' and preset '${preset}'.`);
-    if (isCustom) {
-        findPresetData(cameraName, preset);
-    } else {
-        sendLoadCommand(cameraName, preset);
-    }
-    //const commandDisplay = document.getElementById('commandDisplay');
-    //commandDisplay.textContent = `(${keysPressed}) - load ${cameraName} ${preset}`;
-    //setTimeout(() => {
-    //    commandDisplay.textContent = '';
-    //}, 3000);
-}
-
 // Attach the handleHotkey function to the keypress event
 document.addEventListener('keypress', handleHotkey);
 
@@ -4043,7 +4033,7 @@ async function findPresetData(cameraName, presetName) {
 
         if (preset) {
             // Extract the required data
-            const { pan, tilt, zoom, autoFocus, focus } = preset;
+            const { basePreset, zoom, autoFocus, focus } = preset;
             // Use the extracted data for sending a custom command
             sendCustomCommand(cameraName, presetName, customPresets);
 
