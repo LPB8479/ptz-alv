@@ -679,7 +679,8 @@
     "perchbr": "pbr",
     "postmbb": "pmbb",
     "table": "t",
-    "windowz": "wz"
+    "windowz": "wz",
+    "farbranches": "fb"
   },
   "Parrot": {
     "abovedoor": "ad",
@@ -732,7 +733,8 @@
     "closecorner": "cc",
     "leftplatformz": "lpz",
     "left": "l",
-    "belowshortplatform": "bsp"
+    "belowshortplatform": "bsp",
+    "nearplatformr": "npr"
   },
   "PastureLower": {
     "backrightcorner": "brc",
@@ -776,7 +778,8 @@
     "right": "r",
     "trainingplatform": "tp",
     "temp": "temp",
-    "doornap": "dn"
+    "doornap": "dn",
+    "belowshortplatform": "bsp"
   },
   "ServalIndoor": {
     "crate": "cr",
@@ -841,7 +844,8 @@
     "platformfr": "pfr",
     "rampb": "rb",
     "right": "r",
-    "table": "t"
+    "table": "t",
+    "rampbz": "rbz"
   },
   "FoxIndoor": {
     "bedl": "bl",
