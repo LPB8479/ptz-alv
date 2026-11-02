@@ -275,7 +275,8 @@
     "topl": "tl",
     "topr": "tr",
     "training": "tra",
-    "windowc": "wc"
+    "windowc": "wc",
+    "sleeptmp": "stmp"
   },
   "CrowOut": {
     "backcorner": "bc",
@@ -371,7 +372,7 @@
     "farcornerb": "fcb",
     "farcornert": "fct",
     "appastick": "as",
-    "basket": "b",
+    "basket": "",
     "blueball": "blb",
     "brownballtop": "brbt",
     "brownball": "brb",
@@ -405,7 +406,10 @@
     "rightpost": "rp",
     "tableropes": "tr",
     "upleftbranch": "ulb",
-    "uprightbranches": "urb"
+    "uprightbranches": "urb",
+    "swing": "s",
+    "basketl": "bl",
+    "basketr": "br"
   },
   "Georgie": {
     "home": "h",
@@ -483,7 +487,8 @@
     "farright": "fr",
     "hutz": "huz",
     "pondt": "pt",
-    "rightcorner": "rc"
+    "rightcorner": "rc",
+    "pasturedoor": "pd"
   },
   "WolfDen2": {
     "home": "h",
@@ -711,7 +716,8 @@
     "waterl": "wal",
     "window": "w",
     "winl": "wl",
-    "wint": "wt"
+    "wint": "wt",
+    "winr": "wr"
   },
   "Serval": {
     "ball": "ba",
@@ -734,7 +740,8 @@
     "leftplatformz": "lpz",
     "left": "l",
     "belowshortplatform": "bsp",
-    "nearplatformr": "npr"
+    "nearplatformr": "npr",
+    "rightcorner": "rc"
   },
   "PastureLower": {
     "backrightcorner": "brc",
