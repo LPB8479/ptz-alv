@@ -238,12 +238,12 @@ function toggleDirectionContainer(isVisible) {
     } else {
         console.error('mpv-button element not found.');
     }
-    const clickIcon = document.getElementById('vidIcon');
-    if (clickIcon) {
-        clickIcon.style.display = isVisible ? 'inline-block' : 'none';
-    } else {
-        console.error('clickIcon element not found.');
-    }
+    // const clickIcon = document.getElementById('vidIcon');
+    // if (clickIcon) {
+    //     clickIcon.style.display = isVisible ? 'inline-block' : 'none';
+    // } else {
+    //     console.error('clickIcon element not found.');
+    // }
 
     const custompresetpadContainer = document.getElementById('customPresetPad');
     const customLabelPreset = document.querySelector('.custom-label-preset');
@@ -947,9 +947,9 @@ document.addEventListener('DOMContentLoaded', function () {
 
 
         buttonDiv.appendChild(button2);
-        buttonDiv.appendChild(button8);
-        buttonDiv.appendChild(button6);
+        // buttonDiv.appendChild(button8);
         buttonDiv.appendChild(button9);
+        buttonDiv.appendChild(button6);
         buttonDiv.appendChild(button7);
         buttonDiv.appendChild(button3);
         buttonDiv.appendChild(button4);

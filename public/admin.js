@@ -708,7 +708,7 @@ function showCameraDetails(cameraName) {
                 <span class="camera-name">Camera Name: ${cameraName}</span>
             </div>
             <button class="btn-add-preset" onclick="addNewPreset('${cameraName}')">Add Preset</button>
-            ${isFullPTZEnabled ? '' : `<button class="btn-add-custom-preset" onclick="showCustomPresetInputs('${cameraName}')">Add Custom Preset</button>`}
+            <button class="btn-add-custom-preset" onclick="showCustomPresetInputs('${cameraName}')">Add Custom Preset</button>
             <button class="btn-sync-preset" onclick="syncPresets('${cameraName}')">Sync Presets</button>
             <table id="presetTable">
                 <thead>
@@ -740,9 +740,9 @@ function showCameraDetails(cameraName) {
         </div>
     `;
     fetchAndPopulatePresets(cameraName); // Call to fetch and populate regular presets
-    if (!isFullPTZEnabled) {
+    // if (!isFullPTZEnabled) {
         fetchAndPopulateCustomPresets(cameraName); // Call to fetch and populate custom presets (only if checkbox is checked)
-    }
+    // }
 }
 
 
