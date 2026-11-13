@@ -301,23 +301,39 @@
       ]
     },
     {
-      "name": "Emu",
+      "name": "WolfSwitch",
       "presets": [
-        "fargate",
-        "food",
+        "back",
+        "boxtmp",
+        "den",
+        "den2",
+        "den2r",
+        "den2t",
+        "den2tl",
+        "denl",
+        "denr",
+        "dentop",
+        "dentopl",
+        "denz",
+        "down",
+        "downleft",
+        "downright",
+        "farleft",
+        "farright",
         "home",
+        "homew",
+        "insidedoor",
         "left",
         "leftcorner",
-        "leftgate",
-        "maingate",
-        "pedro",
+        "middle",
+        "middleleft",
+        "middleright",
+        "nearleft",
+        "nearright",
         "pond",
-        "pondleft",
-        "right",
-        "rightcorner",
-        "shelter",
-        "temp",
-        "trees"
+        "switchgate",
+        "training",
+        "tub"
       ]
     },
     {
@@ -325,12 +341,14 @@
       "presets": [
         "appastick",
         "basketl",
+        "basketlshelf",
         "basketr",
         "blueball",
         "bridgeb",
         "bridgem",
         "brownball",
         "brownballtop",
+        "cammirror",
         "domell",
         "domellb",
         "domellshelf",
@@ -367,6 +385,7 @@
         "leftposttop",
         "leftshelfl",
         "leftshelfr",
+        "lefttable",
         "nearleftshelf",
         "nearlefttop",
         "nearrightshelves",
@@ -397,17 +416,24 @@
         "downleft",
         "downright",
         "home",
+        "insidedoor",
         "left",
         "leftfar",
         "leftplatformz",
         "middleplatforms",
+        "middletemp",
+        "midlefttop",
         "nearplatform",
         "nearplatformr",
+        "nearplatformt",
         "pond",
         "right",
         "rightcorner",
         "scratchpost",
+        "shortplatform",
+        "tmp",
         "trainingplatform",
+        "trainingplatformb",
         "vestibule"
       ]
     },
@@ -584,30 +610,23 @@
       ]
     },
     {
-      "name": "WolfSwitch",
+      "name": "Emu",
       "presets": [
-        "back",
-        "den",
-        "denl",
-        "denr",
-        "dentop",
-        "denz",
-        "down",
-        "downleft",
-        "downright",
-        "farleft",
-        "farright",
+        "fargate",
+        "food",
         "home",
-        "insidedoor",
         "left",
         "leftcorner",
-        "middle",
-        "middleleft",
-        "middleright",
-        "nearleft",
-        "nearright",
+        "leftgate",
+        "maingate",
+        "pedro",
         "pond",
-        "switchgate"
+        "pondleft",
+        "right",
+        "rightcorner",
+        "shelter",
+        "temp",
+        "trees"
       ]
     },
     {
@@ -665,15 +684,19 @@
         "downleft",
         "downright",
         "farleftcorner",
+        "fencefarright",
         "fenceright",
         "glasswall",
         "home",
         "left",
         "leftmiddle",
+        "leftnear",
         "pond",
         "right",
+        "shortplatform",
         "temp",
-        "trainingplatform"
+        "trainingplatform",
+        "trainingplatformr"
       ]
     },
     {
@@ -760,6 +783,7 @@
         "left",
         "leftcorner",
         "leftgrove",
+        "marmcorner",
         "marmgate",
         "mudpit",
         "right",
@@ -767,7 +791,8 @@
         "rightgrove",
         "shelter",
         "sleep",
-        "temp1"
+        "temp1",
+        "tmp"
       ]
     },
     {
@@ -786,6 +811,7 @@
         "home",
         "insidedoor",
         "left",
+        "leftpipe",
         "middle",
         "middler",
         "platform",
@@ -796,7 +822,8 @@
         "rampb",
         "rampbz",
         "right",
-        "table"
+        "table",
+        "temp"
       ]
     },
     {
@@ -1020,7 +1047,8 @@
         "kiwitmp",
         "kiwitopleft",
         "kiwitopright",
-        "tmp"
+        "tmp",
+        "kiwitmp2"
       ]
     },
     {

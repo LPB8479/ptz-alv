@@ -409,7 +409,10 @@
     "uprightbranches": "urb",
     "swing": "s",
     "basketl": "bl",
-    "basketr": "br"
+    "basketr": "br",
+    "cammirror": "cm",
+    "basketlshelf": "bls",
+    "lefttable": "lt"
   },
   "Georgie": {
     "home": "h",
@@ -578,11 +581,11 @@
   },
   "WolfSwitch": {
     "back": "b",
-    "den": "sd",
-    "denl": "dl",
-    "denr": "dr",
-    "dentop": "dt",
-    "denz": "dz",
+    "den": "d1",
+    "denl": "d1l",
+    "denr": "d1r",
+    "dentop": "d1t",
+    "denz": "d1z",
     "down": "d",
     "downleft": "dl",
     "downright": "dr",
@@ -599,7 +602,16 @@
     "nearright": "nr",
     "pond": "p",
     "switchgate": "sg",
-    "water": "w"
+    "water": "w",
+    "boxtmp": "btmp",
+    "den2": "d2",
+    "den2r": "d2r",
+    "den2t": "d2t",
+    "den2tl": "d2tl",
+    "dentopl": "d1tl",
+    "homew": "hw",
+    "training": "t",
+    "tub": "tu"
   },
   "PastureFeeder": {
     "home": "h",
@@ -732,7 +744,7 @@
     "nearplatform": "np",
     "pond": "p",
     "right": "r",
-    "scratchpost": "sp",
+    "scratchpost": "scp",
     "trainingplatform": "tp",
     "vestibule": "v",
     "belowtrainingplatform": "btp",
@@ -741,7 +753,14 @@
     "left": "l",
     "belowshortplatform": "bsp",
     "nearplatformr": "npr",
-    "rightcorner": "rc"
+    "rightcorner": "rc",
+    "midlefttop": "mlt",
+    "insidedoor": "id",
+    "middletemp": "mtmp",
+    "nearplatformt": "npt",
+    "shortplatform": "sp",
+    "tmp": "tmp",
+    "trainingplatformb": "tpb"
   },
   "PastureLower": {
     "backrightcorner": "brc",
@@ -786,7 +805,11 @@
     "trainingplatform": "tp",
     "temp": "temp",
     "doornap": "dn",
-    "belowshortplatform": "bsp"
+    "belowshortplatform": "bsp",
+    "fencefarright": "ffr",
+    "leftnear": "ln",
+    "shortplatform": "sp",
+    "trainingplatformr": "tpr"
   },
   "ServalIndoor": {
     "crate": "cr",
@@ -852,7 +875,9 @@
     "rampb": "rb",
     "right": "r",
     "table": "t",
-    "rampbz": "rbz"
+    "rampbz": "rbz",
+    "leftpipe": "lp",
+    "temp": "temp"
   },
   "FoxIndoor": {
     "bedl": "bl",
@@ -910,7 +935,8 @@
     "kiwitmp": "ktmp",
     "kiwitopleft": "ktl",
     "kiwitopright": "ktr",
-    "tmp": "tmp"
+    "tmp": "tmp",
+    "kiwitmp2": "ktmp2"
   },
   "ToastCrunch": {
     "home": "h",
