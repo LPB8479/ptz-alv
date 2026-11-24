@@ -41,6 +41,45 @@ const client = new tmi.Client({
 
 client.connect().catch(console.error);
 
+// Chat listener for cam tracking
+let sseClients = [];
+
+app.get('/chat-stream', (req, res) => {
+  res.setHeader('Content-Type', 'text/event-stream');
+  res.setHeader('Cache-Control', 'no-cache');
+  res.setHeader('Connection', 'keep-alive');
+  res.flushHeaders();
+
+  const newClient = { id: Date.now(), res };
+  sseClients.push(newClient);
+
+  req.on('close', () => {
+    sseClients = sseClients.filter(c => c.id !== newClient.id);
+  });
+});
+
+client.on('message', (channel, tags, message, self) => {
+  if (self) return;
+  
+  const regex1 = /Swapped [a-z]\w+\(\d\) [a-z]\w+\(\d\)/g;
+  const regex2 = /Scene: customcamsbig Current Scene: custom Cams: .+ 6: \w+/g;
+
+  if (!regex1.test(message) && !regex2.test(message)) return; // Ignore non-swap messages
+
+  // Package the chat data for your frontend
+  const chatData = {
+    user: tags['display-name'] || tags.username,
+    text: message,
+    channel: channel,
+    ts: Date.now()
+  };
+
+  // Broadcast the message instantly to all connected frontend clients
+  sseClients.forEach(client => {
+    client.res.write(`data: ${JSON.stringify(chatData)}\n\n`);
+  });
+});
+
 // Endpoint to fetch current Twitch settings
 app.get('/twitch-settings', (req, res) => {
     // Read the Twitch settings from the configuration file (config.json)
@@ -826,7 +865,6 @@ function listenForMessages(cameraName) {
     });
 }
 
-
 function listenForGetInfo(cameraName) {
     return new Promise((resolve, reject) => {
         let messageReceived = false;
@@ -987,6 +1025,57 @@ app.post('/fetch-volume-levels', (req, res) => {
         });
 });
 
+function listenForScenecams() {
+    return new Promise((resolve, reject) => {
+        let messageReceived = false;
+
+        const messageListener = (channel, tags, message, self) => {
+            if (self) return; // Ignore messages from the bot itself
+
+            console.log('Received message:', message);
+
+            // Check if the message contains cam names
+            if (message.startsWith('Scene:')) {
+                    messageReceived = true;
+                    client.off('message', messageListener);
+                    clearTimeout(timeout);
+                    resolve(extractedCams);
+                }
+        };
+
+        // Check if the client is connected before listening
+        if (!client.readyState()) {
+            console.warn('Warning: Twitch client is not currently connected.');
+        }
+
+        // Listen for Twitch chat messages for 5 seconds
+        client.on('message', messageListener);
+
+        // Stop listening after 5 seconds
+        const timeout = setTimeout(() => {
+            client.off('message', messageListener); // Remove the message listener
+            if (!messageReceived) {
+                console.log('No scenecams found within the timeout period');
+                resolve([]); // Resolve with an empty array if no message received
+            }
+        }, 5000);
+    })
+    .catch(error => {
+        console.error('Error in listenForScenecams:', error);
+        throw error; // Rethrow the error to propagate it to the caller
+    });
+}
+
+app.post('/fetch-scenecams', async (req, res) => {
+    try {
+        const rawMessage = await listenForSceneMessage();
+        res.json({ rawMessage });
+    } catch (error) {
+        console.error('Error listening for Twitch messages:', error);
+        res.status(500).json({ error: 'Failed to fetch scenecams' });
+    }
+});
+
 
 function readHotkeysFile() {
     const hotkeysFilePath = path.join(__dirname, 'public', 'hotkeys.json');
@@ -1100,7 +1189,34 @@ app.get('/custom-hotkeys', (req, res) => {
     res.json(hotkeys);
 });
 
+// Endpoint to fetch formatted cam names
+app.get('/format-name', async (req, res) => {
+    try {
+        const queryName = req.query.name;
+        if (!queryName) {
+            return res.status(400).json({ error: 'Missing name parameter' });
+        }
 
+        // Read caps.json using fs.promises
+        const rawData = await fs.promises.readFile(path.join(__dirname, 'public', 'caps.json'), 'utf8');
+        const capsList = JSON.parse(rawData);
+
+        const cleanName = queryName.toLowerCase().trim();
+        let formattedName;
+
+        // Check lookup table or fallback to capitalizing the first letter
+        if (Object.prototype.hasOwnProperty.call(capsList, cleanName)) {
+            formattedName = capsList[cleanName];
+        } else {
+            formattedName = cleanName.charAt(0).toUpperCase() + cleanName.slice(1);
+        }
+
+        res.json({ result: formattedName });
+    } catch (err) {
+        console.error("Error processing camera lookup:", err);
+        res.status(500).json({ error: 'Internal server error' });
+    }
+});
 
 // Endpoint to receive PTZ commands
 app.post('/ptz-command', (req, res) => {
@@ -1122,6 +1238,7 @@ app.post('/ptz-command', (req, res) => {
       res.status(500).json({ error: "Internal Server Error" });
     }
   });
+
 
 
 // Server listening on port 3000

@@ -991,6 +991,14 @@ document.addEventListener('DOMContentLoaded', function () {
     listIcon.addEventListener('click', switchToListView);
     vidIcon.addEventListener('click', switchToVidView);
 
+
+    const scenecamsButton = document.querySelector('.scenecams-button');
+    if (scenecamsButton) {
+        scenecamsButton.addEventListener('click', sendScenecams);
+        console.log('Scenecams button listener attached successfully.');
+    } else {
+        console.warn('Scenecams button element not found in DOM.');
+    }
 });
 document.addEventListener('DOMContentLoaded', function () {
     var video = document.querySelector('video');
@@ -1045,6 +1053,7 @@ const toggleOverlay = () => {
         updateClickButtonLabel();
     }, 0);
 
+    outlineActiveCam();
 };
 
 const toggleGrid = () => {
@@ -1488,6 +1497,11 @@ function loadboxoutlines() {
             position: absolute;
             z-index: 1000; // Ensures outlines are on top
         }
+        .box-outline.selected {
+            border: 2px solid blue;
+            z-index: 2000;
+            box-sizing: border-box;
+        }
     `;
     document.head.appendChild(styleElement);
 
@@ -1599,8 +1613,8 @@ function loadboxoutlines() {
 
         // Set the dot's style to make it a small red circle
         dotElement.style.position = "absolute";
-        dotElement.style.width = "10px"; // Size of the dot
-        dotElement.style.height = "10px";
+        dotElement.style.width = "8px"; // Size of the dot
+        dotElement.style.height = "8px";
         dotElement.style.borderRadius = "50%"; // Circular shape
         dotElement.style.backgroundColor = "red"; // Color for visibility
 
@@ -1738,6 +1752,7 @@ function loadclickoverlay() {
 
     // Create zoom dialog element
     const zoomDialog = document.createElement('div');
+    zoomDialog.id = 'zoomDialog';
     zoomDialog.style.position = 'absolute';
     zoomDialog.style.display = 'none';
     zoomDialog.style.backgroundColor = 'rgba(0, 0, 0, 0.8)'; // Semi-transparent black background
@@ -1783,19 +1798,29 @@ function loadclickoverlay() {
     }
 
     clickOverlay.addEventListener('mousedown', (e) => {
+        const iframeRect = iframe.getBoundingClientRect();
+        const iframeWidth = iframeRect.width;
+        const iframeHeight = iframeRect.height;
+
+        const relativeX = e.clientX - iframeRect.left;
+        const relativeY = e.clientY - iframeRect.top;
+
+        // Handle scrollwheel clicks
+        if (e.button === 1) {
+            e.preventDefault();
+            const slot = getBoxId(relativeX, relativeY);
+            const key = `cam${slot}`;
+            const camName = localStorage.getItem(key);
+
+            swapSelectedCam(selectedCamera, camName);
+            return;
+        }
         // Ignore right-clicks
         if (e.button === 2) {
             return;
         }
 
         holdTimer = setTimeout(() => {
-            const iframeRect = iframe.getBoundingClientRect();
-            const iframeWidth = iframeRect.width;
-            const iframeHeight = iframeRect.height;
-
-            const relativeX = e.clientX - iframeRect.left;
-            const relativeY = e.clientY - iframeRect.top;
-
             const contentWidth = 1920;
             const contentHeight = 1080;
             const contentAspectRatio = contentWidth / contentHeight;
@@ -1891,11 +1916,8 @@ function loadclickoverlay() {
             const iframeWidth = iframeRect.width;
             const iframeHeight = iframeRect.height;
 
-            const rawClickX = e.clientX;
-            const rawClickY = e.clientY;
-
-            const relativeX = rawClickX - iframeRect.left;
-            const relativeY = rawClickY - iframeRect.top;
+            const relativeX = e.clientX - iframeRect.left;
+            const relativeY = e.clientY - iframeRect.top;
 
             const contentWidth = 1920;
             const contentHeight = 1080;
@@ -1948,6 +1970,22 @@ function loadclickoverlay() {
             closeZoomDialog();
         }
     });
+
+    function getBoxId(x, y, boxes = boxBoundaries) {
+        for (const box of boxes) {
+            const withinX = x >= box.x && x <= box.x + box.width;
+            const withinY = y >= box.y && y <= box.y + box.height;
+
+            if (withinX && withinY) {
+                if (box.id == 6) {
+                    return 1;
+                } else {
+                    return box.id + 1;
+                }
+            }
+        }
+        return null;
+    }
 }
 
 
@@ -2276,6 +2314,7 @@ function selectCamera(cameraName) {
     // Adjust layout based on the number of items
     adjustLayout();
     highlightSelectedCameraButton();
+    outlineActiveCam();
 }
 
 function getHotkey(cameraName, preset, custom) {
@@ -2438,9 +2477,6 @@ function populateCustomPresetPad(customPresets) {
     adjustLayout();
 
 }
-
-
-
 
 function highlightSelectedCameraButton() {
     const buttons = document.querySelectorAll('.camera-button');
@@ -2610,7 +2646,7 @@ async function executeCustomPresetCommands(cameraName, presetData) {
         return; // Exit the function if any parameter is undefined
     }
 
-    console.log({basePreset, zoom, autoFocus, focus});
+    console.log({ basePreset, zoom, autoFocus, focus });
 
     // Construct the commands using the extracted data
     const lowerCameraName = cameraName.toLowerCase();
@@ -2625,7 +2661,7 @@ async function executeCustomPresetCommands(cameraName, presetData) {
     sendCommand(presetCommand);
     await delay(500);
     sendCommand(zoomCommand);
-    
+
     if (autoFocus === 'off') {
         await delay(500);
         sendCommand(focusCommand);
@@ -2805,11 +2841,6 @@ function sendResetStream() {
     }
 }
 
-function sendScenecams() {
-    const command = `!scenecams`;
-    sendCommand(command);
-}
-
 function sendWolftext() {
     const command = `!wolftext`;
     sendCommand(command);
@@ -2897,116 +2928,69 @@ function setSwapNumber(number) {
 }
 
 function setPresetSwap(selected) {
-    const cameraButtons = document.querySelectorAll('.camera-button');
-    function findCamera(name) {
-        return Array.from(cameraButtons).findIndex(
-            el => el.textContent.trim() === name.trim()
-        );
-    }
-
-    function swapSelect(cam1, cam2) {
-        if (selectedCamera === cam1) {
-            cameraButtons[findCamera(cam2)].click();
-        } else if (selectedCamera === cam2) {
-            cameraButtons[findCamera(cam1)].click();
-        }
-    }
-
     if (selected === 'wolf') {
-        swapSelect("Wolf", "WolfCorner");
         sendCommand('!swap wolf wolfcorner');
     } else if (selected === 'wolfin') {
-        swapSelect("Wolf", "WolfIndoor");
         sendCommand('!swap wolf wolfindoor');
     } else if (selected === 'wden') {
-        swapSelect("Wolf", "WolfDen");
         sendCommand('!swap wolf wolfden');
     } else if (selected === 'wden2') {
-        swapSelect("Wolf", "WolfDen2");
         sendCommand('!swap wolfcorner wolfden2');
     } else if (selected === 'ws-w') {
-        swapSelect("Wolf", "WolfSwitch")
         sendCommand('!swap wolf wolfswitch');
     } else if (selected === 'wswin') {
-        swapSelect("WolfIndoor", "WolfSwitch")
         sendCommand('!swap wolfindoor wolfswitch');
     } else if (selected === 'marm') {
-        swapSelect("MarmIn", "MarmOut")
         sendCommand('!swap marmin marmout');
     } else if (selected === 'crow') {
-        swapSelect("CrowIn", "CrowOut")
         sendCommand('!swap crowin crowout');
     } else if (selected === 'foxc') {
-        swapSelect("Fox", "FoxCovered")
         sendCommand('!swap fox foxcovered');
     } else if (selected === 'foxin') {
-        swapSelect("Fox", "FoxIndoor")
         sendCommand('!swap fox foxindoor');
     } else if (selected === 'fc-i') {
-        swapSelect("FoxCovered", "FoxIndoor")
         sendCommand('!swap foxcovered foxindoor');
     } else if (selected === 'chkn') {
-        swapSelect("Chicken", "ChickenIndoor")
         sendCommand('!swap chicken chickenindoor');
     } else if (selected === 'gorg') {
-        swapSelect("Georgie", "GeorgieWater")
         sendCommand('!swap georgie georgiewater');
     } else if (selected == 'push') {
-        swapSelect("Pushpop", "PushpopIndoor")
         sendCommand('!swap pushpop pushpopindoor');
     } else if (selected == 'crnch') {
-        swapSelect("Pushpop", "PushpopCrunch")
         sendCommand('!swap pushpop pushpopcrunch');
     } else if (selected == 'past') {
-        swapSelect("Pasture", "PastureLower")
         sendCommand('!swap pasture pasturelower');
     } else if (selected == 'feed') {
-        swapSelect("Pasture", "PastureFeeder")
         sendCommand('!swap pasture pasturefeeder');
     } else if (selected == 'gard') {
-        swapSelect("Pasture", "Garden")
         sendCommand('!swap pasture garden');
     } else if (selected == 'chin') {
-        swapSelect("ChinMulti", "Chin")
         sendCommand('!swap chinmulti chin');
     } else if (selected == 'chin2') {
-        swapSelect("ChinMulti", "Chin2")
         sendCommand('!swap chinmulti chin2');
     } else if (selected == 'chin3') {
-        swapSelect("ChinMulti", "Chin3")
         sendCommand('!swap chinmulti chin3');
     } else if (selected == 'c1-2') {
-        swapSelect("Chin", "Chin2")
         sendCommand('!swap chin chin2');
     } else if (selected == 'c2-3') {
-        swapSelect("Chin2", "Chin3")
         sendCommand('!swap chin2 chin3');
     } else if (selected == 'c1-3') {
-        swapSelect("Chin", "Chin3")
         sendCommand('!swap chin chin3');
     } else if (selected == 'tar') {
-        swapSelect("Tarantula", "TarantulaPTZ")
         sendCommand('!swap tarantula tarantulaptz');
     } else if (selected == 'toast') {
-        swapSelect("Toast", "ToastCrunch")
         sendCommand('!swap toast toastcrunch');
     } else if (selected == 'par') {
-        swapSelect("Parrot", "Macaws")
         sendCommand('!swap littles macaws');
     } else if (selected == 'emu') {
-        swapSelect("Emu", "EmuCover")
         sendCommand('!swap emu emucover');
     } else if (selected == 'splsh') {
-        swapSelect("Emu", "EmuPond")
         sendCommand('!swap emu emupond');
     } else if (selected == 'serv') {
-        swapSelect("Serval", "ServalCorner")
         sendCommand('!swap serval servalcorner');
     } else if (selected == 'servin') {
-        swapSelect("Serval", "ServalIndoor")
         sendCommand('!swap serval servalindoor');
     } else if (selected == 'sc-i') {
-        swapSelect("ServalCorner", "ServalIndoor")
         sendCommand('!swap servalcorner servalindoor');
     }
 
@@ -3863,6 +3847,7 @@ function handleKeyDown(event) {
             cameraButtons[index].focus();
             // Optionally, you can trigger a click event if you want the button to be "pressed"
             cameraButtons[index].click();
+            outlineActiveCam;
         }
         return; // Exit the function to prevent hotkey handling
     }
@@ -4424,7 +4409,70 @@ function handleMusicUnmute(currentVolume) {
         });
 }
 
+async function sendScenecams() {
+    // if (event) event.preventDefault(); // Stops the page from reloading
+    try {
+        // Call syncScenecams to ensure there's data to fetch with fetchScenecams
+        await syncScenecams();
 
+        // Fetch the dynamic scene cams data
+        const data = await fetchScenecams();
+
+        // Pass the data to the processing function
+        processScenecamsData(data?.rawMessage);
+    } catch (error) {
+        console.error('Error handling scene cams:', error);
+    }
+}
+
+async function fetchScenecams() {
+    // Send a POST request to the backend endpoint
+    const response = await fetch('/fetch-scenecams', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        }
+    });
+
+    if (!response.ok) {
+        throw new Error(`Failed to fetch scene cams (status ${response.status})`);
+    }
+
+    return response.json(); // Parse response as JSON
+}
+
+function processScenecamsData(rawMessage) {
+    console.log(`Raw message: ${rawMessage}`);
+    if (typeof rawMessage !== 'string' || !rawMessage.startsWith('Scene:')) {
+        console.log('No scene cams received.');
+        return [];
+    }
+
+    const extractedCams = rawMessage.match(/(?<=\d: )([a-z])\w+/g);
+    console.log('Extracted Cams:', extractedCams);
+
+    if (!Array.isArray(extractedCams) || extractedCams.length === 0) {
+        console.log('No scene cams received.');
+        return [];
+    }
+
+    const scenecams = extractedCams
+        .map(cam => cam.trim()) // Trim whitespace if needed
+        .filter(Boolean);
+
+    console.log('Received scene cams list:', scenecams);
+
+    scenecams.forEach((str, i) => {
+        localStorage.setItem(`cam${i + 1}`, str);
+    });
+
+    return scenecams;
+}
+
+function syncScenecams() {
+    const command = `!scenecams`;
+    sendCommand(command);
+}
 
 window.addEventListener('load', function () {
     localStorage.setItem('isSpinEnabled', 'false');
@@ -4874,7 +4922,7 @@ function playerZoom(slot) {
     if (!targetButton) return;
 
     const willBeActive = !targetButton.classList.contains('active');
-    
+
     document.querySelectorAll('.player-zoom-button').forEach(btn => btn.classList.remove('active'));
 
     if (willBeActive) {
@@ -4886,3 +4934,114 @@ function playerZoom(slot) {
         vid.classList.remove(`cam${slot}`);
     }
 }
+
+async function capsCamName(name) {
+    if (name != name.toLowerCase()) {
+        return name;
+    } else {
+        const response = await fetch(`/format-name?name=${encodeURIComponent(name)}`);
+        const data = await response.json();
+        return data.result;
+    }
+}
+
+async function outlineActiveCam() {
+    const boxContainer = document.getElementById("boxoverlay");
+    const slots = [];
+    for (let i = 1; i <= 6; i++) {
+        slots.push(await capsCamName(localStorage.getItem(`cam${i}`)));
+    }
+
+    const outlines = document.querySelectorAll(".box-outline");
+    outlines.forEach(element => {
+        element.classList.remove("selected");
+    })
+
+    const dex = slots.indexOf(selectedCamera);
+    if (dex == 0) {
+        outlines[5].classList.add("selected");
+    } else {
+        outlines[dex - 1].classList.add("selected");
+    }
+}
+
+function findCamera(name) {
+    const cameraButtons = document.querySelectorAll('.camera-button');
+    if (!name) return -1; // Safety check in case the name is undefined/null
+    return Array.from(cameraButtons).findIndex(
+        el => el.textContent.trim() === name.trim()
+    );
+}
+
+async function swapSelectedCam(cam1, cam2) {
+    const cameraButtons = document.querySelectorAll('.camera-button');
+
+    const capsCam1 = await capsCamName(cam1);
+    const capsCam2 = await capsCamName(cam2);
+
+    if (selectedCamera === capsCam1) {
+        cameraButtons[findCamera(capsCam2)].click();
+    } else if (selectedCamera === capsCam2) {
+        cameraButtons[findCamera(capsCam1)].click();
+    }
+
+    cameraButtons[findCamera(selectedCamera)].focus();
+    outlineActiveCam();
+}
+
+// Listen for swap confirmations and scenecams
+document.addEventListener('DOMContentLoaded', function () {
+    const eventSource = new EventSource('http://localhost:3000/chat-stream');
+
+    eventSource.onmessage = async (event) => {
+        try {
+            const chatData = JSON.parse(event.data);
+            console.log(chatData.text);
+            const message = chatData.text.replace("Swapped ", "");
+
+            const regexScenecams = /Scene: customcamsbig Current Scene: custom Cams: .+ 6: \w+/g
+            const matchScenecams = message.match(regexScenecams);
+
+            const regexSwap = /([a-z]+)\((\d+)\)\s+([a-z]+)\((\d+)\)$/;
+            const matchSwap = message.match(regexSwap);
+
+            if (matchScenecams) {
+                processScenecamsData(message);
+            } else if (matchSwap) {
+                const [, name1, num1, name2, num2] = matchSwap;
+
+                function overwriteCamStorage(slot, name) {
+                    localStorage.setItem(`cam${slot}`, name);
+                }
+
+                if (num1 === num2) {
+                    const key = `cam${num1}`;
+                    const oldValue = localStorage.getItem(key);
+                    if (oldValue == name1) {
+                        overwriteCamStorage(num1, name2);
+                    } else {
+                        overwriteCamStorage(num1, name1);
+                    };
+
+                    if (await capsCamName(name1) == selectedCamera || await capsCamName(name2) == selectedCamera) {
+                        swapSelectedCam(name1, name2);
+                    }
+
+                } else {
+                    overwriteCamStorage(num1, name2);
+                    overwriteCamStorage(num2, name1);
+                }
+
+            } else {
+                console.log("No match found for the expected format.");
+            }
+
+        } catch (err) {
+            console.error('Failed to parse incoming chat data:', err);
+        }
+    };
+
+    eventSource.onerror = (err) => {
+        console.error('SSE connection lost. Browser will auto-reconnect...', err);
+    };
+});
