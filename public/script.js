@@ -5002,7 +5002,7 @@ document.addEventListener('DOMContentLoaded', function () {
             const regexScenecams = /Scene: customcamsbig Current Scene: custom Cams: .+ 6: \w+/g
             const matchScenecams = message.match(regexScenecams);
 
-            const regexSwap = /([a-z]+)\((\d+)\)\s+([a-z]+)\((\d+)\)$/;
+            const regexSwap = /([a-z\d]+)\((\d+)\)\s+([a-z\d]+)\((\d+)\)$/;
             const matchSwap = message.match(regexSwap);
 
             if (matchScenecams) {
