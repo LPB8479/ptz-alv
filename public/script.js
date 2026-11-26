@@ -5020,7 +5020,7 @@ async function swapSelectedCam(cam1, cam2) {
     outlineActiveCam();
 }
 
-// Listen for swap confirmations and scenecams
+// Chat listener
 document.addEventListener('DOMContentLoaded', function () {
     const eventSource = new EventSource('http://localhost:3000/chat-stream');
 
@@ -5031,14 +5031,11 @@ document.addEventListener('DOMContentLoaded', function () {
             const message = chatData.text.replace("Swapped ", "");
 
             const regexScenecams = /Scene: customcamsbig Current Scene: custom Cams: .+ 6: \w+/g
-            const matchScenecams = message.match(regexScenecams);
-
             const regexSwap = /([a-z\d]+)\((\d+)\)\s+([a-z\d]+)\((\d+)\)$/;
-            const matchSwap = message.match(regexSwap);
 
-            if (matchScenecams) {
+            if (message.match(regexScenecams)) { // handle !scenecams
                 processScenecamsData(message);
-            } else if (matchSwap) {
+            } else if (message.match(regexSwap)) { // handle !swap
                 const [, name1, num1, name2, num2] = matchSwap;
 
                 function overwriteCamStorage(slot, name) {
@@ -5062,9 +5059,8 @@ document.addEventListener('DOMContentLoaded', function () {
                     overwriteCamStorage(num1, name2);
                     overwriteCamStorage(num2, name1);
                 }
+                await outlineActiveCam();
 
-            } else {
-                console.log("No match found for the expected format.");
             }
 
         } catch (err) {

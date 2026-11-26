@@ -61,10 +61,9 @@ app.get('/chat-stream', (req, res) => {
 client.on('message', (channel, tags, message, self) => {
   if (self) return;
   
-  const regex1 = /Swapped [a-z]\w+\(\d\) [a-z]\w+\(\d\)/g;
-  const regex2 = /Scene: customcamsbig Current Scene: custom Cams: .+ 6: \w+/g;
+  const regexes = [/Swapped [a-z]\w+\(\d\) [a-z]\w+\(\d\)/g, /Scene: customcamsbig Current Scene: custom Cams: .+ 6: \w+/g];
 
-  if (!regex1.test(message) && !regex2.test(message)) return; // Ignore non-swap messages
+  if (regexes.some((regex) => regex.test(message))) return; // Ignore non-swap messages
 
   // Package the chat data for your frontend
   const chatData = {
