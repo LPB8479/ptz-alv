@@ -950,8 +950,8 @@ document.addEventListener('DOMContentLoaded', function () {
         // buttonDiv.appendChild(button8);
         buttonDiv.appendChild(button9);
         buttonDiv.appendChild(button6);
-        buttonDiv.appendChild(button7);
-        buttonDiv.appendChild(button3);
+        // buttonDiv.appendChild(button7);
+        // buttonDiv.appendChild(button3);
         buttonDiv.appendChild(button4);
         buttonDiv.appendChild(button5);
 
@@ -1019,7 +1019,7 @@ function setupEventListeners() {
 
     function handleRightClick(event) {
         event.preventDefault(); // Prevent the default context menu from appearing
-        toggleOverlayZIndex();
+        // toggleOverlayZIndex();
     }
 
     // Remove existing listeners if needed
@@ -1107,12 +1107,12 @@ function updateClickButtonLabel() {
     button4.textContent = isOverlayOn ? "Click On" : "Click Off";
 
     if (isOverlayOn) {
-        button3.style.visibility = 'visible'; // Show button3
-        button7.style.visibility = 'visible'; // Show button7
+        // button3.style.visibility = 'visible'; // Show button3
+        // button7.style.visibility = 'visible'; // Show button7
         button4.classList.add('highlighted');
     } else {
-        button3.style.visibility = 'hidden'; // Hide button3
-        button7.style.visibility = 'hidden'; // Hide button7
+        // button3.style.visibility = 'hidden'; // Hide button3
+        // button7.style.visibility = 'hidden'; // Hide button7
         button4.classList.remove('highlighted');
     }
 }
@@ -1762,6 +1762,7 @@ function loadclickoverlay() {
     zoomDialog.style.color = 'white'; // White text color
     zoomDialog.style.borderRadius = '5px'; // Rounded corners
     zoomDialog.style.boxShadow = '0 0 10px rgba(0, 0, 0, 0.5)'; // Shadow for a popup effect
+    zoomDialog.style.zIndex = '8';
 
     // Add zoom options to the dialog
     zoomOptions.forEach((zoom) => {
@@ -1784,7 +1785,9 @@ function loadclickoverlay() {
             closeZoomDialog();
 
             // Send click command with selected zoom using the stored coordinates
-            sendclickCommand(globalScaledX, globalScaledY, zoom);
+            // sendclickCommand(globalScaledX, globalScaledY, zoom);
+            const command = `!ptzzoom ${clickCamName} ${zoom}${checkNFC()}`;
+            sendCommand(command);
         });
         zoomDialog.appendChild(zoomOption);
     });
@@ -1797,7 +1800,10 @@ function loadclickoverlay() {
         }
     }
 
+    let clickCamName;
+
     clickOverlay.addEventListener('mousedown', (e) => {
+        console.log(e.button);
         const iframeRect = iframe.getBoundingClientRect();
         const iframeWidth = iframeRect.width;
         const iframeHeight = iframeRect.height;
@@ -1808,19 +1814,18 @@ function loadclickoverlay() {
         // Handle scrollwheel clicks
         if (e.button === 1) {
             e.preventDefault();
-            const slot = getBoxId(relativeX, relativeY);
-            const key = `cam${slot}`;
-            const camName = localStorage.getItem(key);
-
-            swapSelectedCam(selectedCamera, camName);
+            swapSelectedCam(selectedCamera, getClickCam(e));
             return;
         }
-        // Ignore right-clicks
-        if (e.button === 2) {
-            return;
-        }
+        // Ignore left-clicks
+        // else if (e.button === 0) {
+        //     return;
+        // }
 
-        holdTimer = setTimeout(() => {
+        else if (e.button === 2) {
+            // holdTimer = setTimeout(() => {
+                clickCamName = getClickCam(e);
+                console.log(`Cam to zoom: ${clickCamName}`);
             const contentWidth = 1920;
             const contentHeight = 1080;
             const contentAspectRatio = contentWidth / contentHeight;
@@ -1896,69 +1901,81 @@ function loadclickoverlay() {
             zoomDialog.style.top = `${top}px`;
 
             console.log('Final Position:', { left, top });
-        }, holdThreshold);
-    });
-
-    clickOverlay.addEventListener('mouseup', (e) => {
-        // Ignore right-clicks
-        if (e.button === 2) {
-            return;
-        }
-
-        clearTimeout(holdTimer);
-        if (zoomDialog.style.display !== 'block') {
-            // Handle normal click
-            const clickX = e.clientX;
-            const clickY = e.clientY;
-            console.log(`Raw click coordinates: X=${clickX}, Y=${clickY}`);
-
-            const iframeRect = iframe.getBoundingClientRect();
-            const iframeWidth = iframeRect.width;
-            const iframeHeight = iframeRect.height;
-
-            const relativeX = e.clientX - iframeRect.left;
-            const relativeY = e.clientY - iframeRect.top;
-
-            const contentWidth = 1920;
-            const contentHeight = 1080;
-            const contentAspectRatio = contentWidth / contentHeight;
-
-            let effectiveWidth, effectiveHeight;
-
-            if (iframeWidth / iframeHeight > contentAspectRatio) {
-                effectiveHeight = iframeHeight;
-                effectiveWidth = effectiveHeight * contentAspectRatio;
-            } else {
-                effectiveWidth = iframeWidth;
-                effectiveHeight = effectiveWidth / contentAspectRatio;
-            }
-
-            const horizontalOffset = (iframeWidth - effectiveWidth) / 2;
-            const verticalOffset = (iframeHeight - effectiveHeight) / 2;
-
-            const scaledX = (relativeX - horizontalOffset) / effectiveWidth * contentWidth;
-            const scaledY = (relativeY - verticalOffset) / effectiveHeight * contentHeight;
-
-            let isWithinBox = false;
-            for (const box of boxBoundaries) {
-                if (
-                    relativeX >= box.x &&
-                    relativeX <= box.x + box.width &&
-                    relativeY >= box.y &&
-                    relativeY <= box.y + box.height
-                ) {
-                    isWithinBox = true;
-                    break;
-                }
-            }
-
-            if (isWithinBox) {
-                sendclickCommand(scaledX, scaledY);
-            } else {
-                console.log("Click is outside the box boundaries.");
-            }
+            // }, holdThreshold);
         }
     });
+
+    // clickOverlay.addEventListener('mouseup', (e) => {
+    //     // Ignore right-clicks
+    //     if (e.button === 2) {
+    //         return;
+    //     }
+
+    //     clearTimeout(holdTimer);
+    //     if (zoomDialog.style.display !== 'block') {
+    //         // Handle normal click
+    //         console.log(`Raw click coordinates: X=${e.clientX}, Y=${e.clientY}`);
+
+    //         const iframeRect = iframe.getBoundingClientRect();
+    //         const iframeWidth = iframeRect.width;
+    //         const iframeHeight = iframeRect.height;
+
+    //         const relativeX = e.clientX - iframeRect.left;
+    //         const relativeY = e.clientY - iframeRect.top;
+
+    //         const contentWidth = 1920;
+    //         const contentHeight = 1080;
+    //         const contentAspectRatio = contentWidth / contentHeight;
+
+    //         let effectiveWidth, effectiveHeight;
+
+    //         if (iframeWidth / iframeHeight > contentAspectRatio) {
+    //             effectiveHeight = iframeHeight;
+    //             effectiveWidth = effectiveHeight * contentAspectRatio;
+    //         } else {
+    //             effectiveWidth = iframeWidth;
+    //             effectiveHeight = effectiveWidth / contentAspectRatio;
+    //         }
+
+    //         const horizontalOffset = (iframeWidth - effectiveWidth) / 2;
+    //         const verticalOffset = (iframeHeight - effectiveHeight) / 2;
+
+    //         const scaledX = (relativeX - horizontalOffset) / effectiveWidth * contentWidth;
+    //         const scaledY = (relativeY - verticalOffset) / effectiveHeight * contentHeight;
+
+    //         let isWithinBox = false;
+    //         for (const box of boxBoundaries) {
+    //             if (
+    //                 relativeX >= box.x &&
+    //                 relativeX <= box.x + box.width &&
+    //                 relativeY >= box.y &&
+    //                 relativeY <= box.y + box.height
+    //             ) {
+    //                 isWithinBox = true;
+    //                 break;
+    //             }
+    //         }
+
+    //         if (isWithinBox) {
+    //             sendclickCommand(scaledX, scaledY);
+    //         } else {
+    //             console.log("Click is outside the box boundaries.");
+    //         }
+    //     }
+    // });
+
+    // Scrollwheel for zoom
+    clickOverlay.addEventListener('wheel', (e) => {
+        e.preventDefault();
+        let command = `!ptzzoom ${getClickCam(e)} `;
+        if (event.deltaY < 0) {
+            command += "130"
+        } else if (event.deltaY > 0) {
+            command += "70"
+        }
+        command += checkNFC();
+        sendCommand(command);
+    })
 
     clickOverlay.addEventListener('mouseleave', () => {
         clearTimeout(holdTimer);
@@ -1985,6 +2002,20 @@ function loadclickoverlay() {
             }
         }
         return null;
+    }
+
+    function getClickCam(e) {
+        const iframeRect = iframe.getBoundingClientRect();
+        const iframeWidth = iframeRect.width;
+        const iframeHeight = iframeRect.height;
+
+        const relativeX = e.clientX - iframeRect.left;
+        const relativeY = e.clientY - iframeRect.top;
+
+        const slot = getBoxId(relativeX, relativeY);
+        const key = `cam${slot}`;
+        const camName = localStorage.getItem(key);
+        return camName;
     }
 }
 

@@ -1789,8 +1789,8 @@ body {
 }
 
 .vidbutton2,
-.vidbutton3,
-.vidbutton4,
+/* .vidbutton3, */
+/* .vidbutton4, */
 .vidbutton6,
 .vidbutton8,
 .vidbutton9 {
@@ -1801,7 +1801,8 @@ body {
     margin-right: 20px; /* Adjust this value to move button3 closer to the center */
 }
 
-.vidbutton7 {
+/* .vidbutton7 { */
+.vidbutton4 {
     margin-left: auto; /* Push this button to the far right */
     margin-right: 10px; /* Adjust this value to move button3 closer to the center */
 }
