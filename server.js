@@ -1038,14 +1038,9 @@ function listenForScenecams() {
                     messageReceived = true;
                     client.off('message', messageListener);
                     clearTimeout(timeout);
-                    resolve(extractedCams);
+                    resolve(message);
                 }
         };
-
-        // Check if the client is connected before listening
-        if (!client.readyState()) {
-            console.warn('Warning: Twitch client is not currently connected.');
-        }
 
         // Listen for Twitch chat messages for 5 seconds
         client.on('message', messageListener);
@@ -1067,7 +1062,7 @@ function listenForScenecams() {
 
 app.post('/fetch-scenecams', async (req, res) => {
     try {
-        const rawMessage = await listenForSceneMessage();
+        const rawMessage = await listenForScenecams();
         res.json({ rawMessage });
     } catch (error) {
         console.error('Error listening for Twitch messages:', error);

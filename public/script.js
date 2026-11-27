@@ -1803,7 +1803,6 @@ function loadclickoverlay() {
     let clickCamName;
 
     clickOverlay.addEventListener('mousedown', (e) => {
-        console.log(e.button);
         const iframeRect = iframe.getBoundingClientRect();
         const iframeWidth = iframeRect.width;
         const iframeHeight = iframeRect.height;
@@ -5030,13 +5029,14 @@ document.addEventListener('DOMContentLoaded', function () {
             console.log(chatData.text);
             const message = chatData.text.replace("Swapped ", "");
 
-            const regexScenecams = /Scene: customcamsbig Current Scene: custom Cams: .+ 6: \w+/g
+            const regexScenecams = /^Scene: customcamsbig Current Scene: custom Cams: .+ 6: \w+/
             const regexSwap = /([a-z\d]+)\((\d+)\)\s+([a-z\d]+)\((\d+)\)$/;
+            const regexAddPreset = /^!ptzsave [a-z\d]+ [a-z\d]+$/;
 
             if (message.match(regexScenecams)) { // handle !scenecams
                 processScenecamsData(message);
             } else if (message.match(regexSwap)) { // handle !swap
-                const [, name1, num1, name2, num2] = matchSwap;
+                const [, name1, num1, name2, num2] = message.match(regexSwap);
 
                 function overwriteCamStorage(slot, name) {
                     localStorage.setItem(`cam${slot}`, name);
